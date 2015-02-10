@@ -1,20 +1,21 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
-use Faker\Factory as Faker;
-
 class UsersTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$faker = Faker::create();
+		DB::table('users')->delete();
 
-		foreach(range(1, 10) as $index)
-		{
-			User::create([
-
-			]);
-		}
+        $user = new User();
+        $user->username = $_ENV['DEFAULT_USER_USERNAME'];
+        $user->email    = $_ENV['DEFAULT_USER_EMAIL'];
+        $user->password = $_ENV['DEFAULT_USER_PASSWORD'];
+        $user->street   = $_ENV['DEFAULT_USER_STREET'];
+        $user->apt      = $_ENV['DEFAULT_USER_APT'];
+        $user->city     = $_ENV['DEFAULT_USER_CITY'];
+        $user->state    = $_ENV['DEFAULT_USER_STATE'];
+        $user->zip      = $_ENV['DEFAULT_USER_ZIP'];
+   
+        $user->save();
 	}
-
 }
