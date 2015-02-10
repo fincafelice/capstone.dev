@@ -2,6 +2,7 @@
 
 return array(
 
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
@@ -121,6 +122,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'Way\Generators\GeneratorsServiceProvider',
+
 
 	),
 
