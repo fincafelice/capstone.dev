@@ -11,6 +11,6 @@ return array(
 'DEFAULT_USER_STREET'   => '',
 'DEFAULT_USER_APT'      => '',
 'DEFAULT_USER_CITY'     => '',
-'DEFAULT_USER_STATE'     => '',
+'DEFAULT_USER_STATE'    => '',
 'DEFAULT_USER_ZIP'      => ''
 );
