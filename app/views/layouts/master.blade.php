@@ -18,7 +18,7 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     	<div class="navbar-header">
       		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
+		        <span class="sr-only"></span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
@@ -63,16 +63,30 @@
 		        <li class="dropdown">
 		         	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span class="caret"></span></a>
 		        	<ul class="dropdown-menu" role="menu">
+			            <li><a href="#">Antiques</a></li>
 			            <li><a href="#">Appliances</a></li>
 			            <li><a href="#">Art</a></li>
+			            <li><a href="#">Art Supplies</a></li>
+			            <li><a href="#">Baby</a></li>
 			            <li><a href="#">Books</a></li>
-			            <li><a href="#">CDs</a></li>
-			            <li><a href="#">DvDs</a></li>
+			            <li><a href="#">Children's Clothes</a></li>
+			            <li><a href="#">Collectibles</a></li>
 			            <li><a href="#">Electronics</a></li>
-			            <li><a href="#">Framed Art</a></li>
 			            <li><a href="#">Furniture</a></li>
-			            <li><a href="#">Jewlery</a></li>
-			            <li><a href="#">ETC..</a></li>
+			            <li><a href="#">Gardening</a></li>
+			            <li><a href="#">Glassware</a></li>
+			            <li><a href="#">Health & Beauty</a></li>
+			            <li><a href="#">Home Decor</a></li>
+			            <li><a href="#">Home Improvement</a></li>
+			            <li><a href="#">Household Items</a></li>
+			            <li><a href="#">Jewelry</a></li>
+			            <li><a href="#">Kitchen</a></li>
+			            <li><a href="#">Men's Clothing</a></li>
+			            <li><a href="#">Music & Movies</a></li>
+			            <li><a href="#">Musical Instruments</a></li>
+			            <li><a href="#">Sporting Goods</a></li>
+			            <li><a href="#">Toys</a></li>
+			            <li><a href="#">Women's Clothing</a></li>
 		          	</ul>
 		        </li>
 		    </ul>
