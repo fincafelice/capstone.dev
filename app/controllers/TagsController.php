@@ -7,12 +7,22 @@ class TagsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
 	public function index()
 	{
-		$tags = Tag::all();
+    	$query = Tag::all();
 
-		return View::make('tags.index', compact('tags'));
-	}
+    	if (Input::has('search')) {
+
+    		$search = Input::get('search');
+
+    		$query->where('name', 'like', '%' . $search . '%');
+
+    		}
+
+    	return View::make('hello.php'), compact('tags'));;
+
+	} 
 
 	/**
 	 * Show the form for creating a new tag
