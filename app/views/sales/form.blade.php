@@ -47,5 +47,8 @@
 	{{ $errors->first('description', '<p class="help-block">:message</p>') }}
 </div>
 
-
-
+<div>
+	{{ Form::label('image', 'Post Image') }}<br>
+	{{ Form::file('image', array('class' => 'form-control')) }}
+	{{ $errors->first('image', '<p class-"help-block">:message</p>') }}
+</div>
