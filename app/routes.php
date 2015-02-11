@@ -22,3 +22,9 @@ Route::resource('users', 'UsersController');
 
 Route::resource('tags', 'TagsController');
 
+// Login/Logout Views: 
+
+Route::get('login', 'HomeController@showLogin');
+Route::post('login', 'HomeController@doLogin');
+Route::get('logout', 'HomeController@doLogout');
+
