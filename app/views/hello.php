@@ -10,11 +10,16 @@
 	
 <style>
 	
-	.carousel-inner > .item > img,
-  	.carousel-inner > .item > a > img {
-      width: 50%;
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+      width: 70%;
       margin: auto;
-  }
+}
+
+body {
+	
+	padding: 50px;
+}
  </style>
 
 </head>
