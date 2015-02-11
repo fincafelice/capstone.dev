@@ -2,6 +2,14 @@
 
 class SalesController extends \BaseController {
 
+	public function __construct() {
+
+		parent::__construct();
+
+		$this->beforeFilter('auth', array('except' => array('index', 'show')));
+
+	}
+
 	/**
 	 * Display a listing of sales
 	 *
@@ -31,14 +39,7 @@ class SalesController extends \BaseController {
 	 */
 	public function store()
 	{
-		try {
-			$sale = new Sale();
-			$sale->seller_id = Auth::id();
-		} catch (Exception $e) {
-			Log::warning("User requested a sales event that does not exist.", array('id' => $id));
-			App::abort(404);
-		}
-		
+
 		return $this->saveSale($sale);
 	}
 
@@ -107,6 +108,7 @@ class SalesController extends \BaseController {
 			$sale->state  		= Input::get('state');
 			$sale->zip  		= Input::get('zip');
 			$sale->description  = Input::get('description');
+			$sale->seller_id 	= Auth::id();
 
 			$sale->save();
 

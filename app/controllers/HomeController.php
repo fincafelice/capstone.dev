@@ -28,18 +28,20 @@ class HomeController extends BaseController {
 
 	public function doLogin() {
 
-		$username = Input::get('username');
+		$input = Input::all();
+
+		$email    = Input::get('email');
 		$password = Input::get('password');
 
-		if (Auth::attempt(array('username' => $username, 'password' => $password))) {
+		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
 
 			Session::flash('successMessage', "Login successful - welcome!");
-    		return Redirect::to('/');
+    		return Redirect::to('/checkID');
 
 		} else {
 
 			Session::flash('errorMessage', "Login failed, please re-enter credentials.");
-    		return Redirect::to('/');
+    		return Redirect::back();
 		};
 	}
 
@@ -47,7 +49,7 @@ class HomeController extends BaseController {
 
 		Auth::logout();
 		Session::flash('successMessage', "Have a nice day!");
-		return Redirect::to('/');
+		return Redirect::to('/login');
 	}
 
 }

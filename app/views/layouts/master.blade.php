@@ -17,6 +17,9 @@
 	    }
     </style> 
 
+	<!-- Bootstrap Date/Time Picker -->
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-datetimepicker.min.css">
+
 </head>
 <body>
 
@@ -93,6 +96,15 @@
 
 <div class="container">
 	
+    @if (Session::has('saveMessage'))
+		<div class="alert alert-success">{{{ Session::get('saveMessage') }}}</div>
+	@endif
+
+
+    @if (Session::has('errorMessage'))
+    	<div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
+    @endif
+
 	@yield('content')
 	
 </div>
@@ -102,7 +114,9 @@
 
 <!-- bootstrap.min.js -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	
+
+<!-- JavaScript Date/Time Picker -->
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
 
 </body>
 </html>
