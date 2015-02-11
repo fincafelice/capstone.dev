@@ -15,9 +15,8 @@ class Sale extends \Eloquent {
 		'state'       => 'required|max:2',
 		'zip'         => 'required|max:5',
 		'description' => 'required|max:500',
-		'seller_id'     => 'required|max:20'
-
-		);
+		'seller_id'   => 'required|max:20'
+	);
 
 
 }
