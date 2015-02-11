@@ -40,7 +40,7 @@ body {
           <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
-                <img alt="Brand" src="...">
+                <img alt="Brand" src="/public/img/gsale-2.png">
                 </a>
             </div>
           </div>
