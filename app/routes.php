@@ -22,14 +22,8 @@ Route::resource('users', 'UsersController');
 
 Route::resource('tags', 'TagsController');
 
-Route::get('orm-test', function ()
-{
-    $sales = Sale::all();
-	return $sales;
-});
+// Login/Logout Views: 
 
 Route::get('login', 'HomeController@showLogin');
 Route::post('login', 'HomeController@doLogin');
 Route::get('logout', 'HomeController@doLogout');
-
-
