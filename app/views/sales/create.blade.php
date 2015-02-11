@@ -6,18 +6,20 @@
 
 
 @section('content')
-	<h1>Welcome!</h1>
-	<h3>Create a New Sale</h3>
-	<hr>
-	<div>
-		{{ Form::open(array('action' => 'SalesController@store', 'method' => 'sale')) }}
+	<div class="col-md-8">
+		<h1>Welcome!</h1>
+		<h3>Create a New Sale</h3>
+		<hr>
+		<div>
+			{{ Form::open(array('action' => 'SalesController@store', 'method' => 'sale')) }}
 
 
-			@include('sales.form')
-			
+				@include('sales.form')
+				
 
-		{{ Form::submit('Create Sale', array('class' => 'btn btn_primary')) }}
+			{{ Form::submit('Create Sale', array('class' => 'btn btn_primary')) }}
 
-		{{ Form::close() }}
+			{{ Form::close() }}
+		</div>
 	</div>
 @stop

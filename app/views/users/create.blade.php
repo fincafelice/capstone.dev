@@ -8,25 +8,25 @@
 @stop
 
 @section('content')
+	<div class="col-md-8">
+	    <h1>Welcome!</h1>
+	    <h3>Enter your credentials to create a new user</h3>
+	    <hr>
+	    <div>
 
-    <h1>Welcome!</h1>
-    <h3>Enter your credentials to create a new user</h3>
-    <hr>
-    <div>
-
-    {{ Form::open(array('action' => 'UsersController@store', 'method' => 'user')) }}
-
-
-		@include('users.form')	
+	    {{ Form::open(array('action' => 'UsersController@store', 'method' => 'user')) }}
 
 
-	{{ Form::submit('Create User', array('class' => 'btn btn_primary')) }}
+			@include('users.form')	
 
+
+		{{ Form::submit('Create User', array('class' => 'btn btn_primary')) }}
+
+			
+		{{ Form::close()  }}
 		
-	{{ Form::close()  }}
-	
+		</div>
 	</div>
-
 @stop
 
 @section('bottom-script')
