@@ -17,7 +17,6 @@
 				{{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
 			</div>
 
-
 			<div class="form-group">
 				{{ Form::label('password', 'Password') }}
 				{{ Form::password('password', array('class' => 'form-control')) }}

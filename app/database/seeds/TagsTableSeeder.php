@@ -43,6 +43,10 @@ class TagsTableSeeder extends Seeder {
             $tag->save();
 
             $tag = new Tag();
+            $tag->name = "entertainment";
+            $tag->save();
+
+            $tag = new Tag();
             $tag->name = "furniture";
             $tag->save();
 
@@ -80,10 +84,6 @@ class TagsTableSeeder extends Seeder {
 
             $tag = new Tag();
             $tag->name = "men's clothing";
-            $tag->save();
-
-            $tag = new Tag();
-            $tag->name = "music";
             $tag->save();
 
             $tag = new Tag();

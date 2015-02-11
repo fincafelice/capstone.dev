@@ -16,6 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+
 Route::resource('sales', 'SalesController');
 
 Route::resource('users', 'UsersController');
@@ -27,3 +28,10 @@ Route::resource('tags', 'TagsController');
 Route::get('login', 'HomeController@showLogin');
 Route::post('login', 'HomeController@doLogin');
 Route::get('logout', 'HomeController@doLogout');
+
+
+// This Route Is For Troubleshooting Login Authentication
+
+Route::get('checkID', function () {
+	dd(Auth::id());
+});
