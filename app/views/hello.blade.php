@@ -1,47 +1,53 @@
 @extends('layouts.master')
 
 @section('css')
-  <style>
-  	
-  	.carousel-inner > .item > img,
-    	.carousel-inner > .item > a > img {
-        width: 50%;
-        margin: auto;
+
+<style>
+
+.carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+      width: 50%;
+      margin: auto;
     }
-   </style>
-@stop
+    img {
+      height: 75px;
+      width: 75px;
+      position: relative; top: -15px;
+    }
+    .caroImg {
+      image-rendering: auto;
+      max-height: 50%;
+    }
+</style>
 
 
 @section('content')
-  <h1 align = center>My Garage Sale.</h1>
 
-  <div class="container">
+<body>
 
-    <div class="row">
-      <div class="col-sm-4">
-      	<h3>Learn more about finding garage sales here!</h3>
-      	<p>Description Paragraph and then a link</p>
-      </div>
-      <div class="col-sm-4">
-      	<h3>Learn more about being a seller here!</h3>
-      	<p>Description paragraph and then a alink</p>
-      </div>
-      <div class="col-sm-4">
-      	<h3>Learn more about Garage Sales Here!</h3>
-      		<p align = center>
-      		fsafsfa<br>
-      		fsafsafsa<br>
-      		fa<br>
-      		fafsf<br>
-      		sfsaff<br>
-      		safafafs<br>
-      		fsaf<br>
-      		af<br>
-      		sffafsfafsfsafsafa<br>
-      		</P>
-      </div>
+<h1 align = center>My Garage Sale.</h1>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Learn more about finding garage sales here!</h3>
+      <p>Descriptive Paragraph and then a link</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Learn more about being a seller here!</h3>
+      <p>Descriptive paragraph and then a link</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Learn more about Garage Sales Here!</h3>
+        <p align = center>
+        Tips for buyers.<br>
+        Tips for sellers.<br>
+        </P>
     </div>
   </div>
+</div>
+
 
   <div class="container">
     <br>
@@ -57,39 +63,41 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
 
-        <div class="item active">
-          <img src="img_chania.jpg" alt="Chania" width="460" height="345">
-          <div class="carousel-caption">
-            <h3>Chania</h3>
-            <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
-          </div>
-        </div>
 
-        <div class="item">
-          <img src="img_chania2.jpg" alt="Chania" width="460" height="345">
-          <div class="carousel-caption">
-            <h3>Chania</h3>
-            <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
-          </div>
+      <div class="item active caroImg">
+        <img src="/img/appliances-1.png" alt="Appliances"
+        >
+        <div class="carousel-caption">
+          <h3>Appliances</h3>
+          <p>For kitchen and more.</p>
         </div>
-      
-        <div class="item">
-          <img src="img_flower.jpg" alt="Flower" width="460" height="345">
-          <div class="carousel-caption">
-            <h3>Flowers</h3>
-            <p>Beatiful flowers in Kolymbari, Crete.</p>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="img_flower2.jpg" alt="Flower" width="460" height="345">
-          <div class="carousel-caption">
-            <h3>Flowers</h3>
-            <p>Beatiful flowers in Kolymbari, Crete.</p>
-          </div>
-        </div>
-    
       </div>
+
+      <div class="item caroImg">
+        <img src="/img/cdsdvd-3.png" alt="Entertainment">
+        <div class="carousel-caption">
+          <h3>Entertainment</h3>
+          <p>Music, movies, and more.</p>
+        </div>
+      </div>
+    
+      <div class="item caroImg">
+        <img src="/img/furniture-7.png" alt="Furniture">
+        <div class="carousel-caption">
+          <h3>Furniture</h3>
+          <p>For livingroom, bedroom, and diningroom.</p>
+        </div>
+      </div>
+
+      <div class="item caroImg">
+        <img src="/img/jewelry-2.png" alt="Jewelry">
+        <div class="carousel-caption">
+          <h3>Jewelry</h3>
+          <p>Lots of styles to choose from.</p>
+        </div>
+      </div>
+  
+    </div>
 
       <!-- Left and right controls -->
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -103,5 +111,7 @@
     </div>
   </div>
 @stop
+
+</body>
 
 </html>
