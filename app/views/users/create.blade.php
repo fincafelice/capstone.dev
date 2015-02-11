@@ -9,8 +9,10 @@
 
 @section('content')
 
-    <h1> Users!</h1>
-
+    <h1>Welcome!</h1>
+    <h3>Enter your credentials to create a new user</h3>
+    <hr>
+    <div>
 
     {{ Form::open(array('action' => 'UsersController@store', 'method' => 'user')) }}
 
@@ -18,10 +20,12 @@
 		@include('users.form')	
 
 
-	{{ Form::submit('Create user', array('class' => 'btn btn_primary')) }}
+	{{ Form::submit('Create User', array('class' => 'btn btn_primary')) }}
 
 		
 	{{ Form::close()  }}
+	
+	</div>
 
 @stop
 
