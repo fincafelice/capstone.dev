@@ -1,4 +1,9 @@
 <!-- New Sales Form -->
+<div class="form-group {{{ $errors->has('sale_name') ? 'has-error' : '' }}}">
+	{{ Form::label('sale_name', 'Sale Name') }}
+	{{ Form::text('sale_name', Input::old('sale_name'), array('class' => 'form-control')) }}
+	{{ $errors->first('sale_name', '<p class="help-block">:message</p>') }}
+</div>
 
 <div class="form-group {{{ $errors->has('street') ? 'has-error' : '' }}}">
 	{{ Form::label('street', 'Street') }}
@@ -30,14 +35,17 @@
 	{{ $errors->first('zip', '<p class="help-block">:message</p>') }}
 </div>
 
+<div class="form-group {{{ $errors->has('date') ? 'has-error' : '' }}}">
+	{{ Form::label('date', 'Sale Date and Time') }}
+	{{ Form::text('date', Input::old('date'), array('class' => 'form-control')) }}
+	{{ $errors->first('date', '<p class="help-block">:message</p>') }}
+</div>
+
 <div class="form-group {{{ $errors->has('description') ? 'has-error' : '' }}}">
 	{{ Form::label('Sale Description', 'Sale Description') }}
 	{{ Form::textarea('description', Input::old('description'), array('class' => 'form-control')) }}
 	{{ $errors->first('description', '<p class="help-block">:message</p>') }}
 </div>
 
-<div class="form-group {{{ $errors->has('seller_id') ? 'has-error' : '' }}}">
-	{{ Form::label('seller_id', 'Seller ID') }}
-	{{ Form::text('seller_id', Input::old('seller_id'), array('class' => 'form-control')) }}
-	{{ $errors->first('seller_id', '<p class="help-block">:message</p>') }}
-</div>
+
+
