@@ -41,3 +41,9 @@
 	{{ Form::text('seller_id', Input::old('seller_id'), array('class' => 'form-control')) }}
 	{{ $errors->first('seller_id', '<p class="help-block">:message</p>') }}
 </div>
+
+<div>
+	{{ Form::label('image', 'Post Image') }}<br>
+	{{ Form::file('image', array('class' => 'form-control')) }}
+	{{ $errors->first('image', '<p class-"help-block">:message</p>') }}
+</div>
