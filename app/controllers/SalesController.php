@@ -31,16 +31,8 @@ class SalesController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Sale::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
 		Sale::create($data);
-
-		return Redirect::route('sales.index');
+		return $this->saveSale($sale);
 	}
 
 	/**
@@ -77,18 +69,8 @@ class SalesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$sale = Sale::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Sale::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
 		$sale->update($data);
-
-		return Redirect::route('sales.index');
+		return $this->saveSale($sale);
 	}
 
 	/**
@@ -102,6 +84,36 @@ class SalesController extends \BaseController {
 		Sale::destroy($id);
 
 		return Redirect::route('sales.index');
+	}
+
+	protected function saveSale($sale) 
+	{
+		$validator = Validator::make(Input::all(), Sale::$rules);
+
+		if ($validator->fails()) {
+			Session::flash('errorMessage', 'Failed to save your garage sale!');
+			return Redirect::back()->withInput()->withErrors($validator);
+		} else {
+			Session::flash('successMessage', 'Your garage sale was saved!');						
+			$sale->street 		= Input::get('street');
+			$sale->city  		= Input::get('city');
+			$sale->state  		= Input::get('state');
+			$sale->zip  		= Input::get('zip');
+			$sale->description  = Input::get('description');
+
+			$sale->save();
+
+			if (Input::hasFile('image')) {
+				$file = Input::file('image');
+				$sale->source_url = $sale->uploadFile($file);
+				$dest_path = public_path() . '/uploads/';
+                $upload = $file->move($dest_path, $sale->source_url);                
+                $sale->image_url = '/uploads/' . $sale->source_url;
+				$sale->save();
+			}
+
+			return Redirect::action('SalesController@show', $sale->id);
+		}
 	}
 
 }
