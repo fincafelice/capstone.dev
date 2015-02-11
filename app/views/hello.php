@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>My Garage Sale</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	
-<style>
-	
-.carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
-      width: 70%;
-      margin: auto;
-}
 
-body {
-	
-	padding: 50px;
-}
- </style>
+<style>	
+	.carousel-inner > .item > img,
+  	.carousel-inner > .item > a > img {
+      width: 50%;
+      margin: auto;
+    }
+    img {
+      height: 75px;
+      width: 75px;
+      position: relative; top: -15px;
+    }
+    .caroImg {
+      image-rendering: auto;
+      max-height: 50%;
+    }
+</style>
+
 
 </head>
 <body>
@@ -30,17 +35,19 @@ body {
     <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
     
-        <nav class="navbar navbar-default">
+        <nav class="navbar">
           <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/public/img/gsale-2.png">
+
+                <img alt="Brand" src="/img/gsale-2.png">
+
                 </a>
             </div>
           </div>
@@ -75,16 +82,30 @@ body {
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Antiques</a></li>
                   <li><a href="#">Appliances</a></li>
                   <li><a href="#">Art</a></li>
+                  <li><a href="#">Art Supplies</a></li>
+                  <li><a href="#">Baby</a></li>
                   <li><a href="#">Books</a></li>
-                  <li><a href="#">CDs</a></li>
-                  <li><a href="#">DvDs</a></li>
+                  <li><a href="#">Children's Clothes</a></li>
+                  <li><a href="#">Collectibles</a></li>
                   <li><a href="#">Electronics</a></li>
-                  <li><a href="#">Framed Art</a></li>
+                  <li><a href="#">Entertainment</a></li>
                   <li><a href="#">Furniture</a></li>
-                  <li><a href="#">Jewlery</a></li>
-                  <li><a href="#">ETC..</a></li>
+                  <li><a href="#">Gardening</a></li>
+                  <li><a href="#">Glassware</a></li>
+                  <li><a href="#">Health & Beauty</a></li>
+                  <li><a href="#">Home Decor</a></li>
+                  <li><a href="#">Home Improvement</a></li>
+                  <li><a href="#">Household Items</a></li>
+                  <li><a href="#">Jewelry</a></li>
+                  <li><a href="#">Kitchen</a></li>
+                  <li><a href="#">Men's Clothing</a></li>
+                  <li><a href="#">Musical Instruments</a></li>
+                  <li><a href="#">Sporting Goods</a></li>
+                  <li><a href="#">Toys</a></li>
+                  <li><a href="#">Women's Clothing</a></li>
                 </ul>
             </li>
         </ul>
@@ -99,24 +120,17 @@ body {
   <div class="row">
     <div class="col-sm-4">
     	<h3>Learn more about finding garage sales here!</h3>
-    	<p>Description Paragraph and then a link</p>
+    	<p>Descriptive Paragraph and then a link</p>
     </div>
     <div class="col-sm-4">
     	<h3>Learn more about being a seller here!</h3>
-    	<p>Description paragraph and then a alink</p>
+    	<p>Descriptive paragraph and then a link</p>
     </div>
     <div class="col-sm-4">
     	<h3>Learn more about Garage Sales Here!</h3>
     		<p align = center>
-    		fsafsfa<br>
-    		fsafsafsa<br>
-    		fa<br>
-    		fafsf<br>
-    		sfsaff<br>
-    		safafafs<br>
-    		fsaf<br>
-    		af<br>
-    		sffafsfafsfsafsafa<br>
+    		Tips for buyers.<br>
+    		Tips for sellers.<br>
     		</P>
     </div>
   </div>
@@ -136,35 +150,36 @@ body {
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
 
-      <div class="item active">
-        <img src="img_chania.jpg" alt="Chania" width="460" height="345">
+      <div class="item active caroImg">
+        <img src="/img/appliances-1.png" alt="Appliances"
+        >
         <div class="carousel-caption">
-          <h3>Chania</h3>
-          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+          <h3>Appliances</h3>
+          <p>For kitchen and more.</p>
         </div>
       </div>
 
-      <div class="item">
-        <img src="img_chania2.jpg" alt="Chania" width="460" height="345">
+      <div class="item caroImg">
+        <img src="/img/cdsdvd-3.png" alt="Entertainment">
         <div class="carousel-caption">
-          <h3>Chania</h3>
-          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+          <h3>Entertainment</h3>
+          <p>Music, movies, and more.</p>
         </div>
       </div>
     
-      <div class="item">
-        <img src="img_flower.jpg" alt="Flower" width="460" height="345">
+      <div class="item caroImg">
+        <img src="/img/furniture-7.png" alt="Furniture">
         <div class="carousel-caption">
-          <h3>Flowers</h3>
-          <p>Beatiful flowers in Kolymbari, Crete.</p>
+          <h3>Furniture</h3>
+          <p>For livingroom, bedroom, and diningroom.</p>
         </div>
       </div>
 
-      <div class="item">
-        <img src="img_flower2.jpg" alt="Flower" width="460" height="345">
+      <div class="item caroImg">
+        <img src="/img/jewelry-2.png" alt="Jewelry">
         <div class="carousel-caption">
-          <h3>Flowers</h3>
-          <p>Beatiful flowers in Kolymbari, Crete.</p>
+          <h3>Jewelry</h3>
+          <p>Lots of styles to choose from.</p>
         </div>
       </div>
   
@@ -181,22 +196,5 @@ body {
     </a>
   </div>
 </div>
-
-
-<!--   	<table style="width:10%">
-  		<tr>
-    		<th>Catergories</th>
-  		</tr>
-  		<tr>
-    		<td href='http://capstone.dev' style="cursor:pointer">Art</td>
-  		</tr>
-  		<tr>
-    		<td>Books</td>
-  		</tr>
-  		<tr>
-    		<td>Electronics</td>
-  		</tr>
-	</table> -->
-
 
 </html>
