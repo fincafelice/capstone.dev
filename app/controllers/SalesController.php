@@ -31,7 +31,14 @@ class SalesController extends \BaseController {
 	 */
 	public function store()
 	{
-		Sale::create($data);
+		try {
+			$sale = new Sale();
+			$sale->seller_id = Auth::id();
+		} catch (Exception $e) {
+			Log::warning("User requested a sales event that does not exist.", array('id' => $id));
+			App::abort(404);
+		}
+		
 		return $this->saveSale($sale);
 	}
 
