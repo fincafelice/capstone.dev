@@ -9,13 +9,6 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	<style>
-		.imgBox { 
-	        width: 150px; 
-	        height: 150px; 
-	        background: url(/img/gsale-2.png) no-repeat; 
-	    }
-    </style> 
 
 </head>
 <body>
@@ -30,23 +23,20 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
       		</button>
-<<<<<<< HEAD
     
 	    	<nav class="navbar navbar-default">
 	  			<div class="container-fluid">
 	   				<div class="navbar-header">
 		      			<a class="navbar-brand" href="#">
-		        		<img alt="Brand" src="">
+		        		<img alt="Brand" src="/">
 		      			</a>
 		    		</div>
 	  			</div>
 			</nav>
-=======
->>>>>>> master
     	</div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse imgBox" id="bs-example-navbar-collapse-1">
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	     	<ul class="nav navbar-nav">
 		     	<li class="active"><a href="{{{ action('SalesController@create') }}}">Buyer<span class="sr-only">(current)</span></a></li>
 		        <li><a href="#">Seller</a></li>
@@ -63,12 +53,16 @@
 	            	</ul>
 	        	</li>
 	        </ul>
+
+	        
 		    <form class="navbar-form navbar-right" role="search">
 		        <div class="form-group">
 		        	<input type="text" class="form-control" placeholder="Search">
 		        </div>
 		        <button type="submit" class="btn btn-default">Submit</button>
 		    </form>
+
+
 		    <ul class="nav navbar-nav navbar-right">
 		        <li class="dropdown">
 		         	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories <span class="caret"></span></a>
@@ -82,7 +76,6 @@
 			            <li><a href="#">Children's Clothes</a></li>
 			            <li><a href="#">Collectibles</a></li>
 			            <li><a href="#">Electronics</a></li>
-			            <li><a href="#">Entertainment</a></li>
 			            <li><a href="#">Furniture</a></li>
 			            <li><a href="#">Gardening</a></li>
 			            <li><a href="#">Glassware</a></li>
@@ -93,6 +86,7 @@
 			            <li><a href="#">Jewelry</a></li>
 			            <li><a href="#">Kitchen</a></li>
 			            <li><a href="#">Men's Clothing</a></li>
+			            <li><a href="#">Music & Movies</a></li>
 			            <li><a href="#">Musical Instruments</a></li>
 			            <li><a href="#">Sporting Goods</a></li>
 			            <li><a href="#">Toys</a></li>

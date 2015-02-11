@@ -9,17 +9,10 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-    	$query = Tag::with('sale');
+		$users = User::all();
 
-    	if (Input::has('search')) {
-
-    		$search = Input::get('sale');
-
-    		$query->where('name', 'like', '%' . $search . '%');
-
-    		}
-
-		 } 
+		return View::make('users.index', compact('users'));
+	}
 
 	/**
 	 * Show the form for creating a new user

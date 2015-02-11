@@ -10,17 +10,19 @@ class TagsController extends \BaseController {
 
 	public function index()
 	{
-    	$query = Tag::with('sale');
+    	$query = Tag::all();
 
     	if (Input::has('search')) {
 
-    		$search = Input::get('sale');
+    		$search = Input::get('search');
 
     		$query->where('name', 'like', '%' . $search . '%');
 
     		}
 
-		 } 
+    	return View::make('hello.php'), compact('tags'));;
+
+	} 
 
 	/**
 	 * Show the form for creating a new tag
