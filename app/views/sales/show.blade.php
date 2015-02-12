@@ -12,10 +12,6 @@
 		
  			{{ Form::close() }}
 		@endif
-		<div>
-			{{ Form::submit('Submit', array('class'=>'send-btn')) }}
-			{{ Form::close() }}
-		</div>
 		<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Main Page</a>
 	</ul>	
 

@@ -85,7 +85,7 @@ class SalesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$sale = Post::findOrFail($id);
+		$sale = Sale::findOrFail($id);
 		return $this->saveSale($sale);
 	}
 
@@ -98,13 +98,13 @@ class SalesController extends \BaseController {
 	public function destroy($id)
 	{
 		try {
-			$sale = Post::findOrFail($id);
+			$sale = Sale::findOrFail($id);
 		} catch (Exception $e) {
 			Log::warning('User requested a sale event that does not exist.');
 			App::abort(404);
 		}
 
-		$post->delete();
+		$sale->delete();
 
 		Session::flash('successMessage', 'Sale Event deleted!');
 
@@ -132,18 +132,35 @@ class SalesController extends \BaseController {
 			$sale->sale_date_time = Input::get('sale_date_time');
 			$sale->description    = Input::get('description');
 			$sale->seller_id 	  = Auth::id();
+			$sale->save();
 
-			if (Input::hasFile('image')) {
-
-				$file = Input::file('image');
-				$sale->image_url = $sale->uploadFile($file);
-				$dest_path = public_path() . '/uploads/';
-                $upload = $file->move($dest_path, $sale->image_url);                
-                $sale->image_url = '/uploads/' . $sale->image_url;
-			}
-		$sale->save();
-
+			if (Input::hasFile('images')) {
+				$file = Input::file('images');
+foreach($files as $file) {
+  // validating each file.
+  $rules = array('file' => 'required'); //'required|mimes:png,gif,jpeg'
+  $validator = Validator::make(array('file'=> $file), $rules);
+  if($validator->passes()){
+    // path is root/uploads
+				$destinationPath = public_path() . '/uploads/';
+    $filename = $file->getClientOriginalName();
+    $upload_success = $file->move($destinationPath, $filename);
+                $upload = $file->move($dest_path, $sale->img_path);                
+				$sale->img_path = $sale->uploadFile($file);
+                $sale->img_path = '/uploads/' . $sale->img_path;
+                $sale->save();
+    // flash message to show success.
+    Session::flash('success', 'Upload successfully'); 
+    return Redirect::to('upload');
 		return Redirect::action('SalesController@show', $sale->id);
+  } 
+  else {
+    // redirect back with errors.
+    return Redirect::to('upload')->withInput()->withErrors($validator);
+  }
+}
+			}
+
 		}
 	}
 }
