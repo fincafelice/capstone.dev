@@ -34,3 +34,12 @@ Route::get('logout', 'HomeController@doLogout');
 Route::get('checkID', function () {
 	dd(Auth::id());
 });
+
+
+
+Route::get('/', function()
+{
+    $tag = Tag::find(1);
+	return $tag->sales;
+});
+
