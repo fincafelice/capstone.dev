@@ -119,16 +119,22 @@ class SalesController extends \BaseController {
 		if ($validator->fails()) {
 			Session::flash('errorMessage', 'Failed to save your garage sale!');
 			return Redirect::back()->withInput()->withErrors($validator);
+
 		} else {
-			Session::flash('successMessage', 'Your garage sale was saved!');						
-			$sale->street 		= Input::get('street');
-			$sale->city  		= Input::get('city');
-			$sale->state  		= Input::get('state');
-			$sale->zip  		= Input::get('zip');
-			$sale->description  = Input::get('description');
-			$sale->seller_id 	= Auth::id();
+
+			Session::flash('successMessage', 'Your garage sale was saved!');
+			$sale->sale_name      = Input::get('sale_name');						
+			$sale->street 	 	  = Input::get('street');
+			$sale->apt   		  = Input::get('apt');
+			$sale->city  		  = Input::get('city');
+			$sale->state  		  = Input::get('state');
+			$sale->zip  		  = Input::get('zip');
+			$sale->sale_date_time = Input::get('sale_date_time');
+			$sale->description    = Input::get('description');
+			$sale->seller_id 	  = Auth::id();
 
 			if (Input::hasFile('image')) {
+
 				$file = Input::file('image');
 				$sale->image_url = $sale->uploadFile($file);
 				$dest_path = public_path() . '/uploads/';
