@@ -18,13 +18,11 @@ class Sale extends \Eloquent {
 	);
 
 
-	public function uploadFile($file) 
-    {
-    	$uploadPath = public_path() . '/uploads';
-		$fileName = $this->id . '-' . $file->getClientOriginalName();
-
-        return $fileName;
-
-    }
+	// public function uploadFile($file) 
+ //    {
+ //    	$uploadPath = public_path() . '/uploads';
+	// 	$fileName = $this->id . '-' . $file->getClientOriginalName();
+ //        return $fileName;
+ //    }
 
 }
