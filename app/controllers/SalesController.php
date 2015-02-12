@@ -177,5 +177,7 @@ class SalesController extends \BaseController {
 				}
 			}
   		}
+
+  		return Redirect::action('SalesController@show', $sale->id);
 	}
 }
