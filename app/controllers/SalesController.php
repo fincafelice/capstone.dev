@@ -17,11 +17,28 @@ class SalesController extends \BaseController {
 	 * @return Response
 	 */
 	public function index()
-	{
-		$sales = Sale::all();
+	{    	
 
-		return View::make('sales.index', compact('sales'));
-	}
+		// Eager load sales with tags
+    	$sales = Sale::with('tags');
+
+		// If there is a search, perform a query looking for
+		// sales with those associated tags.
+
+		if (Input::has('search')) {
+			$search = Input::get('search');
+			$sales = Sale::whereHas('tags', function($query) use ($search) {
+				$query->where('name', '=', $search);
+			})->get();
+
+		} else {
+    		$sales = Sale::all();
+    	}
+
+		// return view with sales having a specific tag attached.
+    	return View::make('sales.index')->with('sales', $sales);
+
+	} 
 
 	/**
 	 * Show the form for creating a new sale
