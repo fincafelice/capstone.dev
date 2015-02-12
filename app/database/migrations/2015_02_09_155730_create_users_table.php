@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration {
 			$table->string('state', 2);
 			$table->string('zip', 5);
 			$table->rememberToken();
+			
 			$table->timestamps();
 		});
 	}
