@@ -5,7 +5,7 @@ class Sale extends \Eloquent {
 	protected $table = 'sales';
 
 	// Don't forget to fill this array
-	protected $fillable = array('street', 'apt', 'city', 'state', 'zip', 'description', 'seller_id');
+	protected $fillable = array('street', 'apt', 'city', 'state', 'zip', 'description', 'user_id');
 
 	// Add your validation rules here
 	public static $rules = array(

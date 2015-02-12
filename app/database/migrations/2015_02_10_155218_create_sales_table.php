@@ -24,8 +24,8 @@ class CreateSalesTable extends Migration {
 			$table->dateTime('sale_date_time');
 			$table->text('description');
 
-			$table->integer('seller_id')->unsigned()->default(1);
-			$table->foreign('seller_id')->references('id')->on('users')->onDelete;
+			$table->integer('user_id')->unsigned()->default(1);
+			$table->foreign('user_id')->references('id')->on('users')->onDelete;
 			
 			$table->timestamps();
 		});
