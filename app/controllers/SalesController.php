@@ -60,7 +60,7 @@ class SalesController extends \BaseController {
 	{
 		try {
 			$sale = new Sale();
-			$sale->seller_id = Auth::id();
+			$sale->user_id = Auth::id();
 		} catch (Exception $e) {
 			Log::warning("User requested a sale event that does not exist.", array('id' => $id));
 			App::abort(404);
@@ -148,8 +148,9 @@ class SalesController extends \BaseController {
 			$sale->zip  		  = Input::get('zip');
 			$sale->sale_date_time = Input::get('sale_date_time');
 			$sale->description    = Input::get('description');
-			$sale->seller_id 	  = Auth::id();
+			$sale->user_id   	  = Auth::id();
 			$sale->save();
+
 		} 
 
 		if (Input::hasFile('images')) {
