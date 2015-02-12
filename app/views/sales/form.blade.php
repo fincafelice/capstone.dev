@@ -35,10 +35,10 @@
 	{{ $errors->first('zip', '<p class="help-block">:message</p>') }}
 </div>
 
-<div class="form-group {{{ $errors->has('date') ? 'has-error' : '' }}}">
-	{{ Form::label('date', 'Sale Date and Time') }}
-	{{ Form::text('date', Input::old('date'), array('class' => 'form-control')) }}
-	{{ $errors->first('date', '<p class="help-block">:message</p>') }}
+<div class="form-group {{{ $errors->has('sale_date_time') ? 'has-error' : '' }}}">
+	<label for="sale_date_time">Sale Date and Time</label>
+	<input type="datetime-local" name="sale_date_time" class="form-control">
+	{{ $errors->first('sale_date_time', '<p class="help-block">:message</p>') }}
 </div>
 
 <div class="form-group {{{ $errors->has('description') ? 'has-error' : '' }}}">
