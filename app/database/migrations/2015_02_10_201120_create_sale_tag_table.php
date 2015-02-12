@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSalesTagsTable extends Migration {
+class CreateSaleTagTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateSalesTagsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('sales_tags', function(Blueprint $table)
+		Schema::create('sale_tag', function(Blueprint $table)
 		{
 			$table->increments('id');
 			
@@ -34,7 +34,7 @@ class CreateSalesTagsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('sales_tags');
+		Schema::drop('sale_tag');
 	}
 
 }
