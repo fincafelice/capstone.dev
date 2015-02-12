@@ -10,12 +10,10 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-	<!-- Bootstrap Date/Time Picker -->
-	<link rel="stylesheet" type="text/css" href="/css/bootstrap-datetimepicker.min.css">
 
-<style>	
-	 
-</style>
+@yield('top-script')
+
+@yield('css')
 
 
 </head>
@@ -126,8 +124,7 @@
 <!-- bootstrap.min.js -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-<!-- JavaScript Date/Time Picker -->
-<script src="/js/bootstrap-datetimepicker.min.js"></script>
+@yield('bottom-script')
 
 </body>
 </html>
