@@ -36,10 +36,3 @@ Route::get('checkID', function () {
 });
 
 
-
-Route::get('/', function()
-{
-    $tag = Tag::find(1);
-	return $tag->sales;
-});
-
