@@ -21,12 +21,13 @@ class CreateSalesTable extends Migration {
 			$table->string('city', 255);
 			$table->string('state', 2);
 			$table->string('zip', 5);
-			$table->date('sale_date_time');
+			$table->dateTime('sale_date_time');
 			$table->text('description');
 
-			$table->timestamps();
 			$table->integer('seller_id')->unsigned()->default(1);
 			$table->foreign('seller_id')->references('id')->on('users')->onDelete;
+			
+			$table->timestamps();
 		});
 	}
 

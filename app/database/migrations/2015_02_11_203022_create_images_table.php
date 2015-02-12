@@ -16,8 +16,10 @@ class CreateImagesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('image_url', 255)->nullable();
+			
 			$table->integer('sales_id')->unsigned()->index();
 			$table->foreign('sales_id')->references('id')->on('sales')->onDelete('cascade');
+			
 			$table->timestamps();
 		});
 	}
