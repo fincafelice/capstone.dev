@@ -20,6 +20,15 @@ class TagsController extends \BaseController {
 
     		}
 
+
+		$posts = Post::whereHas('tags', function($q)
+		
+		{
+    
+    		$q->where('content', 'like', '');
+
+		})->get();
+
     	return View::make('hello.php'), compact('tags'));;
 
 	} 
@@ -114,4 +123,4 @@ class TagsController extends \BaseController {
 		return Redirect::route('tags.index');
 	}
 
-}
+

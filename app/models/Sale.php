@@ -27,4 +27,9 @@ class Sale extends \Eloquent {
 
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany('Tag');
+    }
+
 }

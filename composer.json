@@ -36,6 +36,7 @@
 	"minimum-stability": "stable",
 
 	"require-dev": {
-	    "way/generators": "~2.0"
+	    "way/generators": "~2.0",
+	    "fzaninotto/faker": "v1.3.0"
 	}
 }
