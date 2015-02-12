@@ -39,7 +39,7 @@ class SalesController extends \BaseController {
 	 */
 	public function store()
 	{
-		$sale = new Sale();
+
 		return $this->saveSale($sale);
 	}
 
