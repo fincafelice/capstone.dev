@@ -2,7 +2,8 @@
 
 class SalesController extends \BaseController {
 
-	public function __construct() {
+	public function __construct() 
+	{
 
 		parent::__construct();
 
@@ -30,6 +31,7 @@ class SalesController extends \BaseController {
 	public function create()
 	{
 		return View::make('sales.create');
+		return $this->saveSale($sale);
 	}
 
 	/**
@@ -39,7 +41,13 @@ class SalesController extends \BaseController {
 	 */
 	public function store()
 	{
-
+		try {
+			$sale = new Sale();
+			$sale->seller_id = Auth::id();
+		} catch (Exception $e) {
+			Log::warning("User requested a sale event that does not exist.", array('id' => $id));
+			App::abort(404);
+		}
 		return $this->saveSale($sale);
 	}
 
@@ -64,9 +72,9 @@ class SalesController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$sale = Sale::find($id);
+		$sale = Sale::findOrFail($id);
 
-		return View::make('sales.edit', compact('sale'));
+		return View::make('sales.edit')->with('sale', $sale);
 	}
 
 	/**
@@ -77,7 +85,7 @@ class SalesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$sale->update($data);
+		$sale = Post::findOrFail($id);
 		return $this->saveSale($sale);
 	}
 
@@ -89,10 +97,20 @@ class SalesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Sale::destroy($id);
+		try {
+			$sale = Post::findOrFail($id);
+		} catch (Exception $e) {
+			Log::warning('User requested a sale event that does not exist.');
+			App::abort(404);
+		}
 
-		return Redirect::route('sales.index');
+		$post->delete();
+
+		Session::flash('successMessage', 'Sale Event deleted!');
+
+		return Redirect::action('SalesController@index');
 	}
+
 
 	protected function saveSale($sale) 
 	{
@@ -110,19 +128,16 @@ class SalesController extends \BaseController {
 			$sale->description  = Input::get('description');
 			$sale->seller_id 	= Auth::id();
 
-			$sale->save();
-
 			if (Input::hasFile('image')) {
 				$file = Input::file('image');
-				$sale->source_url = $sale->uploadFile($file);
+				$sale->image_url = $sale->uploadFile($file);
 				$dest_path = public_path() . '/uploads/';
-                $upload = $file->move($dest_path, $sale->source_url);                
-                $sale->image_url = '/uploads/' . $sale->source_url;
-				$sale->save();
+                $upload = $file->move($dest_path, $sale->image_url);                
+                $sale->image_url = '/uploads/' . $sale->image_url;
 			}
+		$sale->save();
 
-			return Redirect::action('SalesController@show', $sale->id);
+		return Redirect::action('SalesController@show', $sale->id);
 		}
 	}
-
 }
