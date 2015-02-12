@@ -21,7 +21,7 @@ class TagsController extends \BaseController {
     		}
 
 
-		$posts = Post::whereHas('tags', function($q)
+		$tags = Tag::whereHas('tags', function($q)
 		
 		{
     
@@ -29,7 +29,7 @@ class TagsController extends \BaseController {
 
 		})->get();
 
-    	return View::make('hello.php'), compact('tags'));;
+    	return View::make('hello.blade.php')->with('tags');
 
 	} 
 
@@ -123,4 +123,4 @@ class TagsController extends \BaseController {
 		return Redirect::route('tags.index');
 	}
 
-
+}
