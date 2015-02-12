@@ -2,7 +2,8 @@
 
 class SalesController extends \BaseController {
 
-	public function __construct() {
+	public function __construct() 
+	{
 
 		parent::__construct();
 
@@ -47,6 +48,7 @@ class SalesController extends \BaseController {
 	public function create()
 	{
 		return View::make('sales.create');
+		return $this->saveSale($sale);
 	}
 
 	/**
@@ -56,7 +58,13 @@ class SalesController extends \BaseController {
 	 */
 	public function store()
 	{
-
+		try {
+			$sale = new Sale();
+			$sale->seller_id = Auth::id();
+		} catch (Exception $e) {
+			Log::warning("User requested a sale event that does not exist.", array('id' => $id));
+			App::abort(404);
+		}
 		return $this->saveSale($sale);
 	}
 
@@ -81,9 +89,9 @@ class SalesController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$sale = Sale::find($id);
+		$sale = Sale::findOrFail($id);
 
-		return View::make('sales.edit', compact('sale'));
+		return View::make('sales.edit')->with('sale', $sale);
 	}
 
 	/**
@@ -94,7 +102,7 @@ class SalesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$sale->update($data);
+		$sale = Sale::findOrFail($id);
 		return $this->saveSale($sale);
 	}
 
@@ -106,12 +114,22 @@ class SalesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Sale::destroy($id);
+		try {
+			$sale = Sale::findOrFail($id);
+		} catch (Exception $e) {
+			Log::warning('User requested a sale event that does not exist.');
+			App::abort(404);
+		}
 
-		return Redirect::route('sales.index');
+		$sale->delete();
+
+		Session::flash('successMessage', 'Sale Event deleted!');
+
+		return Redirect::action('SalesController@index');
 	}
 
-	protected function saveSale($sale) 
+
+	protected function saveSale($sale)
 	{
 		$validator = Validator::make(Input::all(), Sale::$rules);
 
@@ -131,20 +149,35 @@ class SalesController extends \BaseController {
 			$sale->sale_date_time = Input::get('sale_date_time');
 			$sale->description    = Input::get('description');
 			$sale->seller_id 	  = Auth::id();
-
 			$sale->save();
+		} 
 
-			if (Input::hasFile('image')) {
+		if (Input::hasFile('images')) {
+			$image = new Image();
 
-				$file = Input::file('image');
-				$sale->source_url = $sale->uploadFile($file);
-				$dest_path = public_path() . '/uploads/';
-                $upload = $file->move($dest_path, $sale->source_url);                
-                $sale->image_url = '/uploads/' . $sale->source_url;
-				$sale->save();
+			$files = Input::file('images');
+			// dd($files);
+			foreach($files as $file) {
+			$rules = array('file' => 'required'); //'required|mimes:png,gif,jpeg'
+		 	$validator = Validator::make(array('file'=> $file), $rules);
+	  			
+	  			if($validator->passes()){
+					$destinationPath = public_path() . '/uploads/';
+	    			$filename = $file->getClientOriginalName();
+	    			$upload_success = $file->move($destinationPath, $filename);
+					
+	                $image->img_path = '/uploads/' . $filename;
+	    			// dd($sale);
+	    			$image->sale_id = $sale->id;
+	                $image->save();
+					Session::flash('success', 'Upload successfully'); 
+					return Redirect::action('SalesController@show', $sale->id);
+	  			} else {
+    				return Redirect::to('upload')->withInput()->withErrors($validator);
+				}
 			}
+  		}
 
-			return Redirect::action('SalesController@show', $sale->id);
-		}
+  		return Redirect::action('SalesController@show', $sale->id);
 	}
 }
