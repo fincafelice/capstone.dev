@@ -34,3 +34,5 @@ Route::get('logout', 'HomeController@doLogout');
 Route::get('checkID', function () {
 	dd(Auth::id());
 });
+
+

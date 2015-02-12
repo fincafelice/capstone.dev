@@ -13,4 +13,11 @@ class Tag extends \Eloquent {
 	// Don't forget to fill this array
 	protected $fillable = array('name');
 
+	public function Sales()
+    
+    {
+        return $this->belongsToMany('Sale');
+    }
+
+
 }

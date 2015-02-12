@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap-datetimepicker.min.css">
 
 <style>	
-	
+	 
 </style>
 
 
@@ -65,7 +65,7 @@
           </ul>
         <form class="navbar-form navbar-right" role="search">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input name = "search" type="text" class="form-control" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>

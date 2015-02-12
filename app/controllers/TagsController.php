@@ -20,7 +20,16 @@ class TagsController extends \BaseController {
 
     		}
 
-    	return View::make('hello.php'), compact('tags'));;
+
+		$tags = Tag::whereHas('tags', function($q)
+		
+		{
+    
+    		$q->where('content', 'like', '');
+
+		})->get();
+
+    	return View::make('hello.blade.php')->with('tags');
 
 	} 
 

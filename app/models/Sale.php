@@ -25,4 +25,9 @@ class Sale extends \Eloquent {
  //        return $fileName;
  //    }
 
+    public function tags()
+    {
+        return $this->belongsToMany('Tag');
+    }
+
 }
