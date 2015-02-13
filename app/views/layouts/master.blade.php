@@ -14,7 +14,15 @@
   
 @yield('css')
 
+
+<style>
+  .container {
+  margin-bottom: 30px;
+  }
+</style>
+
 @yield('top-script')
+
 
 </head>
 <body>

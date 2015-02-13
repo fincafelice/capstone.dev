@@ -47,7 +47,7 @@ class HomeController extends BaseController {
 		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
 
 			Session::flash('successMessage', "Login successful - welcome!");
-    		return Redirect::to('/checkID');
+    		return Redirect::to('/');
 
 		} else {
 

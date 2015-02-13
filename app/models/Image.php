@@ -10,4 +10,8 @@ class Image extends \Eloquent {
 		'img_path' => 'required|max:50',
 	);
 
+	public function sale() {
+		return $this->belongsTo('Sale');
+	}
+
 }
