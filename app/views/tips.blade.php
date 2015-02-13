@@ -37,7 +37,7 @@ Tips
 @section('content')
 
 
-    <h1>10 facts about Garage Sales</h1>
+    <h1>10 Tips for a Successful Garage Sale</h1>
     <div class="centered important highlighted">
     </div>
     <div>
