@@ -10,8 +10,23 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
+  <!-- <link rel="stylesheet" type="text/css" href="mycsssFile.css"> -->
+  
+@yield('css')
 
+<<<<<<< HEAD
     @yield('top-script')
+=======
+
+<style>
+  .container {
+  margin-bottom: 30px;
+  }
+</style>
+
+@yield('top-script')
+
+>>>>>>> master
 
     @yield('css')
 </head>
