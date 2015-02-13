@@ -71,7 +71,7 @@
 			@endif
 			
 				<div class="text-center">
-					<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Main Page</a>	
+					<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
 				</div>
 		</div>
 	</div>

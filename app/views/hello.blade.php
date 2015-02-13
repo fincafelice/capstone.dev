@@ -10,9 +10,9 @@
       margin: auto;
     }
     img {
-      height: 75px;
+/*      height: 75px;
       width: 75px;
-      position: relative; top: -15px;
+      position: relative; top: -15px;*/
     }
     .caroImg {
       image-rendering: auto;

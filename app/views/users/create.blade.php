@@ -9,6 +9,7 @@
 @stop
 
 @section('content')
+
 	<div class="col-md-8">
 	    <h1>Welcome!</h1>
 	    <h3>Enter your credentials to create a new user</h3>
