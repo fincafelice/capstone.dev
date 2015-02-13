@@ -20,15 +20,7 @@ class Sale extends \Eloquent {
 		'description'    => 'required|max:1000'
 
 	);
-
-
-	// public function uploadFile($file) 
- //    {
- //    	$uploadPath = public_path() . '/uploads';
-	// 	$fileName = $this->id . '-' . $file->getClientOriginalName();
- //        return $fileName;
- //    }
-
+	
     public function tags()
     {
         return $this->belongsToMany('Tag');
