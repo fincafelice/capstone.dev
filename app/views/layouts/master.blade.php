@@ -12,24 +12,21 @@
 
   <!-- <link rel="stylesheet" type="text/css" href="mycsssFile.css"> -->
   
-@yield('css')
+    @yield('css')
 
-<<<<<<< HEAD
     @yield('top-script')
-=======
 
-<style>
-  .container {
-  margin-bottom: 30px;
-  }
-</style>
 
-@yield('top-script')
+    <style>
+      .container {
+      margin-bottom: 30px;
+      }
+    </style>
 
->>>>>>> master
+    @yield('top-script')
 
     @yield('css')
-</head>
+    </head>
 
 <body>
     <nav class="navbar navbar-default">
