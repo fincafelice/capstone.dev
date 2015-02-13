@@ -96,6 +96,14 @@
           <p>Lots of styles to choose from.</p>
         </div>
       </div>
+
+        <div class="item caroImg">
+        <img src="/img/unnamed.jpg" alt="Wee!">
+        <div class="carousel-caption">
+          <h3>Ben's Inverted Design Theory</h3>
+          <p>So many carousels, so little time.</p>
+        </div>
+      </div>
   
     </div>
 

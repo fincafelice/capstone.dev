@@ -15,6 +15,11 @@
 
 @yield('css')
 
+<style>
+  .container {
+  margin-bottom: 30px;
+  }
+</style>
 
 </head>
 <body>
