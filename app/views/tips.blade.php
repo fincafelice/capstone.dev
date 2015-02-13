@@ -8,10 +8,14 @@ Tips
 <style type="text/css">
 #invisible {
 	display: none;
+    text-align: center;
 }
 .list {
     font-weight: bold;
     /*background-color: #0F0;*/
+}
+dt {
+    text-align: center;
 }
 </style>
 @stop
@@ -37,7 +41,7 @@ Tips
 @section('content')
 
 
-    <h1>10 Tips for a Successful Garage Sale</h1>
+    <h1 align = center >10 Tips for a Successful Garage Sale</h1>
     <div class="centered important highlighted">
     </div>
     <div>
