@@ -14,9 +14,8 @@
   
 @yield('css')
 
-<<<<<<< HEAD
-    @yield('top-script')
-=======
+@yield('top-script')
+
 
 <style>
   .container {
@@ -24,11 +23,7 @@
   }
 </style>
 
-@yield('top-script')
 
->>>>>>> master
-
-    @yield('css')
 </head>
 
 <body>

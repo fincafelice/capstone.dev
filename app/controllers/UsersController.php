@@ -21,7 +21,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		return Redirect::route('users.index');
+		return View::make('users.create');
 
 	}
 
