@@ -31,19 +31,16 @@
 
   <div class="row">
     <div class="col-sm-4">
-      <h3>Learn more about finding garage sales here!</h3>
-      <p>Descriptive Paragraph and then a link</p>
+      <h4>Welcome to my Garage Sale!</h4>
+      <p align = center>Generic Mission Statement</p>
     </div>
     <div class="col-sm-4">
-      <h3>Learn more about being a seller here!</h3>
-      <p>Descriptive paragraph and then a link</p>
+      <h4>This application is here to help you plan your garage sale!</h4>
+      <p align = center></p>
     </div>
     <div class="col-sm-4">
-      <h3>Learn more about Garage Sales Here!</h3>
-        <p align = center>
-        Tips for buyers.<br>
-        Tips for sellers.<br>
-        </P>
+      <h4>It is also here to help you find garage sales in your location that you can go to! </h4>
+        <p align = center></p>
     </div>
   </div>
 </div>
