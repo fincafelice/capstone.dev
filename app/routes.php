@@ -36,3 +36,6 @@ Route::get('checkID', function () {
 });
 
 
+Route::get('tips', 'HomeController@showTips');
+
+Route::get('about', 'HomeController@showAbout');
