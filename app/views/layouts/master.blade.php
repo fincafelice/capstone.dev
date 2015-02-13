@@ -46,11 +46,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="{{{ action('SalesController@create') }}}">Buyer<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Seller</a></li>
+          <li><a href="{{{ action('SalesController@index') }}}">Buyer<span class="sr-only">(current)</span></a></li>
+            <li><a href="{{{ action('SalesController@create') }}}">Seller</a></li>
 
 
-            <li class="dropdown">
+            <li class="active dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="{{{ action('HomeController@showLogin') }}}">Login</a></li>
