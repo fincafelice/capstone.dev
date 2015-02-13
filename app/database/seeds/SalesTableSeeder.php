@@ -21,7 +21,7 @@ class SalesTableSeeder extends Seeder {
 			$sale->zip = $faker->postcode;
 			$sale->sale_date_time = $faker->dateTime($max = 'now');
 			$sale->description = $faker->text($maxNbChars = 100);
-			$sale->seller_id = $faker->numberBetween($min = 1, $max = 100);
+			$sale->user_id = $faker->numberBetween($min = 1, $max = 100);
 			$sale->save();
 		}
 
