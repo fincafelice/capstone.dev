@@ -11,12 +11,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
   <!-- <link rel="stylesheet" type="text/css" href="mycsssFile.css"> -->
+
+@yield('top-script')
   
 @yield('css')
-
-<<<<<<< HEAD
-    @yield('top-script')
-=======
 
 <style>
   .container {
@@ -24,11 +22,6 @@
   }
 </style>
 
-@yield('top-script')
-
->>>>>>> master
-
-    @yield('css')
 </head>
 
 <body>
@@ -45,7 +38,7 @@
         <nav class="navbar">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="/">
                     <img alt="Brand" src="/img/gsale-2.png">
                     </a>
                 </div>
@@ -58,6 +51,7 @@
         <ul class="nav navbar-nav">
             <li><a href="{{{ action('SalesController@index') }}}">Browse Garage Sales<span class="sr-only">(current)</span></a></li>
             <li><a href="{{{ action('SalesController@create') }}}">Create Garage Sale</a></li>
+            <li><a href="/tips">Garage Sale Tips</a></li>
                 <li class="active dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     @if (Auth::guest())
