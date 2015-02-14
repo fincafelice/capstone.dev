@@ -2,7 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
     <title>@yield('title')</title>
+
+@yield('css')
+
+<style>
+  .container {
+  margin-bottom: 30px;
+  }
+</style>
+
+@yield('top-script')
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -12,15 +24,7 @@
 
   <!-- <link rel="stylesheet" type="text/css" href="mycsssFile.css"> -->
 
-@yield('top-script')
   
-@yield('css')
-
-<style>
-  .container {
-  margin-bottom: 30px;
-  }
-</style>
 
 </head>
 <body>
