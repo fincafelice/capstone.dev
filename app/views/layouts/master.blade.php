@@ -83,6 +83,7 @@
                         <li><a href="{{{ action('HomeController@showLogin') }}}">Current User Login</a></li>
                         <li><a href="{{{ action('UsersController@create') }}}">Create A New User</a></li>
                     @else
+                        <li><a href="{{{ action('SalesController@index') }}}">Edit Your Sale Events</a></li>
                         <li><a href="{{{ action('HomeController@doLogout') }}}">Logout</a></li>
                     @endif
                 </ul>
