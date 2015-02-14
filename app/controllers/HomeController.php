@@ -36,6 +36,10 @@ class HomeController extends BaseController {
 	}
 
 
+	public function showMap() {
+
+		return View::make('map');
+	}
 
 	public function doLogin() {
 
