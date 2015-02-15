@@ -158,8 +158,8 @@ class SalesController extends \BaseController {
 
 			$files = Input::file('images');
 			foreach($files as $file) {
-				$rules = array('file' => 'required'); //'required|mimes:png,gif,jpeg'
-			 	$validator = Validator::make(array('file'=> $file), $rules);
+			$rules = array('file' => 'required');
+		 	$validator = Validator::make(array('file'=> $file), $rules);
 	  			if($validator->passes()){
 					$destinationPath = public_path() . '/uploads/';
 	    			$filename = $file->getClientOriginalName();
@@ -168,13 +168,14 @@ class SalesController extends \BaseController {
 	                $image->img_path = '/uploads/' . $filename;
 	    			$image->sale_id = $sale->id;
 	                $image->save();
+					Session::flash('success', 'Upload successful.'); 
 	  			} else {
     				return Redirect::to('upload')->withInput()->withErrors($validator);
 				}
+				return Redirect::action('SalesController@show', $sale->id);
 			}
   		}
 
-		Session::flash('success', 'Upload successful.'); 
   		return Redirect::action('SalesController@show', $sale->id);
 	}
 }
