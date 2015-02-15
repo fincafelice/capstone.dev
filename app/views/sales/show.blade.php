@@ -57,14 +57,15 @@
 		<div class="clearfix">
 
 			@if (Auth::check())
-				{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
 
 				<div class="pull-left">		
 					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) }}}">Upload Images</a>
 				</div>
 
 				<div class="pull-right">
-					{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger')) }}
+
+				{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
+				{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger')) }}
 				</div>		
 			
 	 			{{ Form::close() }}
@@ -77,13 +78,12 @@
 	</div>
 
 
-	<!-- <div class="col-md-4 col-md-offset-1">
+<!-- 	<div class="col-md-4 col-md-offset-1">
 		<div class="clearfix">
 
 			@if (Auth::check())
 				<div class="pull-left">
-					{{ Form::model($sale, array('action' =>array('SalesController@update', $sale->id), 'method'=> 'put', 'files' => true)) }}
-		
+					{{ Form::model($sale, array('action' =>array('SalesController@update', $sale->id), 'method'=> 'put', 'files' => true)) }}		
 					{{ Form::file('images[]', array('multiple'=>true)) }}
 				</div>
 
@@ -93,8 +93,8 @@
 			@endif
 
 		</div>
-	</div> -->
-</div>
+	</div>
+ --></div>
 @stop {{-- This is to view one particular post by request. --}}
 
 @section('bottom-script')
