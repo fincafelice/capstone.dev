@@ -25,16 +25,15 @@ class SalesController extends \BaseController {
 		// sales with those associated tags.
 
 		if (Auth::guest()) {
-    		$sales = Sale::paginate(5);
+    		$sales = Sale::all();
 		} elseif (Input::has('search')) {
 			$search = Input::get('search');
 			$sales = Sale::whereHas('tags', function($query) use ($search) {
 				$query->where('name', '=', $search);
 			})->get();
-    	} else {
+    	} else 
     		// Define $sales where user_id is the current Auth::id()
     		$sales = Sale::where('user_id', '=', Auth::id())->get();
-	    }
 		// return view with sales having a specific tag attached.
     	return View::make('sales.index')->with('sales', $sales);
 	} 
@@ -153,13 +152,14 @@ class SalesController extends \BaseController {
 
 		} 
 
+
 		if (Input::hasFile('images')) {
 			$image = new Image();
 
 			$files = Input::file('images');
 			foreach($files as $file) {
-			$rules = array('file' => 'required');
-		 	$validator = Validator::make(array('file'=> $file), $rules);
+				$rules = array('file' => 'required');
+		 		$validator = Validator::make(array('file'=> $file), $rules);
 	  			if($validator->passes()){
 					$destinationPath = public_path() . '/uploads/';
 	    			$filename = $file->getClientOriginalName();
@@ -172,7 +172,7 @@ class SalesController extends \BaseController {
 	  			} else {
     				return Redirect::to('upload')->withInput()->withErrors($validator);
 				}
-				return Redirect::action('SalesController@show', $sale->id);
+			return Redirect::action('SalesController@show', $sale->id);
 			}
   		}
 

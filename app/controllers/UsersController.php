@@ -36,12 +36,13 @@ class UsersController extends \BaseController {
 
 		if ($validator->fails())
 		{
+			Session::flash('errorMessage', 'Failed to create new user!');
 			return Redirect::back()->withErrors($validator)->withInput();
+		} else {
+			User::create($data);
+			Session::flash('saveMessage', 'New user was created!');
+			return Redirect::route('sales.index');
 		}
-
-		User::create($data);
-
-		return View::make('users.index');
 	}
 
 	/**
@@ -89,7 +90,7 @@ class UsersController extends \BaseController {
 
 		$user->update($data);
 
-		return Redirect::route('users.index');
+		return Redirect::route('sales.index');
 	}
 
 	/**

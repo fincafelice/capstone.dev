@@ -60,7 +60,7 @@
 				{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
 
 				<div class="pull-left">		
-					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) }}}">Edit Sale Event</a>
+					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) }}}">Upload Images</a>
 				</div>
 
 				<div class="pull-right">
@@ -77,7 +77,7 @@
 	</div>
 
 
-	<div class="col-md-4 col-md-offset-1">
+	<!-- <div class="col-md-4 col-md-offset-1">
 		<div class="clearfix">
 
 			@if (Auth::check())
@@ -93,7 +93,7 @@
 			@endif
 
 		</div>
-	</div>
+	</div> -->
 </div>
 @stop {{-- This is to view one particular post by request. --}}
 
