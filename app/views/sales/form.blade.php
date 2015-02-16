@@ -9,6 +9,7 @@
 	{{ Form::label('sale_name', 'Sale Name') }}
 	{{ Form::text('sale_name', Input::old('sale_name'), array('class' => 'form-control')) }}
 	{{ $errors->first('sale_name', '<p class="help-block">:message</p>') }}
+	
 </div>
 
 <div class="form-group {{{ $errors->has('street') ? 'has-error' : '' }}}">
@@ -46,5 +47,12 @@
 	{{ Form::label('Sale Description', 'Sale Description') }}
 	{{ Form::textarea('description', Input::old('description'), array('class' => 'form-control')) }}
 	{{ $errors->first('description', '<p class="help-block">:message</p>') }}
+</div>
+
+
+<div class="form-group {{{ $errors->has('tags') ? 'has-error' : '' }}}">
+	{{ Form::label('Tags', 'Tags') }}
+	{{ Form::textarea('tags', Input::old('tags'), array('class' => 'form-control')) }}
+	{{ $errors->first('tags', '<p class="help-block">:message</p>') }}
 </div>
 
