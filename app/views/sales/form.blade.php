@@ -1,4 +1,10 @@
 <!-- New Sales Form -->
+<div class="form-group {{{ $errors->has('sale_date_time') ? 'has-error' : '' }}}">
+	<label for="sale_date_time">Sale Date and Time</label>
+	<input type="datetime-local" name="sale_date_time" class="form-control">
+	{{ $errors->first('sale_date_time', '<p class="help-block">:message</p>') }}
+</div>
+
 <div class="form-group {{{ $errors->has('sale_name') ? 'has-error' : '' }}}">
 	{{ Form::label('sale_name', 'Sale Name') }}
 	{{ Form::text('sale_name', Input::old('sale_name'), array('class' => 'form-control')) }}
@@ -35,11 +41,6 @@
 	{{ $errors->first('zip', '<p class="help-block">:message</p>') }}
 </div>
 
-<div class="form-group {{{ $errors->has('sale_date_time') ? 'has-error' : '' }}}">
-	<label for="sale_date_time">Sale Date and Time</label>
-	<input type="datetime-local" name="sale_date_time" class="form-control">
-	{{ $errors->first('sale_date_time', '<p class="help-block">:message</p>') }}
-</div>
 
 <div class="form-group {{{ $errors->has('description') ? 'has-error' : '' }}}">
 	{{ Form::label('Sale Description', 'Sale Description') }}

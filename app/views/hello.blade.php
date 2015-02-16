@@ -94,15 +94,9 @@
         </div>
       </div>
 
-        <div class="item caroImg">
-        <img src="/img/unnamed.jpg" alt="Wee!">
-        <div class="carousel-caption">
-          <h3>Ben's Inverted Design Theory</h3>
-          <p>So many carousels, so little time.</p>
-        </div>
-      </div>
-  
     </div>
+  
+  </div>
 
       <!-- Left and right controls -->
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
