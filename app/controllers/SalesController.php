@@ -24,16 +24,19 @@ class SalesController extends \BaseController {
 		// If there is a search, perform a query looking for
 		// sales with those associated tags.
 
-		if (Auth::guest()) {
+		if (Auth::check()) {
+    		$sales = Sale::all();
+    	} elseif (Auth::guest()) {
     		$sales = Sale::all();
 		} elseif (Input::has('search')) {
 			$search = Input::get('search');
 			$sales = Sale::whereHas('tags', function($query) use ($search) {
 				$query->where('name', '=', $search);
 			})->get();
-    	} else 
+    	} else {
     		// Define $sales where user_id is the current Auth::id()
     		$sales = Sale::where('user_id', '=', Auth::id())->get();
+    	}
 		// return view with sales having a specific tag attached.
     	return View::make('sales.index')->with('sales', $sales);
 	} 
