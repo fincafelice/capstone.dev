@@ -95,6 +95,7 @@
 		</div>
 	</div> -->
 </div>
+
 @stop {{-- This is to view one particular post by request. --}}
 
 @section('bottom-script')
