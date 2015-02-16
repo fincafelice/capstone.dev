@@ -4,9 +4,9 @@
 
 @section('css')
     <style>
-	    html, body, #map-canvas {
-        height: 500px;
-        width: 100%;
+	    #map-canvas {
+        height: 400px;
+        width: 80%;
         margin: 0px;
         padding: 0px
       }
@@ -16,12 +16,12 @@
         width: 480px;
       }
       #autocomplete {
-        position: absolute;
+/*        position: absolute;
         top: 0px;
         left: 0px;
-        width: 99%;
+        width: 99%;*/
       }
-      .label {
+      /*.label {
         text-align: right;
         font-weight: bold;
         width: 100px;
@@ -48,7 +48,7 @@
       #locationField {
         height: 20px;
         margin-bottom: 2px;
-      }
+      }*/
     </style>
 @stop
 
@@ -82,6 +82,33 @@ function initialize() {
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     fillInAddress();
   });
+
+  var mapOptions = {
+        zoom: 6
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'),
+          mapOptions);
+
+      // Try HTML5 geolocation
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = new google.maps.LatLng(position.coords.latitude,
+                                           position.coords.longitude);
+
+          var infowindow = new google.maps.InfoWindow({
+            map: map,
+            position: pos,
+            content: 'Location found using HTML5.'
+          });
+
+          map.setCenter(pos);
+        }, function() {
+          handleNoGeolocation(true);
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleNoGeolocation(false);
+      }
 }
 
 // [START region_fillform]
@@ -143,84 +170,42 @@ function geolocate() {
 
 
 
-		<!-- New User Form -->
+		<!-- New Sale Form -->
 
 		{{ Form::open(array('action' => 'SalesController@store', 'method' => 'sale')) }}
 
-		<div class="form-group {{{ $errors->has('username') ? 'has-error' : '' }}}">
-			{{ Form::label('username', 'Username') }}
-			{{ Form::text('username', Input::old('username'), array('class' => 'form-control')) }}
-			{{ $errors->first('username', '<p class="help-block">:message</p>') }}
-		</div>	
-
-		<div class="form-group {{{ $errors->has('email') ? 'has-error' : '' }}}">
-			{{ Form::label('email', 'eMail Address') }}
-			{{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
-			{{ $errors->first('email', '<p class="help-block">:message</p>') }}
-		</div>
+			
 
 
-		<div class="form-group {{{ $errors->has('password') ? 'has-error' : '' }}}">
-			{{ Form::label('password', 'Password') }}
-			{{ Form::password('password', array('class' => 'form-control')) }}
-			{{ $errors->first('password', '<p class="help-block">:message</p>') }}
-		</div>
+			<div class="form-group {{{ $errors->has('password') ? 'has-error' : '' }}}">
+				{{ Form::label('password', 'Password') }}
+				{{ Form::password('password', array('class' => 'form-control')) }}
+				{{ $errors->first('password', '<p class="help-block">:message</p>') }}
+			</div>
 
-		<div class="form-group {{{ $errors->has('password_confirmation') ? 'has-error' : '' }}}">
-			{{ Form::label('password_confirmation', 'Confirm Password') }}
-			{{ Form::password('password_confirmation', array('class' => 'form-control')) }}
-			{{ $errors->first('password_confirmation', '<p class="help-block">:message</p>') }}
-		</div>
-
-		<div class="form-group {{{ $errors->has('street') ? 'has-error' : '' }}}">
-			{{ Form::label('street', 'Street') }}
-			{{ Form::text('street', Input::old('street'), array('class' => 'form-control')) }}
-			{{ $errors->first('street', '<p class="help-block">:message</p>') }}
-		</div>
-
-		<div class="form-group {{{ $errors->has('apt') ? 'has-error' : '' }}}">
-			{{ Form::label('apt', 'Apartment Number') }}
-			{{ Form::text('apt', Input::old('apt'), array('class' => 'form-control')) }}
-			{{ $errors->first('apt', '<p class="help-block">:message</p>') }}
-		</div>
-
-		<div class="form-group {{{ $errors->has('city') ? 'has-error' : '' }}}">
-			{{ Form::label('city', 'City') }}
-			{{ Form::text('city', Input::old('city'), array('class' => 'form-control')) }}
-			{{ $errors->first('city', '<p class="help-block">:message</p>') }}
-		</div>
-
-		<div class="form-group {{{ $errors->has('state') ? 'has-error' : '' }}}">
-			{{ Form::label('state', 'State') }}
-			{{ Form::text('state', Input::old('state'), array('class' => 'form-control')) }}
-			{{ $errors->first('state', '<p class="help-block">:message</p>') }}
-		</div>
-
-		<div class="form-group {{{ $errors->has('zip') ? 'has-error' : '' }}}">
-			{{ Form::label('zip', 'Zip Code') }}
-			{{ Form::text('zip', Input::old('zip'), array('class' => 'form-control')) }}
-			{{ $errors->first('zip', '<p class="help-block">:message</p>') }}
-		</div>
-
-		{{ Form::submit('Create User', array('class' => 'btn btn_primary')) }}
+			<div class="form-group {{{ $errors->has('password_confirmation') ? 'has-error' : '' }}}">
+				{{ Form::label('password_confirmation', 'Confirm Password') }}
+				{{ Form::password('password_confirmation', array('class' => 'form-control')) }}
+				{{ $errors->first('password_confirmation', '<p class="help-block">:message</p>') }}
+			</div>
 
 
-		<!-- Begin Hidden Input Forms -->
 
-		{{ Form::hidden('role', 'user', array('id' => 'role')) }}
-	    {{ Form::hidden('street_num', null, array('id' => 'street_number')) }}
-	    {{ Form::hidden('street', null, array('id' => 'route')) }}
-	    {{ Form::hidden('city', null, array('id' => 'locality')) }}
-	    {{ Form::hidden('state', null, array('id' => 'administrative_area_level_1')) }}
-	    {{ Form::hidden('zip', null, array('id' => 'postal_code')) }}
-	    {{ Form::hidden('country', null, array('id' => 'country')) }}
-	    {{ Form::hidden('latitude', null, array('id' => 'latitude')) }}
-	    {{ Form::hidden('longitude', null, array('id' => 'longitude')) }}
+			<!-- Begin Hidden Input Forms -->
 
-	    {{ Form::label('address', 'Address') }}
-	    {{ Form::text('address', null, array('id' => 'autocomplete', 'class' => 'form-group form-control bordered', 'onfocus' => 'geolocate()')) }}
+		    {{ Form::hidden('street_num', null, array('id' => 'street_number')) }}
+		    {{ Form::hidden('street', null, array('id' => 'route')) }}
+		    {{ Form::hidden('city', null, array('id' => 'locality')) }}
+		    {{ Form::hidden('state', null, array('id' => 'administrative_area_level_1')) }}
+		    {{ Form::hidden('zip', null, array('id' => 'postal_code')) }}
+		    {{ Form::hidden('country', null, array('id' => 'country')) }}
 
+		    <div class="form-group">
+			    {{ Form::label('address', 'Address') }}
+			    {{ Form::text('address', null, array('id' => 'autocomplete', 'class' => 'form-control', 'onfocus' => 'geolocate()')) }}
+			</div>
 
+			{{ Form::submit('Create User', array('class' => 'btn btn_primary')) }}
 		{{ Form::close()  }}
 
 	</div> <!-- End Container Left -->
@@ -229,10 +214,11 @@ function geolocate() {
 	<!-- begin right container -->
 	<div class="col-md-7"> 
         <div class="page-header">
-            <h1 class="text-right">Your Location</h1>
+            <h1 class="text-center">Your Location</h1>
         </div>
 
-        <div id="map-canvas"/>
+        
+        <div id="map-canvas"></div>
 
     </div> <!-- end right container -->
     </div> <!-- end main container -->

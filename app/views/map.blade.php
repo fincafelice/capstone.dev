@@ -67,8 +67,8 @@
 
 	<style>
         #map-canvas {
-        height: 500px;
-        width: 100%;
+        height: 400px;
+        width: 75%;
         margin: 0px;
         padding: 0px
       }
@@ -78,12 +78,12 @@
 
 
 @section('content')
+	<div class="col-md-7">
+		<h1>Geolocation, Hooray!</h1>
+		<hr>
 
-	<h1>Geolocation, Hooray!</h1>
-	<hr>
-
-	<div id="map-canvas"></div>
-
+		<div id="map-canvas"></div>
+	</div>
 @stop
 
 
