@@ -2,7 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
     <title>@yield('title')</title>
+
+@yield('css')
+
+<style>
+  .container {
+  margin-bottom: 30px;
+  }
+</style>
+
+@yield('top-script')
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -12,6 +24,7 @@
 
     @yield('top-script')
 
+
     @yield('css')
 
     <style>
@@ -19,7 +32,6 @@
       margin-bottom: 30px;
       }
     </style>
-
 </head>
 
 <body>
@@ -116,8 +128,8 @@
 
 
     <div class="container">
-        @if (Session::has('saveMessage'))
-    	   <div class="alert alert-success">{{{ Session::get('saveMessage') }}}</div>
+        @if (Session::has('successMessage'))
+    	   <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
         @endif
 
 

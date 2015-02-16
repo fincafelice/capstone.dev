@@ -133,12 +133,12 @@ class SalesController extends \BaseController {
 		$validator = Validator::make(Input::all(), Sale::$rules);
 
 		if ($validator->fails()) {
+
 			Session::flash('errorMessage', 'Failed to save your garage sale!');
 			return Redirect::back()->withInput()->withErrors($validator);
 
 		} else {
 
-			Session::flash('saveMessage', 'Your garage sale was saved!');
 			$sale->sale_name      = Input::get('sale_name');						
 			$sale->street 	 	  = Input::get('street');
 			$sale->apt   		  = Input::get('apt');
@@ -150,6 +150,12 @@ class SalesController extends \BaseController {
 			$sale->user_id   	  = Auth::id();
 			$sale->save();
 
+			if (Input::has('tags')) {
+				// find tag by name
+				// create entry in pivot table with tag_id and sale_id
+			}
+
+			Session::flash('successMessage', 'Your garage sale was saved!');
 		} 
 
 
