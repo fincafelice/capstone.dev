@@ -84,6 +84,7 @@ function initialize() {
   });
 
   var mapOptions = {
+
         zoom: 10,
         disableDefaultUI: false
       }

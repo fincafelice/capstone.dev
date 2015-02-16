@@ -37,6 +37,22 @@ class HomeController extends BaseController {
 
 
 
+	// Maps API Testing
+	public function showMap() {
+
+		return View::make('map');
+	}
+
+
+	public function mapForm () {
+
+		return View::make('map-test-form');
+	}
+
+	// /Testing
+
+
+
 	public function doLogin() {
 
 		$input = Input::all();
