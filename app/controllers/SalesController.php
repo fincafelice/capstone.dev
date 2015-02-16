@@ -168,7 +168,6 @@ class SalesController extends \BaseController {
 	                $image->img_path = '/uploads/' . $filename;
 	    			$image->sale_id = $sale->id;
 	                $image->save();
-					Session::flash('success', 'Upload successful.'); 
 	  			} else {
     				return Redirect::to('upload')->withInput()->withErrors($validator);
 				}
