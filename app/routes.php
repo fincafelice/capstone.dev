@@ -41,7 +41,7 @@ Route::get('checkID', function () {
 });
 
 
-// These Routes Is For Google Maps API Work
+// These Routes Are For Google Maps API Work
 
 Route::get('/map', 'HomeController@showMap');
 
