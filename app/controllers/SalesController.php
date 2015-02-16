@@ -24,16 +24,19 @@ class SalesController extends \BaseController {
 		// If there is a search, perform a query looking for
 		// sales with those associated tags.
 
-		if (Auth::guest()) {
+		if (Auth::check()) {
+    		$sales = Sale::all();
+    	} elseif (Auth::guest()) {
     		$sales = Sale::all();
 		} elseif (Input::has('search')) {
 			$search = Input::get('search');
 			$sales = Sale::whereHas('tags', function($query) use ($search) {
 				$query->where('name', '=', $search);
 			})->get();
-    	} else 
+    	} else {
     		// Define $sales where user_id is the current Auth::id()
     		$sales = Sale::where('user_id', '=', Auth::id())->get();
+    	}
 		// return view with sales having a specific tag attached.
     	return View::make('sales.index')->with('sales', $sales);
 	} 
@@ -133,12 +136,12 @@ class SalesController extends \BaseController {
 		$validator = Validator::make(Input::all(), Sale::$rules);
 
 		if ($validator->fails()) {
+
 			Session::flash('errorMessage', 'Failed to save your garage sale!');
 			return Redirect::back()->withInput()->withErrors($validator);
 
 		} else {
 
-			Session::flash('saveMessage', 'Your garage sale was saved!');
 			$sale->sale_name      = Input::get('sale_name');						
 			$sale->street 	 	  = Input::get('street');
 			$sale->apt   		  = Input::get('apt');
@@ -150,6 +153,12 @@ class SalesController extends \BaseController {
 			$sale->user_id   	  = Auth::id();
 			$sale->save();
 
+			if (Input::has('tags')) {
+				// find tag by name
+				// create entry in pivot table with tag_id and sale_id
+			}
+
+			Session::flash('successMessage', 'Your garage sale was saved!');
 		} 
 
 
