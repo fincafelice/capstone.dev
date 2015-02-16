@@ -6,10 +6,12 @@
 
 
 @section('content')
-	<div class="col-md-8">
-		<h1>Welcome!</h1>
-		<h3>Create a New Sale</h3>
-		<hr>
+
+	<div class="col-md-5"> <!-- begin left container -->
+    	<div class="page-header">
+       		<h1>Create New Sale</h1>
+    	</div>
+
 		<div>
 			{{ Form::open(array('action' => 'SalesController@store', 'method' => 'sale')) }}
 
@@ -21,5 +23,13 @@
 
 			{{ Form::close() }}
 		</div>
+	</div>
+
+	<div class="col-md-6"> <!-- begin left container -->
+    	<div class="page-header">
+       		<h1>Tagegories Plus Cool Map!</h1>
+    	</div>
+	
+		<p>Here's your stuff<p>
 	</div>
 @stop

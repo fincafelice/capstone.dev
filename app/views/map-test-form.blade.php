@@ -13,6 +13,10 @@
       #map-container {
         margin-left: 30px;
       }
+
+      #tag-sidebar {
+        margin-top: 25.5px;
+      }
     </style>
 @stop
 
@@ -197,10 +201,17 @@ function fillInAddress() {
 		    {{ Form::text('address', null, array('id' => 'autocomplete', 'class' => 'form-control', 'onfocus' => 'geolocate()')) }}
 		</div>
 
+
         <div class="form-group {{{ $errors->has('description') ? 'has-error' : '' }}}">
-            {{ Form::label('Sale Description', 'Sale Description') }}
+            {{ Form::label('description', 'Sale Description') }}
             {{ Form::textarea('description', Input::old('description'), array('class' => 'form-control')) }}
             {{ $errors->first('description', '<p class="help-block">:message</p>') }}
+        </div>
+
+        <div class="form-group {{{ $errors->has('tags') ? 'has-error' : '' }}}">
+            {{ Form::label('tags', 'Tags') }}
+            {{ Form::textarea('tags', Input::old('tags'), array('class' => 'form-control')) }}
+            {{ $errors->first('tags', '<p class="help-block">:message</p>') }}
         </div>
 
 		{{ Form::submit('Create Sale', array('class' => 'btn btn_primary')) }}
@@ -214,9 +225,14 @@ function fillInAddress() {
         <div class="page-header">
             <h1>Your Location</h1>
         </div>
-
         
         <div id="map-canvas"></div>
+
+        <div id="tag-sidebar" class="form-group {{{ $errors->has('tags') ? 'has-error' : '' }}}">
+            {{ Form::label('tags', 'Item Categories') }}
+            {{ Form::textarea('tags', Input::old('tags'), array('class' => 'form-control')) }}
+            {{ $errors->first('tags', '<p class="help-block">:message</p>') }}
+        </div>
 
     </div> <!-- end right container -->
     </div> <!-- end main container -->
