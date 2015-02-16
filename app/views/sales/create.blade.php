@@ -24,12 +24,4 @@
 			{{ Form::close() }}
 		</div>
 	</div>
-
-	<div class="col-md-6"> <!-- begin left container -->
-    	<div class="page-header">
-       		<h1>Tagegories Plus Cool Map!</h1>
-    	</div>
-	
-		<p>Here's your stuff<p>
-	</div>
 @stop
