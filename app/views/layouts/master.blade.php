@@ -10,19 +10,18 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-  <!-- <link rel="stylesheet" type="text/css" href="mycsssFile.css"> -->
+    @yield('top-script')
 
-@yield('top-script')
-  
-@yield('css')
+    @yield('css')
 
-<style>
-  .container {
-  margin-bottom: 30px;
-  }
-</style>
+    <style>
+      .container {
+      margin-bottom: 30px;
+      }
+    </style>
 
 </head>
+
 <body>
     <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -66,7 +65,8 @@
                         <li><a href="{{{ action('HomeController@showLogin') }}}">Current User Login</a></li>
                         <li><a href="{{{ action('UsersController@create') }}}">Create A New User</a></li>
                     @else
-                        <li><a href="{{{ action('HomeController@doLogout') }}}">Logout</a></li>
+                        <li><a href="{{{ action('SalesController@index') }}}">Edit Your Sale Events</a></li>
+                        <li><a href="{{{ action('HomeController@doLogout') }}}">Logout to View All Sales</a></li>
                     @endif
                 </ul>
             </li>

@@ -18,26 +18,24 @@ class SalesController extends \BaseController {
 	 */
 	public function index()
 	{    	
-
 		// Eager load sales with tags
     	$sales = Sale::with('tags');
 
 		// If there is a search, perform a query looking for
 		// sales with those associated tags.
 
-		if (Input::has('search')) {
+		if (Auth::guest()) {
+    		$sales = Sale::all();
+		} elseif (Input::has('search')) {
 			$search = Input::get('search');
 			$sales = Sale::whereHas('tags', function($query) use ($search) {
 				$query->where('name', '=', $search);
 			})->get();
-
-		} else {
-    		$sales = Sale::all();
-    	}
-
+    	} else 
+    		// Define $sales where user_id is the current Auth::id()
+    		$sales = Sale::where('user_id', '=', Auth::id())->get();
 		// return view with sales having a specific tag attached.
     	return View::make('sales.index')->with('sales', $sales);
-
 	} 
 
 	/**
@@ -103,6 +101,7 @@ class SalesController extends \BaseController {
 	public function update($id)
 	{
 		$sale = Sale::findOrFail($id);
+
 		return $this->saveSale($sale);
 	}
 
@@ -123,7 +122,7 @@ class SalesController extends \BaseController {
 
 		$sale->delete();
 
-		Session::flash('successMessage', 'Sale Event deleted!');
+		Session::flash('saveMessage', 'Sale Event deleted!');
 
 		return Redirect::action('SalesController@index');
 	}
@@ -139,7 +138,7 @@ class SalesController extends \BaseController {
 
 		} else {
 
-			Session::flash('successMessage', 'Your garage sale was saved!');
+			Session::flash('saveMessage', 'Your garage sale was saved!');
 			$sale->sale_name      = Input::get('sale_name');						
 			$sale->street 	 	  = Input::get('street');
 			$sale->apt   		  = Input::get('apt');
@@ -153,29 +152,27 @@ class SalesController extends \BaseController {
 
 		} 
 
+
 		if (Input::hasFile('images')) {
 			$image = new Image();
 
 			$files = Input::file('images');
-			// dd($files);
 			foreach($files as $file) {
-			$rules = array('file' => 'required'); //'required|mimes:png,gif,jpeg'
-		 	$validator = Validator::make(array('file'=> $file), $rules);
-	  			
+				$rules = array('file' => 'required');
+		 		$validator = Validator::make(array('file'=> $file), $rules);
 	  			if($validator->passes()){
 					$destinationPath = public_path() . '/uploads/';
 	    			$filename = $file->getClientOriginalName();
 	    			$upload_success = $file->move($destinationPath, $filename);
 					
 	                $image->img_path = '/uploads/' . $filename;
-	    			// dd($sale);
 	    			$image->sale_id = $sale->id;
 	                $image->save();
-					Session::flash('success', 'Upload successfully'); 
-					return Redirect::action('SalesController@show', $sale->id);
+					Session::flash('success', 'Upload successful.'); 
 	  			} else {
     				return Redirect::to('upload')->withInput()->withErrors($validator);
 				}
+			return Redirect::action('SalesController@show', $sale->id);
 			}
   		}
 
