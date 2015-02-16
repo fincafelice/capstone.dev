@@ -24,11 +24,9 @@ class SalesController extends \BaseController {
 		// If there is a search, perform a query looking for
 		// sales with those associated tags.
 
-		if (Auth::check()) {
+		if (Auth::guest()) {
     		$sales = Sale::all();
-    	} elseif (Auth::guest()) {
-    		$sales = Sale::all();
-		} elseif (Input::has('search')) {
+    	} elseif (Input::has('search')) {
 			$search = Input::get('search');
 			$sales = Sale::whereHas('tags', function($query) use ($search) {
 				$query->where('name', '=', $search);
@@ -125,7 +123,7 @@ class SalesController extends \BaseController {
 
 		$sale->delete();
 
-		Session::flash('saveMessage', 'Sale Event deleted!');
+		Session::flash('successMessage', 'Sale Event deleted!');
 
 		return Redirect::action('SalesController@index');
 	}
@@ -172,11 +170,12 @@ class SalesController extends \BaseController {
 	  			if($validator->passes()){
 					$destinationPath = public_path() . '/uploads/';
 	    			$filename = $file->getClientOriginalName();
-	    			$upload_success = $file->move($destinationPath, $filename);
-					
-	                $image->img_path = '/uploads/' . $filename;
-	    			$image->sale_id = $sale->id;
-	                $image->save();
+					foreach ($files as $file) {
+	    				$upload_success = $file->move($destinationPath, $filename);
+		                $image->img_path = '/uploads/' . $filename;
+		    			$image->sale_id = $sale->id;
+		                $image->save();
+		            }
 	  			} else {
     				return Redirect::to('upload')->withInput()->withErrors($validator);
 				}
