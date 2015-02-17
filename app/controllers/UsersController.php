@@ -33,8 +33,6 @@ class UsersController extends \BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		dd($input);
-
 
 		$validator = Validator::make($data = Input::all(), User::$rules);
 
@@ -44,7 +42,7 @@ class UsersController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		} else {
 			User::create($data);
-			Session::flash('saveMessage', 'New user was created!');
+			Session::flash('successMessage', 'New user was created!');
 			return Redirect::route('sales.index');
 		}
 	}
