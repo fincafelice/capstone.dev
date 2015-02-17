@@ -180,12 +180,6 @@
 		        {{ $errors->first('sale_name', '<p class="help-block">:message</p>') }}
 		    </div>
 
-<!-- 		    <div class="form-group {{{ $errors->has('sale_date_time') ? 'has-error' : '' }}}">
-		        <label for="sale_date_time">Sale Date and Time</label>
-		        <input type="datetime-local" name="sale_date_time" class="form-control">
-		        {{ $errors->first('sale_date_time', '<p class="help-block">:message</p>') }}
-		    </div>
- -->
 		    <div class="form-group {{{ $errors->has('sale_date_time') ? 'has-error' : '' }}}">
 		        {{ Form::label ("sale_date_time", "Sale Date and Time") }}
 		        {{ Form::text("sale_date_time", Input::old('sale_date_time'),array('class' => "form-control")) }}
