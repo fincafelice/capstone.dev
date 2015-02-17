@@ -57,7 +57,7 @@
 		<div class="clearfix">
 			@if (Auth::check())
 				<div class="pull-left">		
-					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) method="post" enctype="multipart/form-data"}}}">Upload Images</a>
+					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id)}}}">Upload Images</a>
 				</div>
 
 				<div class="pull-right">

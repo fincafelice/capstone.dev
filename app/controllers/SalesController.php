@@ -1,6 +1,7 @@
 <?php
 
-class SalesController extends \BaseController {
+class SalesController extends \BaseController 
+{
 
 	public function __construct() 
 	{
@@ -161,26 +162,25 @@ class SalesController extends \BaseController {
 
 
 		if (Input::hasFile('images')) {
-			$image = new Image();
-			$files = array('images' => Input::file('images'));
+			$files = Input::file('images');
 
-			foreach($files as $file) {
-				$rules = array('file' => 'required');
-		 		$validator = Validator::make(array('file'=> $file), $rules);
-	  			if($validator->passes()){
+			$imageMimeTypes = array('image/png', 'image/jpeg', 'image/gif', 'image/jpg');						
+			
+			foreach($files as $file) {	
+
+				if (in_array($file->getMimeType(), $imageMimeTypes)) {
 					$destinationPath = public_path() . '/uploads/';
 	    			$filename = $file->getClientOriginalName();
-	    				$upload_success = $file->move($destinationPath, $filename);
-		                $image->img_path = '/uploads/' . $filename;
-		    			$image->sale_id = $sale->id;
-		                $image->save();
-	  			} else {
-    				return Redirect::to('upload')->withInput()->withErrors($validator);
+	    			$upload_success = $file->move($destinationPath, $filename);
+					$image = new Image();
+		            $image->img_path = '/uploads/' . $filename;
+		    		$image->sale_id = $sale->id;
+		            $image->save();
 				}
-			return Redirect::action('SalesController@show', $sale->id);
 			}
-  		}
-
-  		return Redirect::action('SalesController@show', $sale->id);
-	}
+		}
+		
+		return Redirect::action('SalesController@show', $sale->id);
+  	}
 }
+
