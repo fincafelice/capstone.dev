@@ -1,6 +1,7 @@
 <?php
 
-class SalesController extends \BaseController {
+class SalesController extends \BaseController 
+{
 
 	public function __construct() 
 	{
@@ -51,8 +52,10 @@ class SalesController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('sales.create');
-		return $this->saveSale($sale);
+		$tags = Tag::all();
+		return View::make('sales.create')->with('tags', $tags);
+
+		// return $this->saveSale($sale);
 	}
 
 	/**
@@ -128,7 +131,7 @@ class SalesController extends \BaseController {
 
 		$sale->delete();
 
-		Session::flash('saveMessage', 'Sale deleted successfully!');
+		Session::flash('successMessage', 'Sale deleted successfully!');
 
 		return Redirect::action('UsersController@show', Auth::id());
 	}
@@ -158,9 +161,28 @@ class SalesController extends \BaseController {
 			$sale->user_id   	  = Auth::id();
 			$sale->save();
 
+
+			// Check for tags and add them to sale_tag pivot table.
 			if (Input::has('tags')) {
-				// find tag by name
-				// create entry in pivot table with tag_id and sale_id
+				$tags = Input::get('tags');
+				$tagsArray = explode(', ', $tags);
+
+				// Unset empty strings from array.
+				foreach ($tagsArray as $key => $value) {
+					if ($value == '') {
+						unset($tagsArray[$key]);
+					}
+				}
+
+				// dd($tagsArray);
+				foreach ($tagsArray as $tagName) {
+					// dd($tagName);
+					// find tag by name
+					$tag = Tag::where('name', '=', $tagName)->first();
+					// dd($tag->name);
+					// create entry in pivot table with tag_id and sale_id
+					DB::table('sale_tag')->insert(array('sale_id' => $sale->id, 'tag_id' => $tag->id));
+				}
 			}
 
 			Session::flash('successMessage', 'Your garage sale was saved!');
@@ -168,28 +190,25 @@ class SalesController extends \BaseController {
 
 
 		if (Input::hasFile('images')) {
-			$image = new Image();
-
 			$files = Input::file('images');
-			foreach($files as $file) {
-				$rules = array('file' => 'required');
-		 		$validator = Validator::make(array('file'=> $file), $rules);
-	  			if($validator->passes()){
+
+			$imageMimeTypes = array('image/png', 'image/jpeg', 'image/gif', 'image/jpg');						
+			
+			foreach($files as $file) {	
+
+				if (in_array($file->getMimeType(), $imageMimeTypes)) {
 					$destinationPath = public_path() . '/uploads/';
 	    			$filename = $file->getClientOriginalName();
 	    			$upload_success = $file->move($destinationPath, $filename);
-					
-	                $image->img_path = '/uploads/' . $filename;
-	    			$image->sale_id = $sale->id;
-	                $image->save();
-					Session::flash('success', 'Upload successful.'); 
-	  			} else {
-    				return Redirect::to('upload')->withInput()->withErrors($validator);
+					$image = new Image();
+		            $image->img_path = '/uploads/' . $filename;
+		    		$image->sale_id = $sale->id;
+		            $image->save();
 				}
-			return Redirect::action('SalesController@show', $sale->id);
 			}
-  		}
-
-  		return Redirect::action('SalesController@show', $sale->id);
-	}
+		}
+		
+		return Redirect::action('SalesController@show', $sale->id);
+  	}
 }
+

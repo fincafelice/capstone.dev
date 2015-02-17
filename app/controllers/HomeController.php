@@ -46,7 +46,8 @@ class HomeController extends BaseController {
 
 	public function mapForm () {
 
-		return View::make('map-test-form');
+		$tags = Tag::all();
+		return View::make('map-test-form')->with('tags', $tags);
 	}
 
 	// /Testing
