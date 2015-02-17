@@ -55,15 +55,12 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="clearfix">
-
 			@if (Auth::check())
-
 				<div class="pull-left">		
-					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) }}}">Upload Images</a>
+					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) method="post" enctype="multipart/form-data"}}}">Upload Images</a>
 				</div>
 
 				<div class="pull-right">
-
 				{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
 				{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger')) }}
 				</div>		
@@ -71,9 +68,9 @@
 	 			{{ Form::close() }}
 			@endif
 			
-				<div class="text-center">
-					<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
-				</div>
+			<div class="text-center">
+				<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
+			</div>
 		</div>
 	</div>
 

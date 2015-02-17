@@ -162,20 +162,18 @@ class SalesController extends \BaseController {
 
 		if (Input::hasFile('images')) {
 			$image = new Image();
+			$files = array('images' => Input::file('images'));
 
-			$files = Input::file('images');
 			foreach($files as $file) {
 				$rules = array('file' => 'required');
 		 		$validator = Validator::make(array('file'=> $file), $rules);
 	  			if($validator->passes()){
 					$destinationPath = public_path() . '/uploads/';
 	    			$filename = $file->getClientOriginalName();
-					foreach ($files as $file) {
 	    				$upload_success = $file->move($destinationPath, $filename);
 		                $image->img_path = '/uploads/' . $filename;
 		    			$image->sale_id = $sale->id;
 		                $image->save();
-		            }
 	  			} else {
     				return Redirect::to('upload')->withInput()->withErrors($validator);
 				}
