@@ -64,7 +64,7 @@ class HomeController extends BaseController {
 
 			Session::flash('successMessage', "Login successful - welcome!");
 
-    		return Redirect::intended('/');
+    		return Redirect::action('UsersController@show', Auth::id());
 
 
 		} else {
