@@ -57,7 +57,11 @@ class UsersController extends \BaseController {
 	{
 		$user = User::findOrFail($id);
 
-		return View::make('users.show', compact('user'));
+		$sales = Sale::where('user_id', '=', Auth::id())->get();
+
+		// return View::make('users.show', compact('user'));
+
+		return View::make('users.show', compact('user'))->with('sales', $sales);
 	}
 
 	/**

@@ -9,4 +9,6 @@
 			<p>{{{ $sale->created_at->setTimezone('America/Chicago')->diffForHumans() }}}</p>
 		@endforeach
 	</ul>
+
+	{{ $sales->appends(array('search' => Input::get('search')))->links() }}
 @stop

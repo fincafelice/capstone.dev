@@ -161,10 +161,6 @@ function fillInAddress() {
 @stop
 
 
-@stop
-
-
-
 @section('content')
 
 <div class="container">
@@ -178,34 +174,33 @@ function fillInAddress() {
 
     	{{ Form::open(array('action' => 'SalesController@store', 'method' => 'sale')) }}
 
+        <div class="form-group {{{ $errors->has('sale_name') ? 'has-error' : '' }}}">
+            {{ Form::label('sale_name', 'Sale Name') }}
+            {{ Form::text('sale_name', Input::old('sale_name'), array('class' => 'form-control')) }}
+            {{ $errors->first('sale_name', '<p class="help-block">:message</p>') }}
+        </div>
+
         <div class="form-group {{{ $errors->has('sale_date_time') ? 'has-error' : '' }}}">
             <label for="sale_date_time">Sale Date and Time</label>
             <input type="datetime-local" name="sale_date_time" class="form-control">
             {{ $errors->first('sale_date_time', '<p class="help-block">:message</p>') }}
         </div>
 
+        <!-- Begin Hidden Input Forms -->
 
-    	<div class="form-group {{{ $errors->has('sale_name') ? 'has-error' : '' }}}">
-            {{ Form::label('sale_name', 'Sale Name') }}
-            {{ Form::text('sale_name', Input::old('sale_name'), array('class' => 'form-control')) }}
-            {{ $errors->first('sale_name', '<p class="help-block">:message</p>') }}
-        </div>
-
-		<!-- Begin Hidden Input Forms -->
-
-	    {{ Form::hidden('street_num', null, array('id' => 'street_number')) }}
-	    {{ Form::hidden('street', null, array('id' => 'route')) }}
-	    {{ Form::hidden('city', null, array('id' => 'locality')) }}
-	    {{ Form::hidden('state', null, array('id' => 'administrative_area_level_1')) }}
-	    {{ Form::hidden('zip', null, array('id' => 'postal_code')) }}
-	    {{ Form::hidden('country', null, array('id' => 'country')) }}
+        {{ Form::hidden('street_num', null, array('id' => 'street_number')) }}
+        {{ Form::hidden('street', null, array('id' => 'route')) }}
+        {{ Form::hidden('city', null, array('id' => 'locality')) }}
+        {{ Form::hidden('state', null, array('id' => 'administrative_area_level_1')) }}
+        {{ Form::hidden('zip', null, array('id' => 'postal_code')) }}
+        {{ Form::hidden('country', null, array('id' => 'country')) }}
 
         <!-- /End Hidden Forms -->
 
-	    <div class="form-group">
-		    {{ Form::label('address', 'Address') }}
-		    {{ Form::text('address', null, array('id' => 'autocomplete', 'class' => 'form-control', 'onfocus' => 'geolocate()')) }}
-		</div>
+        <div class="form-group">
+            {{ Form::label('address', 'Address') }}
+            {{ Form::text('address', null, array('id' => 'autocomplete', 'class' => 'form-control', 'onfocus' => 'geolocate()')) }}
+        </div>
 
 
         <div class="form-group {{{ $errors->has('description') ? 'has-error' : '' }}}">

@@ -31,10 +31,11 @@
 		</div>
 
 		<h3>Location</h3> 
-		<h4>{{{ $sale->street }}} {{{ $sale->apt }}}</h4>
-		<h4>{{{ $sale->city }}}, {{{ $sale->state }}} {{{ $sale->zip }}}</h4>
-		<h3>Time</h3>
-		<h4>{{{ $sale->sale_date_time }}}</h4>
+		<h4>{{{ $sale->street_num }}} {{{ $sale->street }}} {{{ $sale->city }}}, {{{ $sale->state }}} {{{ $sale->zip }}}</h4>
+		<h3>Date and Time</h3>
+		<h4>{{{ date("F, d Y") }}} at {{{ date("g:ha", strtotime($sale->sale_date_time)) }}}</h4>
+
+
 		<!-- add seller username -->
 		<hr>
 		<p>{{ $sale->description }}</p>
@@ -55,7 +56,10 @@
 <div class="row">
 	<div class="col-md-6">
 		<div class="clearfix">
-			@if (Auth::check())
+
+			@if (Auth::id() == $sale->user_id)
+				{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
+
 				<div class="pull-left">		
 					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id)}}}">Upload Images</a>
 				</div>

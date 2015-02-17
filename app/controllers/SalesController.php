@@ -20,22 +20,27 @@ class SalesController extends \BaseController
 	public function index()
 	{    	
 		// Eager load sales with tags
-    	$sales = Sale::with('tags');
+    	$query = Sale::with('tags');
 
 		// If there is a search, perform a query looking for
 		// sales with those associated tags.
 
-		if (Auth::guest()) {
-    		$sales = Sale::all();
-    	} elseif (Input::has('search')) {
+		if (Input::has('search')) 
+		{
 			$search = Input::get('search');
-			$sales = Sale::whereHas('tags', function($query) use ($search) {
-				$query->where('name', '=', $search);
-			})->get();
-    	} else {
-    		// Define $sales where user_id is the current Auth::id()
-    		$sales = Sale::where('user_id', '=', Auth::id())->get();
-    	}
+
+			$sales = Sale::whereHas('tags', function($q) use ($search) {
+
+				$q->where('name', '=', $search);
+
+			})->orderBy('created_at', 'desc')->paginate(10);
+		} 
+
+		else 
+		{
+			$sales = Sale::orderBy('created_at', 'desc')->paginate(10);
+		}
+
 		// return view with sales having a specific tag attached.
     	return View::make('sales.index')->with('sales', $sales);
 	} 
@@ -126,9 +131,9 @@ class SalesController extends \BaseController
 
 		$sale->delete();
 
-		Session::flash('successMessage', 'Sale Event deleted!');
+		Session::flash('successMessage', 'Sale deleted successfully!');
 
-		return Redirect::action('SalesController@index');
+		return Redirect::action('UsersController@show', Auth::id());
 	}
 
 
@@ -143,13 +148,15 @@ class SalesController extends \BaseController
 
 		} else {
 
-			$sale->sale_name      = Input::get('sale_name');						
+			$sale->sale_name      = Input::get('sale_name');
+			$sale->sale_date_time = Input::get('sale_date_time');
+			$sale->street_num 	  = Input::get('street_num');						
 			$sale->street 	 	  = Input::get('street');
-			$sale->apt   		  = Input::get('apt');
 			$sale->city  		  = Input::get('city');
 			$sale->state  		  = Input::get('state');
 			$sale->zip  		  = Input::get('zip');
-			$sale->sale_date_time = Input::get('sale_date_time');
+			$sale->country        = Input::get('country');
+			$sale->address  	  = Input::get('address');
 			$sale->description    = Input::get('description');
 			$sale->user_id   	  = Auth::id();
 			$sale->save();
