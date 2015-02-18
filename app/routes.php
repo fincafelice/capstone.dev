@@ -47,6 +47,12 @@ Route::get('/map', 'HomeController@showMap');
 
 Route::get('/map-test-form', 'HomeController@mapForm');
 
+// This Route Is For Template Testing
+
+Route::get('/template-test', 'HomeController@testTemplate');
+
+Route::get('/template-test.html', 'HomeController@htmlTemplate');
+
 
 Route::get('tips', 'HomeController@showTips');
 
