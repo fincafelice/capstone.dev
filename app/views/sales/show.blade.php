@@ -61,14 +61,14 @@
 				@if (Auth::id() == $sale->user_id)
 					{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
 
-					<div class="pull-left">		
-						<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id)}}}">Edit Sale Event</a>
-					</div>
+						<div class="pull-left">		
+							<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id)}}}">Edit Sale Event</a>
+						</div>
 
-					<div class="pull-right">
-					{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
-					{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger')) }}
-					</div>		
+						<div class="pull-right">
+						{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
+						{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger sale-delete-btn')) }}
+						</div>		
 				
 		 			{{ Form::close() }}
 				@endif
@@ -91,6 +91,7 @@
 	<script src="/js/jquery.min.js"></script> 
 	<script src="/js/bootstrap.js"></script> 
 	<script src="/js/script.js"></script>
+
 	<script>
 		$('.img-delete-btn').click(function () {
 			var imageId = $(this).data('image-id');
@@ -100,6 +101,17 @@
 				$('#delete-form').submit();
 			}
 		});
+	</script>
+
+	<script>
+		$('.sale-delete-btn').click(function () {
+				var saleId = $(this).data('sale-id');
+				$('#delete-form').attr('action', '/sales/' + saleId);
+
+				if (confirm('Are you sure you want to delete this sale?')) {
+					$('#delete-form').submit();
+				}
+			});
 	</script>
 
 @stop
