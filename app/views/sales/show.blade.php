@@ -82,21 +82,24 @@
 <!-- 	<div class="col-md-4 col-md-offset-1">
 		<div class="clearfix">
 
-			@if (Auth::check())
+			@if (Auth::id() == $sale->user_id)
+				{{ Form::model($sale, array('action' =>array('SalesController@update', $sale->id), 'method'=> 'put', 'files' => true)) }}	
+
 				<div class="pull-left">
-					{{ Form::model($sale, array('action' =>array('SalesController@update', $sale->id), 'method'=> 'put', 'files' => true)) }}		
 					{{ Form::file('images[]', array('multiple'=>true)) }}
 				</div>
 
 				<div id="save-img" class="pull-right">
 					{{ Form::submit('Save Changes', array('class' => 'btn btn-primary')) }}
 				</div>
+
+				{{ Form::close() }}
+
 			@endif
 
 		</div>
-<<<<<<< HEAD
-	</div>
- -->
+	</div> -->
+
 </div>
 
 @stop {{-- This is to view one particular post by request. --}}
