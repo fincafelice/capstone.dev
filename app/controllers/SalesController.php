@@ -38,7 +38,7 @@ class SalesController extends \BaseController
 
 		else 
 		{
-			$sales = Sale::orderBy('created_at', 'desc')->paginate(10);
+			$sales = Sale::orderBy('created_at', 'desc')->paginate(5);
 		}
 
 		// return view with sales having a specific tag attached.

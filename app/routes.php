@@ -21,6 +21,11 @@ Route::get('hello', function()
 	return View::make('hello');
 });
 
+Route::delete('images/{id}', function ($id) {
+	$image = Image::find($id);
+	$image->delete();
+	return Redirect::back();
+});
 
 Route::resource('sales', 'SalesController');
 
