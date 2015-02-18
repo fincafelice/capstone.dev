@@ -77,7 +77,7 @@
                         <li><a href="{{{ action('HomeController@showLogin') }}}">Login</a></li>
                         <li><a href="{{{ action('UsersController@create') }}}">Create New User</a></li>
                     @else
-                        <li><a href="{{{ action('UsersController@show') }}}">Edit Your Sales</a></li>
+                        <li><a href="{{{ action('UsersController@show', Auth::user()->id) }}}">Edit Your Sales</a></li>
                         <li><a href="{{{ action('HomeController@doLogout') }}}">Logout</a></li>
                     @endif
                 </ul>
