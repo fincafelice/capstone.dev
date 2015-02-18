@@ -23,6 +23,8 @@ class CreateSalesTable extends Migration {
 			$table->string('state', 2);
 			$table->string('zip', 5);
 			$table->string('country', 255);
+			$table->decimal('latitude', 10, 7);
+			$table->decimal('longitude', 10, 7);
 			$table->string('address', 500);
 			$table->text('description');
 
