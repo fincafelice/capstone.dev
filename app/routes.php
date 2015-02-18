@@ -52,6 +52,15 @@ Route::get('/map', 'HomeController@showMap');
 
 Route::get('/map-test-form', 'HomeController@mapForm');
 
+Route::get('testJSON', function() {
+
+	$sales = Sale::all();
+
+	return Response::json($sales);
+
+});
+
+
 // This Route Is For Template Testing
 
 Route::get('/template-test', 'HomeController@testTemplate');

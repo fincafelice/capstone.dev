@@ -431,6 +431,8 @@
                     </div>
                 </div></div><!--.top wrapper end -->
 
+
+
             <div class="loading-container">
                 <div class="spinner">
                     <div class="double-bounce1"></div>
@@ -441,10 +443,18 @@
 
             <div class="content-wrapper hide-until-loading">
 
+                <!-- Spinning Icons Container-->
                 <div class="section-content top-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-3 col-sm-3"> 
+                            <div class="col-md-10 text-center">
+                                <h2>About My Garage Sale</h2>
+                                <h4>Here's what you need to know to get started! This application can help you jumpstart a successful garage sale avid pickers find their next big ticket find.
+
+                        <div class="row">
+
+                            <!-- (one) -->
+                            <div class="col-md-4 col-sm-4"> 
                                 <div class="content-box content-style4 medium animated"
                                      data-animtype="fadeIn"
                                      data-animrepeat="0"
@@ -453,11 +463,10 @@
                                      >
                                     <h4 class="h4-body-title">
                                         <i class="icon-settings-streamline"></i>
-                                        Fully Customizable
+                                        Browse
                                     </h4>
                                     <div class="content-box-text">
-                                        Cras sem erat, aliquet in egestas cursus, ullamcorper vitae
-                                        ligula. Nunc commodo lacinia eros ac condimentum
+                                        
 
                                         <div>
                                             <a href="#" class=" btn btn-sm">
@@ -469,32 +478,9 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-3"> 
-                                <div class="content-box content-style4 medium animated"
-                                     data-animtype="fadeIn"
-                                     data-animrepeat="0"
-                                     data-animspeed="1s"
-                                     data-animdelay="0.2s"
-                                     >
-                                    <h4 class="h4-body-title">
-                                        <i class="icon-camera-streamline-video"></i>
-                                        Animation Ready
-                                    </h4>
-                                    <div class="content-box-text">
-                                        Cras sem erat, aliquet in egestas cursus, ullamcorper vitae
-                                        ligula. Nunc commodo lacinia eros ac condimentum
-
-                                        <div>
-                                            <a href="#" class=" btn btn-sm">
-                                                <span>read more</span>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-3"> 
+                            
+                            <!-- (two) -->
+                            <div class="col-md-4 col-sm-4"> 
                                 <div class="content-box content-style4 medium animated"
                                      data-animtype="fadeIn"
                                      data-animrepeat="0"
@@ -519,6 +505,8 @@
 
                                 </div>
                             </div>
+
+                            <!-- (three) -->
                             <div class="col-md-3 col-sm-3"> 
                                 <div class="content-box content-style4 medium animated"
                                      data-animtype="fadeIn"
@@ -548,7 +536,9 @@
                         </div>
                     </div>
 
-                </div>
+                </div> <!-- /Spinning Icons -->
+
+
                 <div class="body-wrapper">
 
                     <div class="container">

@@ -139,6 +139,8 @@ class SalesController extends \BaseController
 
 	protected function saveSale($sale)
 	{
+		// dd(Input::all());
+
 		$validator = Validator::make(Input::all(), Sale::$rules);
 
 		if ($validator->fails()) {
@@ -156,6 +158,8 @@ class SalesController extends \BaseController
 			$sale->state  		  = Input::get('state');
 			$sale->zip  		  = Input::get('zip');
 			$sale->country        = Input::get('country');
+			$sale->latitude       = Input::get('latitude');
+			$sale->longitude      = Input::get('longitude');
 			$sale->address  	  = Input::get('address');
 			$sale->description    = Input::get('description');
 			$sale->user_id   	  = Auth::id();
@@ -207,6 +211,7 @@ class SalesController extends \BaseController
 				}
 			}
 		}
+
 		
 		return Redirect::action('SalesController@show', $sale->id);
   	}
