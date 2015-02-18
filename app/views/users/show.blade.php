@@ -53,6 +53,7 @@
 						<td><a class="btn btn-danger" href ="{{{ action('SalesController@destroy', $sale->id) }}}">Remove</a>
 					</tr>
 				@endforeach
+
 			</table>
 		</div>
 	</div>

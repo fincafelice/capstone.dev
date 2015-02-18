@@ -172,7 +172,7 @@
 	    	</div>
 
 			{{ Form::model($sale, array('action' =>array('SalesController@update', $sale->id), 'method'=> 'put', 'files' => true)) }}	
-			{{ Form::file('images[]', array('multiple'=>true)) }}
+			Upload Images{{ Form::file('images[]', array('multiple'=>true)) }}
 
 			<div class="form-group {{{ $errors->has('sale_name') ? 'has-error' : '' }}}">
 		        {{ Form::label('sale_name', 'Sale Name') }}

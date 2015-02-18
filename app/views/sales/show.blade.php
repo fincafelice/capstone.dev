@@ -47,10 +47,7 @@
 		@foreach($sale->images as $image)
 			<img class="img-responsive" src="{{ $image->img_path }}">
 			@if (Auth::id() == $sale->user_id)
-				<label>
-		    		<input type="checkbox" name="delete_images[]" value="yes">
-		    	</label>
-		    	<button type="submit">Delete Image</button>
+		    	<button class="img-delete-btn" data-image-id="{{ $image->id }}">Delete Image</button>
 			@endif
 		@endforeach
 	</div>
@@ -65,7 +62,7 @@
 				{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
 
 				<div class="pull-left">		
-					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id)}}}">Upload Images</a>
+					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id)}}}">Edit Sale Event</a>
 				</div>
 
 				<div class="pull-right">
@@ -83,6 +80,9 @@
 	</div>
 </div>
 
+{{ Form::open(['method' => 'DELETE', 'id' => 'delete-form'])}}
+{{ Form::close() }}
+
 @stop {{-- This is to view one particular post by request. --}}
 
 @section('bottom-script')
@@ -90,5 +90,15 @@
 	<script src="/js/jquery.min.js"></script> 
 	<script src="/js/bootstrap.js"></script> 
 	<script src="/js/script.js"></script>
+	<script>
+		$('.img-delete-btn').click(function () {
+			var imageId = $(this).data('image-id');
+			$('#delete-form').attr('action', '/images/' + imageId);
+
+			if (confirm('Are you sure you want to delete this image?')) {
+				$('#delete-form').submit();
+			}
+		});
+	</script>
 
 @stop
