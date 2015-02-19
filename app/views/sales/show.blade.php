@@ -1,8 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.template')
 
 @section('topscript')
-	<link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="/css/style.css" rel="stylesheet" type="text/css">
+<!-- 	<link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="/css/style.css" rel="stylesheet" type="text/css"> -->
 @stop
 
 
@@ -16,6 +16,7 @@
 
 
 @section('content')
+<div class="container">
 	<div class="row">
 
 		<div class="col-md-6">
@@ -49,6 +50,8 @@
 			    	<button class="img-delete-btn" data-image-id="{{ $image->id }}">Delete Image</button>
 				@endif
 			@endforeach
+		</div>
+	</div>
 
 	<div class="row">
 		<div class="col-md-6">
@@ -60,27 +63,33 @@
 						<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) }}}">Edit Sale</a>
 					</div>
 
+					<div class="pull-right">
+						<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
+					</div>
+				
 					{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
 
-
-					<div class="pull-right">
+					<div class="text-center">
 						{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger')) }}
 					</div>		
 				
 		 			{{ Form::close() }}
 				@endif
 				
-				<div class="text-center">
-					<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
-				</div>
 			</div>
 	    </div>
 	</div>
 
 	{{ Form::open(['method' => 'DELETE', 'id' => 'delete-form']) }}
 	{{ Form::close() }}
+</div>
 
 @stop {{-- This is to view one particular post by request. --}}
+
+
+
+
+
 
 
 @section('bottomscript')

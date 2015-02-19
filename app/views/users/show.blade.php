@@ -1,10 +1,11 @@
-@extends('layouts.master')
+@extends('layouts.template')
 
 @section('title')
 	My Garage Sale - User Dashboard
 @stop
 
 @section('content')
+<div class="container">
 	<div class="row">
 		<div class="col-md-4">
 			<h2>{{{ $user->username }}}</h2>
@@ -33,24 +34,20 @@
 
 
 	<div class="row">
- 		<div class="col-md-10">
+ 		<div class="col-md-12">
  			<h3>My Sales</h3>
  			<table class="table">
-<!--  				<thead>
- 				<tr>
- 					<th>Name</th>
- 					<th>Date & Time</th>
- 					<th>Location</th>
- 				</tr>
- 				</thead>  -->
 
 				@foreach ($sales as $sale) 
 					<tr>
 						<td><a href ="{{{ action('SalesController@show', $sale->id) }}}">{{{ $sale->sale_name }}}</a></td>
 						<td>{{{ date("F, d Y") }}} at {{{ date("g:ha", strtotime($sale->sale_date_time)) }}}</td>
 						<td>{{{ $sale->street_num }}} {{{ $sale->street }}} {{{ $sale->city }}}, {{{ $sale->state }}} {{{ $sale->zip }}}</td>
-						<td><a class="btn btn-primary" href ="{{{ action('SalesController@edit', $sale->id) }}}">Update</a></td>
-						<td><a class="btn btn-danger" href ="{{{ action('SalesController@destroy', $sale->id) }}}">Remove</a>
+						
+
+						<!-- <td><a class="btn btn-primary" href ="{{{ action('SalesController@edit', $sale->id) }}}">Update</a></td> -->
+
+						<td><a class="btn btn-danger" href ="{{{ action('SalesController@destroy', $sale->id) }}}">Manage</a>
 					</tr>
 				@endforeach
 
@@ -76,4 +73,5 @@
 	
 		</div>
 	</div>
+</div>
 @stop

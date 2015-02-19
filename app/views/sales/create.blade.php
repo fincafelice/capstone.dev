@@ -1,9 +1,9 @@
-@extends('layouts.master')
+@extends('layouts.template')
 
 
 @section('css')
     <style>
-	
+  
     #map-canvas {
         height: 450px;
         width: 100%;
@@ -29,93 +29,101 @@
 
 @section('topscript')
 
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+ 
+
     <script>
-// Google Maps Geolocation & Autocomplete
 
-var placeSearch, autocomplete;
-var componentForm = {
-  street_number: 'short_name',
-  route: 'long_name',
-  locality: 'long_name',
-  administrative_area_level_1: 'short_name',
-  country: 'long_name',
-  postal_code: 'short_name'
-};
+    // Google Maps Geolocation & Autocomplete
 
-function initialize() {
-  // Create the autocomplete object, restricting the search
-  // to geographical location types.
-  autocomplete = new google.maps.places.Autocomplete(
-      /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
-      { types: ['geocode'] });
-  // When the user selects an address from the dropdown,
-  // populate the address fields in the form.
-  google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    fillInAddress();
-  });
+    var placeSearch, autocomplete,  geocoder;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name',
+        latitude: 'latitude',
+        longitude: 'longitude'
+    };
 
-  var mapOptions = {
+    function initialize() {
+        // Create the autocomplete object, restricting the search
+        // to geographical location types.
+        autocomplete = new google.maps.places.Autocomplete(
+              /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
+              { types: ['geocode'] });
+        // When the user selects an address from the dropdown,
+        // populate the address fields in the form.
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            fillInAddress();
+        });
 
-        zoom: 10,
-        disableDefaultUI: false,
-        scrollwheel: true,
-        draggable: true,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        maxZoom: 12,
-        minZoom: 9,
-        zoomControlOptions: {
-          position: google.maps.ControlPosition.TOP_LEFT,
-          style: google.maps.ZoomControlStyle.DEFAULT
-        },
-        panControlOptions: {
-          position: google.maps.ControlPosition.TOP_LEFT
-        }
+        var mapOptions = {
 
-      };
-      map = new google.maps.Map(document.getElementById('map-canvas'),
-          mapOptions);
+            zoom: 10,
+            disableDefaultUI: false,
+            scrollwheel: true,
+            draggable: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            maxZoom: 12,
+            minZoom: 9,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.TOP_LEFT,
+                style: google.maps.ZoomControlStyle.DEFAULT
+            },
+            panControlOptions: {
+                position: google.maps.ControlPosition.TOP_LEFT
+            }
 
-      // Try HTML5 geolocation
-      if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var pos = new google.maps.LatLng(position.coords.latitude,
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+
+        // Try HTML5 geolocation
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = new google.maps.LatLng(position.coords.latitude,
                                            position.coords.longitude);
 
           var infowindow = new google.maps.InfoWindow({
-            map: map,
-            position: pos,
-            content: 'Location found using HTML5.'
-          });
+                map: map,
+                position: pos,
+                content: 'Location found using HTML5.'
+            });
 
-          map.setCenter(pos);
-        }, function() {
-          handleNoGeolocation(true);
-        });
-      } else {
-        // Browser doesn't support Geolocation
-        handleNoGeolocation(false);
-      }
-}
-// [START region_geolocation]
-// Bias the autocomplete object to the user's geographical location,
-// as supplied by the browser's 'navigator.geolocation' object.
-function geolocate() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var geolocation = new google.maps.LatLng(
-          position.coords.latitude, position.coords.longitude);
-      var circle = new google.maps.Circle({
-        center: geolocation,
-        radius: position.coords.accuracy
-      });
-      autocomplete.setBounds(circle.getBounds());
-    });
-  }
-}
-// [END region_geolocation]
+            map.setCenter(pos);
+            }, function() {
+                handleNoGeolocation(true);
+            });
 
-function fillInAddress() {
+        } else {
+            // Browser doesn't support Geolocation
+            handleNoGeolocation(false);
+        }
+    }
+    // [START region_geolocation]
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = new google.maps.LatLng(
+                position.coords.latitude, position.coords.longitude);
+            var circle = new google.maps.Circle({
+                center: geolocation,
+                radius: position.coords.accuracy
+            });
+            autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+    // [END region_geolocation]
+
+    function fillInAddress() {
         // Get the place details from the autocomplete object.
         var place = autocomplete.getPlace();
         for (var component in componentForm) {
@@ -126,35 +134,38 @@ function fillInAddress() {
         // and fill the corresponding field on the form.
         for (var i = 0; i < place.address_components.length; i++) {
             var addressType = place.address_components[i].types[0];
-            
+                
             if (componentForm[addressType]) {
                 var val = place.address_components[i][componentForm[addressType]];
                 document.getElementById(addressType).value = val;
             }
         } // end loop
+
+        document.getElementById('latitude').value = place.geometry.location.lat();
+        document.getElementById('longitude').value = place.geometry.location.lng();
         // Define address variable by pulling completed address value from autocompleted object
         var address = $('#autocomplete').val();
-        
+            
         // Geocode that address
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({ 'address': address }, function(result, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-                
+                    
                 // Define lat/lng object to place corresponding marker.
-                var latLngObj = result[0]["geometry"]["location"];
-            } // endif
-            
-            // Create new marker based on lat/lng
-            var marker = new google.maps.Marker({
-                position: latLngObj,
-                map: map,
-                draggable: false,
-                animation: google.maps.Animation.DROP,
-            });  // End Marker
-            // zoom in on plotted marker
-        }); // end function
-    } // end fillIn
-// [END region_fillform]
+                    var latLngObj = result[0]["geometry"]["location"];
+                } // endif
+                
+                // Create new marker based on lat/lng
+                var marker = new google.maps.Marker({
+                    position: latLngObj,
+                    map: map,
+                    draggable: false,
+                    animation: google.maps.Animation.DROP,
+                });  // End Marker
+                // zoom in on plotted marker
+            }); // end function
+        } // end fillIn
+    // [END region_fillform]
 
 
     </script>
@@ -165,14 +176,14 @@ function fillInAddress() {
 
 <div class="container">
 
-	<div class="col-md-5"> <!-- begin left container -->
-    	<div class="page-header">
-       		<h1>Create New Sale Event</h1>
-    	</div>
+    <div class="col-md-5"> <!-- begin left container -->
+        <div class="page-header">
+            <h1>Create New Sale Event</h1>
+        </div>
         
-	   <!-- New Sale Form -->
+        <!-- New Sale Form -->
 
-    	{{ Form::open(array('action' => 'SalesController@store', 'method' => 'sale')) }}
+        {{ Form::open(array('action' => 'SalesController@store', 'method' => 'sale')) }}
 
         <div class="form-group {{{ $errors->has('sale_name') ? 'has-error' : '' }}}">
             {{ Form::label('sale_name', 'Sale Name') }}
@@ -195,14 +206,21 @@ function fillInAddress() {
         {{ Form::hidden('zip', null, array('id' => 'postal_code')) }}
         {{ Form::hidden('country', null, array('id' => 'country')) }}
 
-        <!-- /End Hidden Forms -->
+        {{ Form::hidden('latitude', null, array('id' => 'latitude')) }}
+        {{ Form::hidden('longitude', null, array('id' => 'longitude')) }}
+
+
+        <!-- /Hidden -->
+
+        <!-- Autocomplete -->
 
         <div class="form-group">
             {{ Form::label('address', 'Address') }}
             {{ Form::text('address', null, array('id' => 'autocomplete', 'class' => 'form-control', 'onfocus' => 'geolocate()')) }}
         </div>
 
-
+        <!-- /Autocomplete -->
+        
         <div class="form-group {{{ $errors->has('description') ? 'has-error' : '' }}}">
             {{ Form::label('description', 'Sale Description') }}
             {{ Form::textarea('description', Input::old('description'), array('class' => 'form-control')) }}
@@ -214,15 +232,20 @@ function fillInAddress() {
             {{ Form::textarea('tags', Input::old('tags'), array('class' => 'form-control')) }}
             {{ $errors->first('tags', '<p class="help-block">:message</p>') }}
         </div>
+          
+        <div>
+            {{ Form::reset('Reset', array('class' => 'btn btn-default pull-left')) }}
+            {{ Form::submit('Create Sale', array('class' => 'btn btn-default pull-right')) }}
+        </div>
 
-		{{ Form::submit('Create Sale', array('class' => 'btn btn_primary')) }}
-		{{ Form::close()  }}
 
-	</div> <!-- End Container Left -->
+        {{ Form::close() }}
+
+  </div> <!-- End Container Left -->
 
 
-	<!-- begin right container -->
-	<div id="map-container" class="col-md-6"> 
+  <!-- begin right container -->
+  <div id="map-container" class="col-md-6"> 
         <div class="page-header">
             <h1>Your Location</h1>
         </div>
@@ -245,24 +268,26 @@ function fillInAddress() {
 @stop
 
 
-@section('bottom-script')
+@section('bottomscript')
 
 <script type="text/javascript">
     $(document).ready(function () {
         initialize();
 
         // use jquery to select all buttons - prevent the default action on that button.
+
         // Find all buttons
         $tags = $('.tag-btn').click( function(event) {
             event.preventDefault();
           
-          var insertText = $(this).text();
-          $('#tags').append(insertText + ", ");
+            var insertText = $(this).text();
+            $('#tags').append(insertText + ", ");
             console.log(this.text);
 
             $(".tag-btn").click(function () {
             });
         });
+    });
 </script>
 
 @stop
