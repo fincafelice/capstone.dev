@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.template')
 
 @section('title')
 Tips
@@ -20,7 +20,7 @@ dt {
 </style>
 @stop
 
-@section('top-script')
+@section('topscript')
 <script src="/js/jquery.min.js"></script>
 <script>
 
@@ -40,7 +40,7 @@ dt {
 
 @section('content')
 
-
+<div class="container">
     <h1 align = center >10 Tips for a Successful Garage Sale</h1>
     <div class="centered important highlighted">
     </div>
@@ -80,6 +80,7 @@ dt {
         </d1>
 
     </div>
+</div>
 
  @stop
 </body>
