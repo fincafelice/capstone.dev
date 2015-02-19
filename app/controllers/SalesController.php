@@ -98,9 +98,10 @@ class SalesController extends \BaseController
 	 */
 	public function edit($id)
 	{
+		$tags = Tag::all();
 		$sale = Sale::findOrFail($id);
 
-		return View::make('sales.edit')->with('sale', $sale);
+		return View::make('sales.edit')->with(compact('sale'))->with(compact('tags'));
 	}
 
 	/**
@@ -130,9 +131,8 @@ class SalesController extends \BaseController
 			Log::warning('User requested a sale event that does not exist.');
 			App::abort(404);
 		}
-
+		
 		$sale->delete();
-
 		Session::flash('successMessage', 'Sale deleted successfully!');
 
 		return Redirect::action('UsersController@show', Auth::id());
@@ -140,7 +140,7 @@ class SalesController extends \BaseController
 
 
 	protected function saveSale($sale)
-	{
+
 		// dd(Input::all());
 
 		$validator = Validator::make(Input::all(), Sale::$rules);

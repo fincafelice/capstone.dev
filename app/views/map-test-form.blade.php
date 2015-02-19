@@ -258,7 +258,6 @@
                 <a href="" id="tags" class="btn btn-default tag-btn" data-id="{{{$tag->id}}}">{{{ $tag->name }}}</a> 
                 
             @endforeach
-
         </div>
 
     </div> <!-- end right container -->

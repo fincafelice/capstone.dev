@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -88,11 +87,14 @@
 
                                 <!-- Search Box -->
                                 <div class="searchbox">
-                                    <form action="/sales" method="get">
+
+                                    <form method="get" action="/sales">
+
                                         <input type="text" class="searchbox-inputtext" id="searchbox-inputtext" name="search" placeholder="Search.."/>
                                         <label class="searchbox-icon" for="searchbox-inputtext"></label>
                                         <input type="submit" class="searchbox-submit" value="Search"/>
                                     </form>
+
                                 </div>
 
                                 <!-- //Search Box// -->
@@ -159,7 +161,7 @@
                                         <li>
                                             <a href="/tips">
                                                 <span class="label-nav">
-                                                    About
+                                                    Tips
                                                 </span>
                                             </a>
                                         </li>
@@ -232,10 +234,11 @@
                                 <ul class="mobile-nav">
                                     <li class="responsive-searchbox">
                                         <!-- Responsive Nave -->
-                                        <form action="#" method="get">
-                                            <input type="text" class="searchbox-inputtext" id="searchbox-inputtext-mobile" name="s" />
-                                            <button class="icon-search"></button>
-                                        </form>
+                                          <form method="get" action="/sales">
+                                        <input type="text" class="searchbox-inputtext" id="searchbox-inputtext" name="search" placeholder="Search.."/>
+                                        <label class="searchbox-icon" for="searchbox-inputtext"></label>
+                                        <input type="submit" class="searchbox-submit" value="Search"/>
+                                    </form>
                                         <!-- //Responsive Nave// -->
                                     </li>
                                 </ul>

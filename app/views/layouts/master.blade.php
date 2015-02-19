@@ -23,7 +23,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-    @yield('top-script')
+    @yield('topscript')
 
 
     @yield('css')
@@ -78,7 +78,9 @@
                         <li><a href="{{{ action('HomeController@showLogin') }}}">Login</a></li>
                         <li><a href="{{{ action('UsersController@create') }}}">Create New User</a></li>
                     @else
+
                         <li><a href="{{{ action('UsersController@show', Auth::user()->id) }}}">Edit Your Sales</a></li>
+
                         <li><a href="{{{ action('HomeController@doLogout') }}}">Logout</a></li>
                     @endif
                 </ul>
