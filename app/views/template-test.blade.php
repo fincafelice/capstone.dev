@@ -449,7 +449,7 @@
                         <div class="row">
                             <div class="col-md-10 text-center">
                                 <h2>About My Garage Sale</h2>
-                                <h4>Here's what you need to know to get started! This application can help you jumpstart a successful garage sale avid pickers find their next big ticket find.
+                                <h4>Here's what you need to know to get started! This application can help you jumpstart a successful garage sale, while avid pickers find their next big ticket find.
 
                         <div class="row">
 
@@ -538,7 +538,7 @@
 
                 </div> <!-- /Spinning Icons -->
 
-
+<!-- Image Views for show.blade-->
                 <div class="body-wrapper">
 
                     <div class="container">
@@ -563,7 +563,7 @@
                             <div class="col-md-12 col-sm-12">
                                 <div class="portfolio-items">
 
-                                    <!-- Portfolio Item -->
+                                    <!-- Portfolio Item1 -->
                                     <div class="thumb-label-item animated seo"
                                          data-animtype="fadeInUp"
                                          data-animrepeat="0"
@@ -590,7 +590,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item2// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated seo"
                                          data-animtype="fadeInUp"
@@ -618,7 +618,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item3// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated seo"
                                          data-animtype="fadeInUp"
@@ -646,7 +646,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item4// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated branding"
                                          data-animtype="fadeInUp"
@@ -674,7 +674,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item5// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated branding"
                                          data-animtype="fadeInUp"
@@ -702,7 +702,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item6// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated videos"
                                          data-animtype="fadeInUp"
@@ -730,7 +730,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item7// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated seo"
                                          data-animtype="fadeInUp"
@@ -758,7 +758,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item8// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated web-design"
                                          data-animtype="fadeInUp"
