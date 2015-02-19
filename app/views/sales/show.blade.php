@@ -56,27 +56,18 @@
 
 				@if (Auth::id() == $sale->user_id)
 
-<<<<<<< HEAD
+					{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
+
 					<div class="pull-left">		
 						<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) }}}">Edit Sale</a>
 					</div>
 
-					{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
-
-
+					
 					<div class="pull-right">
-						{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger')) }}
+					{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
+					{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger sale-delete-btn')) }}
 					</div>		
-=======
-						<div class="pull-left">		
-							<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id)}}}">Edit Sale Event</a>
-						</div>
 
-						<div class="pull-right">
-						{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
-						{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger sale-delete-btn')) }}
-						</div>		
->>>>>>> 50818f679526b5bb471f118b49892d48f3236689
 				
 		 			{{ Form::close() }}
 				@endif
