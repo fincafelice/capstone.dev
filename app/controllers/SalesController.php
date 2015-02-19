@@ -128,9 +128,8 @@ class SalesController extends \BaseController
 			Log::warning('User requested a sale event that does not exist.');
 			App::abort(404);
 		}
-
+		
 		$sale->delete();
-
 		Session::flash('successMessage', 'Sale deleted successfully!');
 
 		return Redirect::action('UsersController@show', Auth::id());
