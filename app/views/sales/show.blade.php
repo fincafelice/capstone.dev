@@ -39,6 +39,7 @@
 			<hr>
 			<p>{{ $sale->description }}</p>
 
+
 		</div>
 
 		<div class="col-md-4 col-md-offset-1">
@@ -54,6 +55,7 @@
 		<div class="col-md-6">
 			<div class="clearfix">
 
+
 				@if (Auth::id() == $sale->user_id)
 
 					{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
@@ -64,6 +66,7 @@
 
 					
 					<div class="pull-right">
+
 					{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
 					{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger sale-delete-btn')) }}
 					</div>		
