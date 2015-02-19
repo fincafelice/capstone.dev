@@ -29,9 +29,11 @@ class SalesController extends \BaseController
 		{
 			$search = Input::get('search');
 
+			// $query->where('tags', 'like', '%' . $search . '%');
+
 			$sales = Sale::whereHas('tags', function($q) use ($search) {
 
-				$q->where('name', '=', $search);
+				$q->where('name', 'like', '%' . $search . '%');
 
 			})->orderBy('created_at', 'desc')->paginate(10);
 		} 
