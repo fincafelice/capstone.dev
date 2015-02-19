@@ -150,4 +150,8 @@
     @yield('bottom-script')
 
 </body>
+
+<footer>
+        <p>&copy; My Garage Sale 2015</p>
+      </footer>
 </html>
