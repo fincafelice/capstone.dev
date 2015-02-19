@@ -21,6 +21,11 @@ Route::get('hello', function()
 	return View::make('hello');
 });
 
+Route::delete('images/{id}', function ($id) {
+	$image = Image::find($id);
+	$image->delete();
+	return Redirect::back();
+});
 
 Route::resource('sales', 'SalesController');
 
@@ -46,6 +51,21 @@ Route::get('checkID', function () {
 Route::get('/map', 'HomeController@showMap');
 
 Route::get('/map-test-form', 'HomeController@mapForm');
+
+Route::get('testJSON', function() {
+
+	$sales = Sale::all();
+
+	return Response::json($sales);
+
+});
+
+
+// This Route Is For Template Testing
+
+Route::get('/template-test', 'HomeController@testTemplate');
+
+Route::get('/template-test.html', 'HomeController@htmlTemplate');
 
 
 Route::get('tips', 'HomeController@showTips');

@@ -50,7 +50,19 @@ class HomeController extends BaseController {
 		return View::make('map-test-form')->with('tags', $tags);
 	}
 
-	// /Testing
+
+	// Template Testing
+
+	public function testTemplate() {
+
+		return View::make('template-test');
+	}
+
+
+	public function htmlTemplate() {
+
+		return View::make('template-test.html');
+	}
 
 
 

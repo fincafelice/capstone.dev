@@ -40,7 +40,7 @@ class SalesController extends \BaseController
 
 		else 
 		{
-			$sales = Sale::orderBy('created_at', 'desc')->paginate(10);
+			$sales = Sale::orderBy('created_at', 'desc')->paginate(5);
 		}
 
 		// return view with sales having a specific tag attached.
@@ -130,9 +130,8 @@ class SalesController extends \BaseController
 			Log::warning('User requested a sale event that does not exist.');
 			App::abort(404);
 		}
-
+		
 		$sale->delete();
-
 		Session::flash('successMessage', 'Sale deleted successfully!');
 
 		return Redirect::action('UsersController@show', Auth::id());
@@ -141,6 +140,8 @@ class SalesController extends \BaseController
 
 	protected function saveSale($sale)
 	{
+		// dd(Input::all());
+
 		$validator = Validator::make(Input::all(), Sale::$rules);
 
 		if ($validator->fails()) {
@@ -158,6 +159,8 @@ class SalesController extends \BaseController
 			$sale->state  		  = Input::get('state');
 			$sale->zip  		  = Input::get('zip');
 			$sale->country        = Input::get('country');
+			$sale->latitude       = Input::get('latitude');
+			$sale->longitude      = Input::get('longitude');
 			$sale->address  	  = Input::get('address');
 			$sale->description    = Input::get('description');
 			$sale->user_id   	  = Auth::id();
@@ -209,6 +212,7 @@ class SalesController extends \BaseController
 				}
 			}
 		}
+
 		
 		return Redirect::action('SalesController@show', $sale->id);
   	}
