@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('top-script')
+@section('topscript')
 	<link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="/css/style.css" rel="stylesheet" type="text/css">
 @stop
@@ -45,7 +45,33 @@
 
 		<div class="col-md-4 col-md-offset-1">
 			@foreach($sale->images as $image)
-				<img class="img-responsive" src="{{ $image->img_path }}">
+
+				<div class="thumb-label-item animated seo"
+	                  data-animtype="fadeInUp"
+	                  data-animrepeat="0"
+	                  data-speed="1s"
+	                  data-delay="0.6s">
+	                <div class="img-overlay thumb-label-item-img">
+
+	                	<!-- Images Go Here -->
+	          			<img class="img-responsive" src="{{ $image->img_path }}">
+	          			<!-- /Images -->
+
+	                    <div class="item-img-overlay">
+	                        <a class="portfolio-zoom fa fa-plus"
+	                           href="/kanzi/images/placeholders/portfolio1.jpg"
+	                           data-rel="prettyPhoto[portfolio]" title="Title goes here">
+	                       </a>
+
+	                        <div class="item_img_overlay_content">
+	                            <h3 class="thumb-label-item-title">
+	                                <a href=""> Aenean llus mtus </a>
+	                            </h3>
+	                        </div>
+	                    </div>
+	                </div>
+				</div>
+		
 				@if (Auth::id() == $sale->user_id)
 			    	<button class="img-delete-btn" data-image-id="{{ $image->id }}">Delete Image</button>
 				@endif
@@ -86,7 +112,7 @@
 
 @stop {{-- This is to view one particular post by request. --}}
 
-@section('bottom-script')
+@section('bottomscript')
 
 	<script src="/js/jquery.min.js"></script> 
 	<script src="/js/bootstrap.js"></script> 
