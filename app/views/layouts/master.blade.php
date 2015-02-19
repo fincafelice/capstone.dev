@@ -15,7 +15,7 @@
   
 </style>
 
-@yield('top-script')
+@yield('topscript')
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -148,7 +148,7 @@
     <!-- bootstrap.min.js -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    @yield('bottom-script')
+    @yield('bottomscript')
 
 </body>
 </html>

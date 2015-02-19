@@ -88,12 +88,13 @@
 
                                 <!-- Search Box -->
                                 <div class="searchbox">
-                                    <form action="#" method="get">
-                                        <input type="text" class="searchbox-inputtext" id="searchbox-inputtext" name="s" placeholder="Search.."/>
+                                    <form action="/sales" method="get">
+                                        <input type="text" class="searchbox-inputtext" id="searchbox-inputtext" name="search" placeholder="Search.."/>
                                         <label class="searchbox-icon" for="searchbox-inputtext"></label>
                                         <input type="submit" class="searchbox-submit" value="Search"/>
                                     </form>
                                 </div>
+
                                 <!-- //Search Box// -->
                                 <div class="social-icons">
                                     <ul>
@@ -149,14 +150,14 @@
                                 <nav>
                                     <ul class="navigation">
                                         <li>
-                                            <a href="/template-test">
+                                            <a href="/">
                                                 <span class="label-nav">
                                                     Home
                                                 </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/about">
+                                            <a href="/tips">
                                                 <span class="label-nav">
                                                     About
                                                 </span>
@@ -179,6 +180,10 @@
                                             </a>
                                         </li>
 
+                                         <li>
+                                            </a>
+                                        </li>
+
                                         @if (Auth::guest())
                                         <li>
                                             <a href="{{{ action('HomeController@showLogin') }}}">
@@ -196,6 +201,15 @@
                                         </li>
 
                                         @else 
+                                        <li>
+                                            <a href="{{{ action('UsersController@show', Auth::id()) }}}">
+                                                <span class="label-nav">
+                                                    Dashboard
+                                                </span>
+                                                <!-- <span class="label-nav-sub" data-hover="Elements">
+                                                    Elements
+                                                </span> -->
+                                        </li>
 
                                         <li>
                                             <a href="{{{ action('HomeController@doLogout') }}}">
@@ -255,7 +269,8 @@
                                 <div class="col-md-3 col-sm-3 footer-col">
                                     <div class="footer-content">
                                         <div class="footer-content-logo">
-                                            <img src="/kanzi/images/main_logo.png" alt=""/>
+                                           <!--  <img src="/kanzi/images/main_logo.png" alt=""/> -->
+                                           <h3>My Garage Sale</h3>
                                         </div>
                                         <div class="footer-content-text">
                                             <p>Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget
@@ -344,7 +359,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 center-text">
-                                    <div class="copyright-text">&copy; 2013 Kanzi Theme | Theme Developed By <a href="http://www.activeaxon.com" target="_blank">ActiveAxon</a></div>
+                                    <div class="copyright-text">&copy; 2015 My Garage Sale | <a href="http://www.activeaxon.com" target="_blank">Team Garage</a></div>
                                 </div>
 
                             </div>
