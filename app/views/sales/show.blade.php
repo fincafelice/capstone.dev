@@ -38,10 +38,7 @@
 			<!-- add seller username -->
 			<hr>
 			<p>{{ $sale->description }}</p>
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 
 		</div>
 

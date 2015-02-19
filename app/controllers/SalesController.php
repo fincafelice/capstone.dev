@@ -98,9 +98,10 @@ class SalesController extends \BaseController
 	 */
 	public function edit($id)
 	{
+		$tags = Tag::all();
 		$sale = Sale::findOrFail($id);
 
-		return View::make('sales.edit')->with('sale', $sale);
+		return View::make('sales.edit')->with(compact('sale'))->with(compact('tags'));
 	}
 
 	/**
@@ -140,7 +141,6 @@ class SalesController extends \BaseController
 
 	protected function saveSale($sale)
 	{
-		dd(Input::all());
 
 		$validator = Validator::make(Input::all(), Sale::$rules);
 
