@@ -31,11 +31,10 @@
 		</div>
 
 		<h3>Location</h3> 
-		<h4>{{{ $sale->street_num }}} {{{ $sale->street }}} {{{ $sale->city }}}, {{{ $sale->state }}} {{{ $sale->zip }}}</h4>
-		<h3>Date and Time</h3>
-		<h4>{{{ date("F, d Y") }}} at {{{ date("g:ha", strtotime($sale->sale_date_time)) }}}</h4>
-
-
+		<h4>{{{ $sale->street }}} {{{ $sale->apt }}}</h4>
+		<h4>{{{ $sale->city }}}, {{{ $sale->state }}} {{{ $sale->zip }}}</h4>
+		<h3>Time</h3>
+		<h4>{{{ $sale->sale_date_time }}}</h4>
 		<!-- add seller username -->
 		<hr>
 		<p>{{ $sale->description }}</p>
@@ -57,34 +56,34 @@
 	<div class="col-md-6">
 		<div class="clearfix">
 
-			@if (Auth::id() == $sale->user_id)
+			@if (Auth::check())
 				{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
 
 				<div class="pull-left">		
-					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id)}}}">Upload Images</a>
+					<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) }}}">Upload Images</a>
 				</div>
 
 				<div class="pull-right">
-				{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
-				{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger')) }}
+					{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger')) }}
 				</div>		
 			
 	 			{{ Form::close() }}
 			@endif
 			
-			<div class="text-center">
-				<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
-			</div>
+				<div class="text-center">
+					<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
+				</div>
 		</div>
 	</div>
 
 
-<!-- 	<div class="col-md-4 col-md-offset-1">
+	<!-- <div class="col-md-4 col-md-offset-1">
 		<div class="clearfix">
 
 			@if (Auth::check())
 				<div class="pull-left">
-					{{ Form::model($sale, array('action' =>array('SalesController@update', $sale->id), 'method'=> 'put', 'files' => true)) }}		
+					{{ Form::model($sale, array('action' =>array('SalesController@update', $sale->id), 'method'=> 'put', 'files' => true)) }}
+		
 					{{ Form::file('images[]', array('multiple'=>true)) }}
 				</div>
 
@@ -94,11 +93,9 @@
 			@endif
 
 		</div>
-<<<<<<< HEAD
-	</div>
- -->
+	</div> -->
 </div>
-
+	
 @stop {{-- This is to view one particular post by request. --}}
 
 @section('bottom-script')

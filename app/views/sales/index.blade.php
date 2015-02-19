@@ -8,6 +8,14 @@
 			<p>{{{ $sale->description }}}</p>
 			<p>{{{ $sale->created_at->setTimezone('America/Chicago')->diffForHumans() }}}</p>
 		@endforeach
+
+		@foreach ($tags as $tag)
+
+		<p>{{{ $tag->tags ->with('name') }}} </p>
+
+		@endforeach
+		
+		
 	</ul>
 
 	{{ $sales->appends(array('search' => Input::get('search')))->links() }}
