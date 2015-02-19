@@ -453,6 +453,7 @@
                 <div class="section-content top-body">
                     <div class="container">
                         <div class="row">
+
                             <div class="col-md-12 col-md-offset text-center">
                                 <h2 class="h2-section-title">My Garage Sale</h2>
                             <div class="row">
@@ -564,7 +565,7 @@
 
                 </div> <!-- /Spinning Icons -->
 
-
+<!-- Image Views for show.blade-->
                 <div class="body-wrapper">
 
                     <div class="container">
@@ -589,7 +590,7 @@
                             <div class="col-md-12 col-sm-12">
                                 <div class="portfolio-items">
 
-                                    <!-- Portfolio Item -->
+                                    <!-- Portfolio Item1 -->
                                     <div class="thumb-label-item animated seo"
                                          data-animtype="fadeInUp"
                                          data-animrepeat="0"
@@ -616,7 +617,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item2// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated seo"
                                          data-animtype="fadeInUp"
@@ -644,7 +645,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item3// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated seo"
                                          data-animtype="fadeInUp"
@@ -672,7 +673,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item4// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated branding"
                                          data-animtype="fadeInUp"
@@ -700,7 +701,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item5// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated branding"
                                          data-animtype="fadeInUp"
@@ -728,7 +729,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item6// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated videos"
                                          data-animtype="fadeInUp"
@@ -756,7 +757,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item7// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated seo"
                                          data-animtype="fadeInUp"
@@ -784,7 +785,7 @@
 
 
                                     </div>
-                                    <!-- //Portfolio Item// -->
+                                    <!-- //Portfolio Item8// -->
                                     <!-- Portfolio Item -->
                                     <div class="thumb-label-item animated web-design"
                                          data-animtype="fadeInUp"
