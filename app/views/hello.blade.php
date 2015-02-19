@@ -1,116 +1,180 @@
-@extends('layouts.master')
+@extends('layouts.template')
 
 @section('css')
 
-<style>
-
-.carousel-inner > .item > img,
-    .carousel-inner > .item > a > img {
-      width: 50%;
-      margin: auto;
-    }
-    img {
-/*      height: 75px;
-      width: 75px;
-      position: relative; top: -15px;*/
-    }
-    .caroImg {
-      image-rendering: auto;
-      max-height: 50%;
-    }
-</style>
-
-
 @section('content')
 
-<body>
+    <!-- Carousel Begins -->
+    <div class="rev-slider-full">
+        <div class="rev-slider-banner-full  rev-slider-full">
+            <ul>
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="300" >
+                    <img src="/img/yardsale.png"  alt="rev-full1" data-fullwidthcentering="on">
 
-<h1 align = center>My Garage Sale.</h1>
+                    <div class="carousel-text tp-caption slider-text-title sft str"
+                        data-x="20"
+                        data-y="150"
+                        data-speed="300"
+                        data-start="800"
+                        data-easing="easeOutCubic" data-end="6000" data-endspeed="500">Promote Yourself</div>
 
-<div class="container">
+                    <div class="carousel-text tp-caption slider-text-description sft str"  data-x="20" data-y="200" data-start="1000" data-easing="easeOutBack" data-end="4500" data-endspeed="500">
+                        Your garage sale is serious business - don't let advertising be an afterthought.<br> 
+                        It's easy to get started. Create a sale listing 
+                        today and give your event a boost!<br/>
+                    </div>
 
-  <div class="row">
-    <div class="col-sm-4">
-      <h4>Welcome to my Garage Sale!</h4>
-      <p align = center>Generic Mission Statement</p>
-    </div>
-    <div class="col-sm-4">
-      <h4>This application is here to help you plan your garage sale!</h4>
-      <p align = center></p>
-    </div>
-    <div class="col-sm-4">
-      <h4>It is also here to help you find garage sales in your location that you can go to! </h4>
-        <p align = center></p>
-    </div>
-  </div>
-</div>
+                    <div class="tp-caption slider-text-description sft str"  data-x="20" data-y="280" data-start="1500" data-easing="easeOutBack" data-end="5000" data-endspeed="500">
+                        <a href="#" class="button btn-flat">More Info</a>
+                    </div>                  
+                </li>
 
+                <li data-transition="slideleft" data-slotamount="14">
+                    <img src="/img/garale-sale2.jpg" alt="Rev Full">
 
-  <div class="container">
-    <br>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-      </ol>
+                    <div class="carousel-text tp-caption slider-text-title sft str"
+                        data-x="20"
+                        data-y="150"
+                        data-speed="300"
+                        data-start="800"
+                        data-easing="easeOutCubic" data-end="6000" data-endspeed="500">Something For Everyone</div>
 
-      <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
+                    <div class="carousel-text tp-caption slider-text-description sft str"  data-x="20" data-y="200" data-start="1000" data-easing="easeOutBack" data-end="4500" data-endspeed="500">
+
+                        Browse local sales or search by item category
+                        for your next big-ticket<br /> 
+                        find. Connect with sellers and see their
+                        hand-picked treasures before<br />
+                        you arrive
 
 
-      <div class="item active caroImg">
-        <img src="/img/appliances-1.png" alt="Appliances"
-        >
-        <div class="carousel-caption">
-          <h3>Appliances</h3>
-          <p>For kitchen and more.</p>
+                        <!-- Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,<br /> 
+                        lorem quis bibendum auctor, nisi elit consequat ipsum, nec <br />
+                        sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate -->
+                    </div>
+
+                    <div class="tp-caption slider-text-description sft str"  data-x="20" data-y="280" data-start="1500" data-easing="easeOutBack" data-end="5000" data-endspeed="500">
+                        <a href="#" class="button btn-flat">More Info</a>
+                    </div>                
+                </li>
+            </ul>
+            <div class="tp-bannertimer tp-bottom"></div>
         </div>
-      </div>
+    </div></div><!--.top wrapper end -->
 
-      <div class="item caroImg">
-        <img src="/img/cdsdvd-3.png" alt="Entertainment">
-        <div class="carousel-caption">
-          <h3>Entertainment</h3>
-          <p>Music, movies, and more.</p>
-        </div>
-      </div>
-    
-      <div class="item caroImg">
-        <img src="/img/furniture-7.png" alt="Furniture">
-        <div class="carousel-caption">
-          <h3>Furniture</h3>
-          <p>For livingroom, bedroom, and diningroom.</p>
-        </div>
-      </div>
+	<div class="loading-container">
+	<div class="spinner">
+	    <div class="double-bounce1"></div>
+	    <div class="double-bounce2"></div>
+	</div>
+	</div>
 
-      <div class="item caroImg">
-        <img src="/img/jewelry-2.png" alt="Jewelry">
-        <div class="carousel-caption">
-          <h3>Jewelry</h3>
-          <p>Lots of styles to choose from.</p>
-        </div>
-      </div>
+	<div class="content-wrapper hide-until-loading">
 
-    </div>
-  
-  </div>
+	<!-- Spinning Icons Container-->
+	<div class="section-content top-body">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-12 col-md-offset text-center">
+	                <h2 class="h2-section-title">My Garage Sale</h2>
+	            <div class="row">
+	                <div class="col-md-8 col-md-offset-2 text-center">
+	                    <h4><em>"All business success rests on something labeled a sale, which at least momentarily weds company and customer."</em></h4>
+	                    <footer>- Tom Peters</footer>
+	                </div>
+	            </div>
+	            <hr>
+	            <div class="col-md-4">
+	                <h4>Cuddles pony rainbow fluff rainbow unicorn bunnies sparkle glitter. Werebunnies cutesy fluff joyful pony cutesy bunnies sparkle puppy. Sparkle glitter puppy magical fluff unicorn unicorn glitter.</h4>
+	            </div>
 
-      <!-- Left and right controls -->
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
+	            <div class="col-md-4">
+	                <h4>Unicorn bunnies magical puppy pony sparkle, bunnies sparkle magical puppy kittens puppy. Fluff fluff puppy sparkle, puppy cutesy unicorn rainbow puppy cutesy kittens rainbow puppy cake. Pony cake cutesy kittens werebunnies.</h4>
+	            </div>
+
+	            <div class="col-md-4">
+	                <h4>Cutesy magical fluff bunnies cake glitter fluff. Puppy cake kittens puppy puppy, puppy joyful sparkle cake sparkle magical cutesy puppy rainbow. Sparkle cake fluff, cake magical cake puppy puppy rainbow kittens.</h4>
+	            </div>
+
+	            <hr>
+	        </div>
+
+	        <div class="row">
+
+	            <!-- (one) -->
+	            <div class="col-md-4 col-sm-4"> 
+	                <div class="content-box content-style4 medium animated"
+	                     data-animtype="fadeIn"
+	                     data-animrepeat="0"
+	                     data-animspeed="1s"
+	                     data-animdelay="0.2s"
+	                     >
+	                    <h4 class="h4-body-title">
+	                        <i class="icon-settings-streamline"></i>
+	                        Browse Sales
+	                    </h4>
+	                     <div class="content-box-text">
+	                        Cras sem erat, aliquet in egestas cursus, ullamcorper vitae
+	                        ligula. Nunc commodo lacinia eros ac condimentum
+	                        <div>
+	                            <a href="#" class=" btn btn-sm">
+	                                <span>read more</span>
+	                            </a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            
+	            <!-- (two) -->
+	            <div class="col-md-4 col-sm-4"> 
+	                <div class="content-box content-style4 medium animated"
+	                     data-animtype="fadeIn"
+	                     data-animrepeat="0"
+	                     data-animspeed="1s"
+	                     data-animdelay="0.2s"
+	                     >
+	                    <h4 class="h4-body-title">
+	                        <i class="icon-computer-imac"></i>
+	                        Create Sales
+	                    </h4>
+	                    <div class="content-box-text">
+	                        Cras sem erat, aliquet in egestas cursus, ullamcorper vitae
+	                        ligula. Nunc commodo lacinia eros ac condimentum
+
+	                        <div>
+	                            <a href="#" class=" btn btn-sm">
+	                                <span>read more</span>
+	                            </a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+
+	            <!-- (three) -->
+	            <div class="col-md-4 col-sm-4"> 
+	                <div class="content-box content-style4 medium animated"
+	                     data-animtype="fadeIn"
+	                     data-animrepeat="0"
+	                     data-animspeed="1s"
+	                     data-animdelay="0.2s"
+	                     >
+	                    <h4 class="h4-body-title">
+	                        <i class="icon-paint-bucket-streamline"></i>
+	                        Success Tips
+	                    </h4>
+	                    <div class="content-box-text">
+	                        Cras sem erat, aliquet in egestas cursus, ullamcorper vitae
+	                        ligula. Nunc commodo lacinia eros ac condimentum
+
+	                        <div>
+	                            <a href="#" class=" btn btn-sm">
+	                                <span>read more</span>
+	                            </a>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div> <!-- /Spinning Icons -->
 @stop
-
-</body>
-
-</html>

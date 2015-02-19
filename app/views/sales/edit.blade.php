@@ -26,7 +26,7 @@
 @stop
 
 
-@section('top-script')
+@section('topscript')
 
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 
@@ -241,7 +241,7 @@
 @stop
 
 
-@section('bottom-script')
+@section('bottomscript')
 
 	<script type="text/javascript">
 	    $(document).ready(function () {

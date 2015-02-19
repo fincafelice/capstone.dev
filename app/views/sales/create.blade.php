@@ -27,7 +27,7 @@
 @stop
 
 
-@section('top-script')
+@section('topscript')
 
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script>
@@ -236,30 +236,7 @@ function fillInAddress() {
                 <a href="" id="tags" class="btn btn-default tag-btn" data-id="{{{$tag->id}}}">{{{ $tag->name }}}</a> 
                 
             @endforeach
-<!--            <li button class="btn btn-default" type="submit">Appliances</button></li>
-                <li button class="btn btn-default" type="submit">Art</button></li>
-                <li button class="btn btn-default" type="submit">Art Supplies</button></li>
-                <li button class="btn btn-default" type="submit">Baby</button></li>
-                <li button class="btn btn-default" type="submit">Books</button></li>
-                <li button class="btn btn-default" type="submit">Children's Clothing</button></li>
-                <li button class="btn btn-default" type="submit">Collectibles</button></li>
-                <li button class="btn btn-default" type="submit">Electronics</button></li>
-                <li button class="btn btn-default" type="submit">Entertainment</button></li>
-                <li button class="btn btn-default" type="submit">Furniture</button></li>
-                <li button class="btn btn-default" type="submit">Gardening</button></li>
-                <li button class="btn btn-default" type="submit">Glassware</button></li>
-                <li class="btn btn-default" type="submit">Health & Beauty</button></li>
-                <li button class="btn btn-default" type="submit">Home Decor</button></li>
-                <li button class="btn btn-default" type="submit">Home Improvement</button></li>
-                <li button class="btn btn-default" type="submit">Household Items</button></li>
-                <li button class="btn btn-default" type="submit">Jewelry</button></li>
-                <li button class="btn btn-default" type="submit">Kitchen</button></li>
-                <li button class="btn btn-default" type="submit">Men's Clothing</button></li>
-                <li button class="btn btn-default" type="submit">Musical Instruments</button></li>
-                <li button class="btn btn-default" type="submit">Sporting Goods</button></li>
-                <li button class="btn btn-default" type="submit">Toys</button></li>
-                <li button class="btn btn-default" type="submit">Women's Clothing</button></li> -->
-            <!-- </ul> -->
+
         </div>
 
     </div> <!-- end right container -->
@@ -275,8 +252,6 @@ function fillInAddress() {
         initialize();
 
         // use jquery to select all buttons - prevent the default action on that button.
-
-
         // Find all buttons
         $tags = $('.tag-btn').click( function(event) {
             event.preventDefault();
@@ -287,20 +262,7 @@ function fillInAddress() {
 
             $(".tag-btn").click(function () {
             });
-
-
-
         });
-
-
-        // $('a').click(function() //this will apply to all anchor tags
-        // { 
-        //     $('#tags').val($('#tags').val()+('{{{$tag->name}}}')); 
-        // })
-        // use the tag name, to populate the tags field
-        
-
-    });
 </script>
 
 @stop

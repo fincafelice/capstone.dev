@@ -64,6 +64,11 @@ class HomeController extends BaseController {
 		return View::make('template-test.html');
 	}
 
+	public function test() {
+
+		return View::make('test');
+	}
+
 
 
 	public function doLogin() {

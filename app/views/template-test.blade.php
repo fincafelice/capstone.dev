@@ -71,8 +71,8 @@
                 color: #FFFFFF;
             }
 
-            #opacity {
-                opacity: 0.5;
+            h2 {
+                margin-top: 10px;
             }
         </style>
     </head>
@@ -84,6 +84,8 @@
         <div id="wrapper">
 
             <div class="top_wrapper">
+
+                <!-- Navbar Begins -->
                 <div class="top-bar">
                     <div class="container">
                         <div class="row">
@@ -137,6 +139,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- /End Navbar -->
 
                 <!-- Header -->
                 <header id="header">
@@ -169,15 +172,16 @@
                                 <nav>
                                     <ul class="navigation">
                                         <li>
-                                            <a href="/kanzi/home-version1.html">
+                                            <a href="/template-test">
                                                 <span class="label-nav">
                                                     Home
                                                 </span>
-                                                <span class="label-nav-sub" data-hover="Examples">
+
+                                                <!-- <span class="label-nav-sub" data-hover="Examples">
                                                     Examples
-                                                </span>
+                                                </span> -->
                                             </a>
-                                            <ul>
+                                            <!-- <ul>
                                                 <li>
                                                     <a href="/kanzi/home-version1.html">Home version 1</a>
                                                 </li>
@@ -193,18 +197,18 @@
                                                 <li>
                                                     <a href="/kanzi/home-version5.html">Home Version 5</a>
                                                 </li>                                    
-                                            </ul>
+                                            </ul> -->
                                         </li>
                                         <li>
-                                            <a href="/kanzi/about-us.html">
+                                            <a href="/about">
                                                 <span class="label-nav">
-                                                    Pages
+                                                    About
                                                 </span>
-                                                <span class="label-nav-sub" data-hover="Layouts">
+                                                <!-- <span class="label-nav-sub" data-hover="Layouts">
                                                     Layouts
-                                                </span>
+                                                </span> -->
                                             </a>
-                                            <ul>
+                                            <!-- <ul>
                                                 <li>
                                                     <a href="/kanzi/about-us.html"> About </a>
                                                 </li>
@@ -233,18 +237,19 @@
                                                     <a href="/kanzi/404.html"> 404 </a>
                                                 </li>
 
-                                            </ul>
+                                            </ul> -->
                                         </li>
+
                                         <li>
-                                            <a href="/kanzi/blog.html">
+                                            <a href="{{{ action('SalesController@index') }}}">
                                                 <span class="label-nav">
-                                                    Blog
+                                                    Browse
                                                 </span>
-                                                <span class="label-nav-sub" data-hover="The News">
+                                                <!-- <span class="label-nav-sub" data-hover="The News">
                                                     the news
-                                                </span>
+                                                </span> -->
                                             </a>
-                                            <ul>
+                                           <!--  <ul>
                                                 <li>
                                                     <a href="/kanzi/blog.html">Blog</a>
                                                 </li>
@@ -254,18 +259,19 @@
                                                 <li>
                                                     <a href="/kanzi/blog-single.html">Blog Single</a>
                                                 </li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
+
                                         <li>
-                                            <a href="/kanzi/portfolio-two-columns.html">
+                                            <a href="{{{ action('SalesController@create') }}}">
                                                 <span class="label-nav">
-                                                    Portfolio
+                                                    Sell
                                                 </span>
-                                                <span class="label-nav-sub" data-hover="Our Work">
+                                                <!-- <span class="label-nav-sub" data-hover="Our Work">
                                                     Our Work
-                                                </span>
+                                                </span> -->
                                             </a>
-                                            <ul>
+                                            <!-- <ul>
                                                 <li>
                                                     <a href="/kanzi/portfolio-two-columns.html">2 Column</a>
                                                 </li>
@@ -278,25 +284,24 @@
                                                 <li>
                                                     <a href="/kanzi/portfolio-single.html">Single</a>
                                                 </li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
+
+                                        @if (Auth::guest())
                                         <li>
-                                            <a href="/kanzi/elements.html">
+                                            <a href="{{{ action('HomeController@showLogin') }}}">
                                                 <span class="label-nav">
-                                                    Shortcodes
+                                                    Login
                                                 </span>
-                                                <span class="label-nav-sub" data-hover="Elements">
+                                                <!-- <span class="label-nav-sub" data-hover="Elements">
                                                     Elements
-                                                </span>
+                                                </span> -->
                                             </a>
                                             <ul>
                                                 <li>
-                                                    <a href="/kanzi/accordions.html">Accordions & Toggles</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/kanzi/columns.html">Columns</a>
+                                                    <a href="{{{ action('UsersController@create') }}}">Create Account</a>
                                                 </li>                                    
-                                                <li>
+                                                <!-- <li>
                                                     <a href="/kanzi/elements.html">Elements</a>
                                                 </li>                                    
                                                 <li>
@@ -320,10 +325,26 @@
 
                                                 <li>
                                                     <a href="/kanzi/typography.html">Typography</a>
-                                                </li>
+                                                </li> -->
 
                                             </ul>
                                         </li>
+
+                                        @else 
+
+                                        <li>
+                                            <a href="{{{ action('HomeController@doLogout') }}}">
+                                                <span class="label-nav">
+                                                    Logout
+                                                </span>
+                                                <!-- <span class="label-nav-sub" data-hover="Elements">
+                                                    Elements
+                                                </span> -->
+                                            </a>
+                                        </li>
+
+                                        @endif 
+
                                     </ul>
 
                                 </nav>
@@ -350,47 +371,29 @@
                     </div>
                 </header>
                 <!-- //Header// -->
+
+                <!-- Carousel Begins -->
                 <div class="rev-slider-full">
                     <div class="rev-slider-banner-full  rev-slider-full">
                         <ul>
 
 
                             <li data-transition="fade" data-slotamount="7" data-masterspeed="300" >
-                                <img id="opacity" src="/img/yard-sale1.JPG"  alt="rev-full1" data-fullwidthcentering="on">
+                                <img src="/img/yardsale.png"  alt="rev-full1" data-fullwidthcentering="on">
 
-                                <!-- <div class="tp-caption lft stb stl"
-                                     data-x="650"
-                                     data-y="93"
-                                     data-speed="500"
-                                     data-start="500"
-                                     data-easing="easeOutExpo" data-end="6000" data-endspeed="500"><img src="/kanzi/images/placeholders/slider1/imac.png" alt="Image 1"></div> -->
-
-                                <!-- <div class="tp-caption lfb stb stl"
-                                     data-x="616"
-                                     data-y="194"
-                                     data-speed="500"
-                                     data-start="700"
-                                     data-easing="easeOutExpo" data-end="6000" data-endspeed="500"><img src="/kanzi/images/placeholders/slider1/ipad.png" alt="Image 1"></div> -->
-
-                               <!--  <div class="tp-caption lfr stb stl"
-                                     data-x="751"
-                                     data-y="290"
-                                     data-speed="1000"
-                                     data-start="1000"
-                                     data-easing="easeOutExpo" data-end="6000" data-endspeed="500"><img src="/kanzi/images/placeholders/slider1/iphone.png" alt="Image 1"></div> -->
 
                                 <div class="carousel-text tp-caption slider-text-title sft str"
                                      data-x="20"
                                      data-y="150"
                                      data-speed="300"
                                      data-start="800"
-                                     data-easing="easeOutCubic" data-end="6000" data-endspeed="500">Responsive Design</div>
+                                     data-easing="easeOutCubic" data-end="6000" data-endspeed="500">Promote Yourself</div>
 
 
                                 <div class="carousel-text tp-caption slider-text-description sft str"  data-x="20" data-y="200" data-start="1000" data-easing="easeOutBack" data-end="4500" data-endspeed="500">
-                                    Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,<br /> 
-                                    lorem quis bibendum auctor, nisi elit consequat ipsum, nec <br />
-                                    sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
+                                    Your garage sale is serious business - don't let advertising be an afterthought.<br> 
+                                    It's easy to get started. Create a sale listing 
+                                    today and give your event a boost!<br/>
                                 </div>
                                 <div class="tp-caption slider-text-description sft str"  data-x="20" data-y="280" data-start="1500" data-easing="easeOutBack" data-end="5000" data-endspeed="500">
                                     <a href="#" class="button btn-flat">More Info</a>
@@ -400,25 +403,28 @@
 
 
                             <li data-transition="slideleft" data-slotamount="14">
-                                <img class="opacity" src="/img/yard-sale3.jpg" alt="Rev Full">
-
-<!--                                 <div class="caption sfb" data-x="693" data-y="75" data-speed="700" data-start="0"
-                                     data-easing="easeOutBack">
-                                    <img src="/kanzi/images/placeholders/slider1/mobile.png" alt=""/>
-                                </div> -->
+                                <img src="/img/garale-sale2.jpg" alt="Rev Full">
 
                                 <div class="carousel-text tp-caption slider-text-title sft str"
                                      data-x="20"
                                      data-y="150"
                                      data-speed="300"
                                      data-start="800"
-                                     data-easing="easeOutCubic" data-end="6000" data-endspeed="500">Very Flexible</div>
+                                     data-easing="easeOutCubic" data-end="6000" data-endspeed="500">Something For Everyone</div>
 
 
                                 <div class="carousel-text tp-caption slider-text-description sft str"  data-x="20" data-y="200" data-start="1000" data-easing="easeOutBack" data-end="4500" data-endspeed="500">
-                                    Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,<br /> 
+
+                                    Browse local sales or search by item category
+                                    for your next big-ticket<br /> 
+                                    find. Connect with sellers and see their
+                                    hand-picked treasures before<br />
+                                    you arrive
+
+
+                                    <!-- Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,<br /> 
                                     lorem quis bibendum auctor, nisi elit consequat ipsum, nec <br />
-                                    sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
+                                    sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate -->
                                 </div>
                                 <div class="tp-caption slider-text-description sft str"  data-x="20" data-y="280" data-start="1500" data-easing="easeOutBack" data-end="5000" data-endspeed="500">
                                     <a href="#" class="button btn-flat">More Info</a>
@@ -447,9 +453,30 @@
                 <div class="section-content top-body">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-10 text-center">
-                                <h2>About My Garage Sale</h2>
-                                <h4>Here's what you need to know to get started! This application can help you jumpstart a successful garage sale, while avid pickers find their next big ticket find.
+
+                            <div class="col-md-12 col-md-offset text-center">
+                                <h2 class="h2-section-title">My Garage Sale</h2>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2 text-center">
+                                    <h4><em>"All business success rests on something labeled a sale, which at least momentarily weds company and customer."</em></h4>
+                                    <footer>- Tom Peters</footer>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="col-md-4">
+                                <h4>Cuddles pony rainbow fluff rainbow unicorn bunnies sparkle glitter. Werebunnies cutesy fluff joyful pony cutesy bunnies sparkle puppy. Sparkle glitter puppy magical fluff unicorn unicorn glitter.</h4>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4>Unicorn bunnies magical puppy pony sparkle, bunnies sparkle magical puppy kittens puppy. Fluff fluff puppy sparkle, puppy cutesy unicorn rainbow puppy cutesy kittens rainbow puppy cake. Pony cake cutesy kittens werebunnies.</h4>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4>Cutesy magical fluff bunnies cake glitter fluff. Puppy cake kittens puppy puppy, puppy joyful sparkle cake sparkle magical cutesy puppy rainbow. Sparkle cake fluff, cake magical cake puppy puppy rainbow kittens.</h4>
+                            </div>
+
+                            <hr>
+                        </div>
 
                         <div class="row">
 
@@ -463,11 +490,11 @@
                                      >
                                     <h4 class="h4-body-title">
                                         <i class="icon-settings-streamline"></i>
-                                        Browse
+                                        Browse Sales
                                     </h4>
-                                    <div class="content-box-text">
-                                        
-
+                                     <div class="content-box-text">
+                                        Cras sem erat, aliquet in egestas cursus, ullamcorper vitae
+                                        ligula. Nunc commodo lacinia eros ac condimentum
                                         <div>
                                             <a href="#" class=" btn btn-sm">
                                                 <span>read more</span>
@@ -489,7 +516,7 @@
                                      >
                                     <h4 class="h4-body-title">
                                         <i class="icon-computer-imac"></i>
-                                        Responsive Design
+                                        Create Sales
                                     </h4>
                                     <div class="content-box-text">
                                         Cras sem erat, aliquet in egestas cursus, ullamcorper vitae
@@ -507,7 +534,7 @@
                             </div>
 
                             <!-- (three) -->
-                            <div class="col-md-3 col-sm-3"> 
+                            <div class="col-md-4 col-sm-4"> 
                                 <div class="content-box content-style4 medium animated"
                                      data-animtype="fadeIn"
                                      data-animrepeat="0"
@@ -516,7 +543,7 @@
                                      >
                                     <h4 class="h4-body-title">
                                         <i class="icon-paint-bucket-streamline"></i>
-                                        Unlimited Skins
+                                        Success Tips
                                     </h4>
                                     <div class="content-box-text">
                                         Cras sem erat, aliquet in egestas cursus, ullamcorper vitae
@@ -1290,8 +1317,7 @@
                                      data-animrepeat="1"
                                      data-speed="1s"
                                      data-delay="0s">
-                                    Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
-                                    nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
+                                    
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-2">

@@ -67,6 +67,8 @@ Route::get('/template-test', 'HomeController@testTemplate');
 
 Route::get('/template-test.html', 'HomeController@htmlTemplate');
 
+Route::get('/test', 'HomeController@test');
+
 
 Route::get('tips', 'HomeController@showTips');
 

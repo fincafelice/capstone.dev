@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.template')
 
 @section('title')
 	My Garage Sale - User Login
@@ -6,6 +6,7 @@
 
 
 @section('content')
+<div class="container">
 	<h1>Welcome!</h1>
 	<h3>Please log in to create or edit sale event</h3>
 	<hr>
@@ -28,4 +29,5 @@
 
 		{{ Form::close() }}
 	</div>
+</div>
 @stop
