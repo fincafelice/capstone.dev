@@ -1,8 +1,8 @@
 
-@extends('layouts.master')
+@extends('layouts.template')
 
 
-@section('top-script')
+@section('topscript')
 
 	<link rel="stylesheet" href="/css/bootstrap-markdown.min.css">
 
@@ -31,7 +31,7 @@
 	</div>
 @stop
 
-@section('bottom-script')
+@section('bottomscript')
 
 <script src= "/js/bootstrap-markdown.js"></script>
 

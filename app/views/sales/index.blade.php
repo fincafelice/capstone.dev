@@ -7,6 +7,11 @@
 			<p>{{{ $sale->sale_date_time}}}</p>
 			<p>{{{ $sale->description }}}</p>
 			<p>{{{ $sale->created_at->setTimezone('America/Chicago')->diffForHumans() }}}</p>
+			@foreach ($sale->tags as $tag)
+
+			<small> {{{ $tag->name }}} </small>
+
+			@endforeach
 		@endforeach
 	</ul>
 

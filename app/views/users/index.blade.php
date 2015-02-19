@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 
-@section('top-script')
+@section('topscript')
 <style type="text/css">
 #map-canvas { 
   height: 500px;

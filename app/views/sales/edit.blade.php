@@ -26,7 +26,7 @@
 @stop
 
 
-@section('top-script')
+@section('topscript')
 
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 
@@ -230,22 +230,36 @@
 	        
 	        <div id="map-canvas"></div>
 
-	        <div id="tag-sidebar" class="form-group {{{ $errors->has('tags') ? 'has-error' : '' }}}">
-	            {{ Form::label('tags', 'Item Categories') }}
-	            {{ Form::textarea('tags', Input::old('tags'), array('class' => 'form-control')) }}
-	            {{ $errors->first('tags', '<p class="help-block">:message</p>') }}
-	        </div>
+	        <div id="tag-sidebar" class="text-center">
+            <!-- <ul id="buttons"> -->
+	            @foreach($tags as $tag)
 
+	                <a href="" id="tags" class="btn btn-default tag-btn" data-id="{{{$tag->id}}}">{{{ $tag->name }}}</a> 
+	                
+	            @endforeach
+
+        	</div> 	
 	    </div> <!-- end right container -->
 	</div> <!-- end main container -->
 @stop
 
 
-@section('bottom-script')
+@section('bottomscript')
 
 	<script type="text/javascript">
 	    $(document).ready(function () {
 	        initialize();
+
+		        $tags = $('.tag-btn').click( function(event) {
+		            event.preventDefault();
+		          
+		            var insertText = $(this).text();
+		            $('#tags').append(insertText + ", ");
+		            console.log(this.text);
+
+		            $(".tag-btn").click(function () {
+		            });
+	        	});
 	    });
 	</script>
 
