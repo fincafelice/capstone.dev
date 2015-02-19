@@ -140,7 +140,8 @@ class SalesController extends \BaseController
 
 
 	protected function saveSale($sale)
-	{
+
+		// dd(Input::all());
 
 		$validator = Validator::make(Input::all(), Sale::$rules);
 
