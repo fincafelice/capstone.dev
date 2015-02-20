@@ -43,7 +43,7 @@ class UsersController extends \BaseController {
 		} else {
 			User::create($data);
 			Session::flash('successMessage', 'New user was created!');
-			return Redirect::route('sales.index');
+			return Redirect::route('sales.create');
 		}
 	}
 
