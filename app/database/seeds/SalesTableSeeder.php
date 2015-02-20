@@ -7,6 +7,20 @@ class SalesTableSeeder extends Seeder {
 	public function run()
 	{
 		DB::table('sales')->delete();
+
+
+		// $sale->sale_name = 
+		// $sale->sale_date_time =
+		// $sale->street = 
+		// $sale->city =
+		// $sale->state = 
+		// $sale->zip =
+		// $sale->country =
+		// $sale->latitude =
+		// $sale->longitude = 
+		// $sale->description =
+		// $sale->user_id =
+		// $sale->save() = 
 	
 		$faker = Faker::create();
 

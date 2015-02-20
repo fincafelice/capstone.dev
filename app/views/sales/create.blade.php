@@ -22,6 +22,14 @@
     ul {
         list-style-type: none;
     }
+
+    #tag-box {
+/*        border: solid black 1px;
+*/    }
+
+    .tag {
+
+    }
     </style>
 
 @stop
@@ -237,9 +245,8 @@
             {{ Form::reset('Reset', array('class' => 'btn btn-default pull-left')) }}
             {{ Form::submit('Create Sale', array('class' => 'btn btn-default pull-right')) }}
         </div>
-
-
         {{ Form::close() }}
+
 
   </div> <!-- End Container Left -->
 
@@ -282,8 +289,6 @@
                 event.preventDefault();
                 var tag = $(this).text();
                 addTag(tag);
-                $(this).off(addTag);
-                
             });
 
         }
@@ -292,9 +297,12 @@
         $tags = $('.tag-btn').on("click", function(event) {
                 event.preventDefault();
                 $(this).off();
-                var insertButton = $(this).text();
-                $('#tags').append(insertButton + ", ");
+                var insertText = $(this).text();
+                $('#tags').append(insertText + " " + " " + " ");
+
+
                 console.log(this.text);
+                
                 $('.tag-btn').click(function(event){
                      event.preventDefault();
 
