@@ -11,6 +11,17 @@
 		#save-img {
 			margin-top: -15px;
 		}
+
+		#photo-column {
+			margin-left: -15px;
+		}
+
+		.sale-wrapper {
+			border: #e4e4e4;
+			padding: 20px;
+			border-radius: 4px;
+  			box-shadow: 0 0 8px #A3A3C2;
+		}
 	</style>
 @stop
 
@@ -19,47 +30,35 @@
 <div class="container">
 	<div class="row">
 
-		<div class="col-md-6">
+		<div class="col-md-9">
+			<div class="sale-wrapper">
 
-			<div class="clearfix">
-				<div class="pull-left">
-					<h1>{{{ $sale->sale_name }}}</h1>
+				<div class="clearfix">
+					<div class="pull-left">
+						<h1>{{{ $sale->sale_name }}}</h1>
+					</div>
+
+					<div class="pull-right">
+						<h4 >{{{ $sale->created_at->setTimezone('America/Chicago')->diffForHumans() }}}</h4>
+					</div>
 				</div>
 
-				<div class="pull-right">
-					<h4 >{{{ $sale->created_at->setTimezone('America/Chicago')->diffForHumans() }}}</h4>
-				</div>
+				<h3>Location</h3> 
+				<h4>{{{ $sale->street_num }}} {{{ $sale->street }}} {{{ $sale->city }}}, {{{ $sale->state }}} {{{ $sale->zip }}}</h4>
+				<h3>Date and Time</h3>
+				<h4>{{{ date("F, d Y") }}} at {{{ date("g:ha", strtotime($sale->sale_date_time)) }}}</h4>
+
+				<!-- add seller username -->
+				<hr>
+				<p>{{ $sale->description }}</p>
+
 			</div>
-
-			<h3>Location</h3> 
-			<h4>{{{ $sale->street_num }}} {{{ $sale->street }}} {{{ $sale->city }}}, {{{ $sale->state }}} {{{ $sale->zip }}}</h4>
-			<h3>Date and Time</h3>
-			<h4>{{{ date("F, d Y") }}} at {{{ date("g:ha", strtotime($sale->sale_date_time)) }}}</h4>
-
-			<!-- add seller username -->
-			<hr>
-			<p>{{ $sale->description }}</p>
-
-
 		</div>
 
-<!-- 		<div class="col-md-4 col-md-offset-1">
-			@foreach($sale->images as $image)
-	         	<img class="img-responsive" src="{{ $image->img_path }}">
-	          		
-				@if (Auth::id() == $sale->user_id)
-			    	<button class="img-delete-btn" data-image-id="{{ $image->id }}">Delete Image</button>
-				@endif
-			@endforeach
-		</div> -->
-	</div>
-
-	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-2">
 			<div class="clearfix">
-
-
-				<div class="pull-right">
+				<!-- <div class="pull-right"> -->
+				<div class="text-center">
 					<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
 				</div>
 
@@ -67,7 +66,8 @@
 
 					{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
 
-					<div class="pull-left">		
+					<!-- <div class="pull-left">	 -->	
+					<div class="text-center">
 						<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) }}}">Edit Sale</a>
 					</div>
 
@@ -83,11 +83,107 @@
 				@endif
 				
 			</div>
-	    </div>
+		</div>
 	</div>
 
-	{{ Form::open(['method' => 'DELETE', 'id' => 'delete-form']) }}
-	{{ Form::close() }}
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="content-wrapper hide-until-loading">
+				<div class="body-wrapper">
+				    <div class="container">
+				        <div class="row">
+				            <div class="col-md-12 col-sm-12 animated" data-animtype="flipInY"
+				                data-animrepeat="0"
+				                data-speed="1s"
+				                data-delay="0.5s">
+				                <!-- <h2 class="h2-section-title">Our Work</h2> -->
+
+<!-- 				                <div class="i-section-title">
+				                    <i class="icon-files">
+				                    </i>
+				                </div> -->
+
+				                <div class="space-sep20"></div>
+				            </div>
+				        </div>
+
+				        <div class="row">
+				            <div class="col-md-12 col-sm-12">
+				                <div class="portfolio-items">
+				                	<div class="row">
+									<? $i = 0; ?>
+									@foreach($sale->images as $image)
+										<? $i++; ?>
+										<? if($i % 4 == 0): ?>
+											</div>
+											<div class="row">
+										<? endif; ?>
+								
+									<div id="photo-column" class="col-md-3">
+					                    <!-- Portfolio Item -->
+					                    <div class="thumb-label-item animated branding"
+					                         data-animtype="fadeInUp"
+					                         data-animrepeat="0"
+					                         data-speed="1s"
+					                         data-delay="1.2s">
+					                        <div class="img-overlay thumb-label-item-img">
+
+
+					                            <!-- <img
+					                                src="images/placeholders/portfolio4.jpg"
+					                                alt=""/> -->
+
+					         					<img class="img-responsive" src="{{ $image->img_path }}">
+					          		
+
+
+					                            <div class="item-img-overlay">
+					                                <a class="portfolio-zoom fa fa-plus"
+					                                   href="{{ $image->img_path }}"
+					                                   data-rel="prettyPhoto[portfolio]" title="Title goes here"></a>
+
+					                                <div class="item_img_overlay_content">
+					                                    <h3 class="thumb-label-item-title">
+					                                        <a href=""> Vestibum friilla </a>
+					                                    </h3>
+					                                </div>
+					                            </div>
+					                        </div>
+					                    </div>
+					                    <!-- //Portfolio Item// -->
+										@if (Auth::id() == $sale->user_id)
+									    	<button class="img-delete-btn" data-image-id="{{ $image->id }}">Delete Image</button>
+										@endif
+									</div>
+									@endforeach
+
+									</div>
+				                </div>
+
+							{{ Form::open(['method' => 'DELETE', 'id' => 'delete-form']) }}
+							{{ Form::close() }}
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+		</div>
+		<div id="disqus_thread"></div>
+		    <script type="text/javascript">
+		        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		        var disqus_shortname = 'teamgaragesale'; // required: replace example with your forum shortname
+
+		        /* * * DON'T EDIT BELOW THIS LINE * * */
+		        (function() {
+		            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		        })();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		</div>
+	</div>
 </div>
 
 @stop {{-- This is to view one particular post by request. --}}
@@ -100,72 +196,6 @@
 
 
 @section('content2')
-<div class="content-wrapper hide-until-loading">
-	<div class="body-wrapper">
-	    <div class="container">
-	        <div class="row">
-	            <div class="col-md-12 col-sm-12 animated" data-animtype="flipInY"
-	                data-animrepeat="0"
-	                data-speed="1s"
-	                data-delay="0.5s">
-	                <h2 class="h2-section-title">Our Work</h2>
-
-	                <div class="i-section-title">
-	                    <i class="icon-files">
-	                    </i>
-	                </div>
-
-	                <div class="space-sep20"></div>
-	            </div>
-	        </div>
-
-	        <div class="row">
-	            <div class="col-md-12 col-sm-12">
-	                <div class="portfolio-items">
-
-					@foreach($sale->images as $image)
-
-	                    <!-- Portfolio Item -->
-	                    <div class="thumb-label-item animated branding"
-	                         data-animtype="fadeInUp"
-	                         data-animrepeat="0"
-	                         data-speed="1s"
-	                         data-delay="1.2s">
-	                        <div class="img-overlay thumb-label-item-img">
-
-
-	                            <!-- <img
-	                                src="images/placeholders/portfolio4.jpg"
-	                                alt=""/> -->
-
-	         					<img class="img-responsive" src="{{ $image->img_path }}">
-	          		
-
-
-	                            <div class="item-img-overlay">
-	                                <a class="portfolio-zoom fa fa-plus"
-	                                   href="{{ $image->img_path }}"
-	                                   data-rel="prettyPhoto[portfolio]" title="Title goes here"></a>
-
-	                                <div class="item_img_overlay_content">
-	                                    <h3 class="thumb-label-item-title">
-	                                        <a href=""> Vestibum friilla </a>
-	                                    </h3>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <!-- //Portfolio Item// -->
-						@if (Auth::id() == $sale->user_id)
-					    	<button class="img-delete-btn" data-image-id="{{ $image->id }}">Delete Image</button>
-						@endif
-					@endforeach
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-</div>
 @stop
 
 
