@@ -43,7 +43,7 @@
 
 		</div>
 
-		<div class="col-md-4 col-md-offset-1">
+<!-- 		<div class="col-md-4 col-md-offset-1">
 			@foreach($sale->images as $image)
 	         	<img class="img-responsive" src="{{ $image->img_path }}">
 	          		
@@ -51,13 +51,17 @@
 			    	<button class="img-delete-btn" data-image-id="{{ $image->id }}">Delete Image</button>
 				@endif
 			@endforeach
-		</div>
+		</div> -->
 	</div>
 
 	<div class="row">
 		<div class="col-md-6">
 			<div class="clearfix">
 
+
+				<div class="pull-right">
+					<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
+				</div>
 
 				@if (Auth::id() == $sale->user_id)
 
@@ -67,9 +71,6 @@
 						<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) }}}">Edit Sale</a>
 					</div>
 
-					<div class="pull-right">
-						<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
-					</div>
 				
 					{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
 
@@ -95,6 +96,77 @@
 
 
 
+
+
+
+@section('content2')
+<div class="content-wrapper hide-until-loading">
+	<div class="body-wrapper">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-12 col-sm-12 animated" data-animtype="flipInY"
+	                data-animrepeat="0"
+	                data-speed="1s"
+	                data-delay="0.5s">
+	                <h2 class="h2-section-title">Our Work</h2>
+
+	                <div class="i-section-title">
+	                    <i class="icon-files">
+	                    </i>
+	                </div>
+
+	                <div class="space-sep20"></div>
+	            </div>
+	        </div>
+
+	        <div class="row">
+	            <div class="col-md-12 col-sm-12">
+	                <div class="portfolio-items">
+
+					@foreach($sale->images as $image)
+
+	                    <!-- Portfolio Item -->
+	                    <div class="thumb-label-item animated branding"
+	                         data-animtype="fadeInUp"
+	                         data-animrepeat="0"
+	                         data-speed="1s"
+	                         data-delay="1.2s">
+	                        <div class="img-overlay thumb-label-item-img">
+
+
+	                            <!-- <img
+	                                src="images/placeholders/portfolio4.jpg"
+	                                alt=""/> -->
+
+	         					<img class="img-responsive" src="{{ $image->img_path }}">
+	          		
+
+
+	                            <div class="item-img-overlay">
+	                                <a class="portfolio-zoom fa fa-plus"
+	                                   href="{{ $image->img_path }}"
+	                                   data-rel="prettyPhoto[portfolio]" title="Title goes here"></a>
+
+	                                <div class="item_img_overlay_content">
+	                                    <h3 class="thumb-label-item-title">
+	                                        <a href=""> Vestibum friilla </a>
+	                                    </h3>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <!-- //Portfolio Item// -->
+						@if (Auth::id() == $sale->user_id)
+					    	<button class="img-delete-btn" data-image-id="{{ $image->id }}">Delete Image</button>
+						@endif
+					@endforeach
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+@stop
 
 
 @section('bottomscript')

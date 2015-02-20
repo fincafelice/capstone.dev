@@ -244,20 +244,17 @@
                                 </ul>
                                 <!-- //Mobile Nav. Container// -->
                             </div>
-                            <!-- Nav -->
-
                         </div>
-
-
-
                     </div>
                 </header>
                 <!-- //Header// -->
+            </div>
 
                 
 
                 <!-- Content Goes Here! --> 
                 @yield('content')
+                @yield('content2')
 
 
             <footer>
