@@ -112,13 +112,11 @@
 				            <div class="col-md-12 col-sm-12">
 				                <div class="portfolio-items">
 				                	<div class="row">
-									<? $i = 0; ?>
-									@foreach($sale->images as $image)
-										<? $i++; ?>
-										<? if($i % 4 == 0): ?>
+									@for($i = 0; $i < $sale->images->count(); $i++)
+										@if($i % 4 == 0)
 											</div>
 											<div class="row">
-										<? endif; ?>
+										@endif
 								
 									<div id="photo-column" class="col-md-3">
 					                    <!-- Portfolio Item -->
@@ -134,13 +132,13 @@
 					                                src="images/placeholders/portfolio4.jpg"
 					                                alt=""/> -->
 
-					         					<img class="img-responsive" src="{{ $image->img_path }}">
+					         					<img class="img-responsive" src="{{ $sale->images[$i]->img_path }}">
 					          		
 
 
 					                            <div class="item-img-overlay">
 					                                <a class="portfolio-zoom fa fa-plus"
-					                                   href="{{ $image->img_path }}"
+					                                   href="{{ $sale->images[$i]->img_path }}"
 					                                   data-rel="prettyPhoto[portfolio]" title="Title goes here"></a>
 
 					                                <div class="item_img_overlay_content">
@@ -153,10 +151,10 @@
 					                    </div>
 					                    <!-- //Portfolio Item// -->
 										@if (Auth::id() == $sale->user_id)
-									    	<button class="img-delete-btn" data-image-id="{{ $image->id }}">Delete Image</button>
+									    	<button class="img-delete-btn" data-image-id="{{ $sale->images[$i]->id }}">Delete Image</button>
 										@endif
 									</div>
-									@endforeach
+									@endfor
 
 									</div>
 				                </div>
