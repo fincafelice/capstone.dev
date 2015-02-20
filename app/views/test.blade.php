@@ -2,7 +2,7 @@
 
 @section('css')
     <style>
-      html, body, #map-canvas {
+    #map-canvas {
         height: 500px;
         margin: 0px;
         padding: 0px
@@ -23,41 +23,56 @@ var sales = {{ $sales->toJson() }};
 var map;
 
 function initialize() {
-  var mapOptions = {
-    zoom: 6
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
+    var mapOptions = {
+        zoom: 6
+    };
 
-  sales.forEach(function(sale) {
-    console.log(sale.longitude);
-    console.log(sale.latitude);
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-    var latLongObj = new google.maps.LatLng(sale.latitude, sale.longitude);
+    sales.forEach(function(sale) {
+        console.log(sale.longitude);
+        console.log(sale.latitude);
 
-    new google.maps.Marker({
-          position: latLongObj,
-          map: map,
-          draggable: false,
-          animation: google.maps.Animation.DROP
-   });
-  });
+        var latLongObj = new google.maps.LatLng(sale.latitude, sale.longitude);
 
-  // Try HTML5 geolocation
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
+        var marker = new google.maps.Marker({
+            position: latLongObj,
+            map: map,
+            draggable: false,
+            animation: google.maps.Animation.DROP
+        });
 
+        // google.maps.event.addListener(map, 'center_changed', function() {
+        // // 3 seconds after the center of the map has changed, pan back to the
+        // // marker.
+        //     window.setTimeout(function() {
+        //         map.panTo(marker.getPosition());
+        //     }, 3000);
+        // });
 
-      map.setCenter(pos);
-    }, function() {
-      handleNoGeolocation(true);
+        google.maps.event.addListener(marker, 'click', function() {
+            
+            var infowindow = new google.maps.InfoWindow({
+                content: sale.sale_name
+            });
+
+            infowindow.open(map, marker);
+        });
     });
-  } else {
+}
+
+// Try HTML5 geolocation
+if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        
+        map.setCenter(pos);
+    }, function() {
+        handleNoGeolocation(true);
+    });
+} else {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
-  }
 }
 
 function handleNoGeolocation(errorFlag) {
