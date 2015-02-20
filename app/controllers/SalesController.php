@@ -139,7 +139,7 @@ class SalesController extends \BaseController
 	}
 
 
-	protected function saveSale($sale)
+	protected function saveSale($sale) 
 	{
 		// dd(Input::all());
 
