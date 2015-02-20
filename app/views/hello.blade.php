@@ -93,7 +93,7 @@
 	            </div>
 
 	            <div class="col-md-4">
-	                <h4>We offer helpful sale event tips to plan a stress-free garage sale.  just click the <strong>TIPS</strong> link above.  We have also given a little thought to additional services and businesses you probably haven't thought of just yet.  See our links below to give them a visit.</h4>
+	                <h4>We offer helpful sale event tips to plan a stress-free garage sale.  Just click the <strong>TIPS</strong> link above.  We have also given a little thought to additional services and businesses you probably haven't thought of just yet.  See our links below to give them a visit.</h4>
 	            </div>
 
 	            <hr>

@@ -143,7 +143,7 @@
 
 					                                <div class="item_img_overlay_content">
 					                                    <h3 class="thumb-label-item-title">
-					                                        <a href=""> Vestibum friilla </a>
+					                                        <a href="">Amazing find!</a>
 					                                    </h3>
 					                                </div>
 					                            </div>

@@ -377,7 +377,7 @@
                                                 <a href="">Need insurance? Insurejoy</a>
                                             </li>
                                             <li>
-                                                <a href="">Have Pets? Rover Comeover </a>
+                                                <a href="">Have Pets? Rover Sleepover </a>
                                             </li>
                                             <li>
                                                 <a href="">Service minded?
