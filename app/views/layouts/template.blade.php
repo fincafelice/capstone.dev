@@ -132,7 +132,7 @@
 
                             <!-- Logo -->
                             <div class="col-xs-2 logo">
-                                <a href="/kanzi/home-version1.html">
+                                <a href="/">
                                    <h3 id="logo" class="text-center">My Garage Sale<span class="glyphicon glyphicon-home" aria-hidden="true"></span></h3>
                                 </a>
                             </div>
