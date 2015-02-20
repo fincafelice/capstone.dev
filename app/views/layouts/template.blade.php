@@ -276,10 +276,8 @@
                                            <h3>My Garage Sale</h3>
                                         </div>
                                         <div class="footer-content-text">
-                                            <p>Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                                dolor.</p>
-                                            <p>Lorem ipsum dolor sit amet nec, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                                dolor.</p>
+                                            <p>Everyone lives a busy life.  And it can get a little cluttered. But we don't always have time to declutter.</p>
+                                            <p>This web application will make the process of decluttering much less painful.  And planning it much quicker!</p>
                                         </div>
                                     </div>
                                 </div>
@@ -294,11 +292,11 @@
                                     <div class="footer-content footer-recent-tweets-container">
                                         <ul class="tweetList footer-recent-tweets">
                                             <li class="tweet_content item">
-                                                <p>Grab a copy of the popular Boomerang theme for $10 until its next release! </p>
+                                                <p>I could never have organized my garage sale without the helpful tips! </p>
                                                 <p class="timestamp">2 days ago</p>
                                             </li>
                                             <li class="tweet_content item">
-                                                <p>Newest Blog Awesome post: Stacking Text and Icons <a href="http://t.co/1qRP8K1wjG">Check it</a></p>
+                                                <p>It was a great success.  Thanks to "My Garage Sale!" <a href="http://t.co/1qRP8K1wjG">Check it out!</a></p>
                                                 <p class="timestamp">4 days ago</p>
                                             </li>
                                         </ul>
@@ -315,26 +313,25 @@
                                     <div class="footer-content">
                                         <ul class="footer-category-list">
                                             <li>
-                                                <a href="">Lorem Ipsum</a>
+                                                <a href="">Giving to charity/ Salvation Army</a>
                                             </li>
                                             <li>
-                                                <a href="">Dolor Sit Amet</a>
+                                                <a href="">Planning a move/ USPS</a>
                                             </li>
                                             <li>
-                                                <a href="">Nullam dignissim</a>
+                                                <a href="">City Permits&Neighborhood Watch</a>
                                             </li>
                                             <li>
-                                                <a href="">Lorem Ipsum</a>
+                                                <a href="">Need insurance? Insurejoy</a>
                                             </li>
                                             <li>
-                                                <a href="">Lorem Ipsum</a>
+                                                <a href="">Have Pets? Rover Comeover </a>
                                             </li>
                                             <li>
-                                                <a href="">Dolor Sit Amet</a>
+                                                <a href="">Service minded?
+                                                Serve Search  </a>
                                             </li>
-                                            <li>
-                                                <a href="">Dolor Sit Amet</a>
-                                            </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>

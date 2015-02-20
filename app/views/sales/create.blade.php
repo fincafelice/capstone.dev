@@ -183,8 +183,6 @@
         
         <!-- New Sale Form -->
 
-
-
         {{ Form::open(array('action' => 'SalesController@store', 'method' => 'POST', 'files' => true)) }}
 
         <div class="form-group">        
@@ -215,7 +213,6 @@
         {{ Form::hidden('latitude', null, array('id' => 'latitude')) }}
         {{ Form::hidden('longitude', null, array('id' => 'longitude')) }}
 
-
         <!-- /Hidden -->
 
         <!-- Autocomplete -->
@@ -243,7 +240,6 @@
             {{ Form::reset('Reset', array('class' => 'btn btn-default pull-left')) }}
             {{ Form::submit('Create Sale', array('class' => 'btn btn-default pull-right')) }}
         </div>
-
 
         {{ Form::close() }}
 
