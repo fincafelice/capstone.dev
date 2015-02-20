@@ -54,9 +54,8 @@ class SalesController extends \BaseController
 	 */
 	public function create()
 	{
-		$sale = Sale::all();
 		$tags = Tag::all();
-		return View::make('sales.create')->with('tags', $tags)->with('sales', $sale);
+		return View::make('sales.create')->with('tags', $tags);
 
 		// return $this->saveSale($sale);
 	}
