@@ -83,11 +83,11 @@
 		          var pos = new google.maps.LatLng(position.coords.latitude,
 		                                           position.coords.longitude);
 
-		          var infowindow = new google.maps.InfoWindow({
-		            map: map,
-		            position: pos,
-		            content: 'Location found using HTML5.'
-		          });
+		          // var infowindow = new google.maps.InfoWindow({
+		          //   map: map,
+		          //   position: pos,
+		          //   content: 'Location found using HTML5.'
+		          // });
 
 		          map.setCenter(pos);
 		        }, function() {

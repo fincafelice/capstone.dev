@@ -185,6 +185,10 @@
 
         {{ Form::open(array('action' => 'SalesController@store', 'method' => 'sale')) }}
 
+        <div>
+        Upload Images{{ Form::file('images[]', array('multiple'=>true)) }}
+        </div>
+
         <div class="form-group {{{ $errors->has('sale_name') ? 'has-error' : '' }}}">
             {{ Form::label('sale_name', 'Sale Name') }}
             {{ Form::text('sale_name', Input::old('sale_name'), array('class' => 'form-control')) }}
