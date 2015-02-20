@@ -146,7 +146,6 @@ class SalesController extends \BaseController
 		$validator = Validator::make(Input::all(), Sale::$rules);
 
 		if ($validator->fails()) {
-
 			Session::flash('errorMessage', 'Failed to save your garage sale!');
 			return Redirect::back()->withInput()->withErrors($validator);
 
