@@ -97,11 +97,11 @@
             var pos = new google.maps.LatLng(position.coords.latitude,
                                            position.coords.longitude);
 
-          var infowindow = new google.maps.InfoWindow({
-                map: map,
-                position: pos,
-                content: 'Location found using HTML5.'
-            });
+          // var infowindow = new google.maps.InfoWindow({
+                // map: map,
+                // position: pos,
+                // content: 'Location found using HTML5.'
+            // });  removed 2/20/2015
 
             map.setCenter(pos);
             }, function() {
@@ -191,7 +191,11 @@
         
         <!-- New Sale Form -->
 
-        {{ Form::open(array('action' => 'SalesController@store', 'method' => 'sale')) }}
+        {{ Form::open(array('action' => 'SalesController@store', 'method' => 'POST', 'files' => true)) }}
+
+        <div class="form-group">        
+            Upload Images{{ Form::file('images[]', array('multiple'=>true)) }}
+        </div>
 
         <div class="form-group {{{ $errors->has('sale_name') ? 'has-error' : '' }}}">
             {{ Form::label('sale_name', 'Sale Name') }}
@@ -216,7 +220,6 @@
 
         {{ Form::hidden('latitude', null, array('id' => 'latitude')) }}
         {{ Form::hidden('longitude', null, array('id' => 'longitude')) }}
-
 
         <!-- /Hidden -->
 
@@ -245,6 +248,7 @@
             {{ Form::reset('Reset', array('class' => 'btn btn-default pull-left')) }}
             {{ Form::submit('Create Sale', array('class' => 'btn btn-default pull-right')) }}
         </div>
+
         {{ Form::close() }}
 
 

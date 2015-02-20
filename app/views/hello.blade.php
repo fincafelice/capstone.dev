@@ -85,15 +85,15 @@
 	            </div>
 	            <hr>
 	            <div class="col-md-4">
-	                <h4>Cuddles pony rainbow fluff rainbow unicorn bunnies sparkle glitter. Werebunnies cutesy fluff joyful pony cutesy bunnies sparkle puppy. Sparkle glitter puppy magical fluff unicorn unicorn glitter.</h4>
+	                <h4>Avid treasure hunters, artists, thrift store owners, hobbyists and bargain shoppers alike can browse all garage sales just by clicking the <strong>BROWSE</strong> link above.  No need to login.  Just page through the lists and click the sale that interests you.</h4>
 	            </div>
 
 	            <div class="col-md-4">
-	                <h4>Unicorn bunnies magical puppy pony sparkle, bunnies sparkle magical puppy kittens puppy. Fluff fluff puppy sparkle, puppy cutesy unicorn rainbow puppy cutesy kittens rainbow puppy cake. Pony cake cutesy kittens werebunnies.</h4>
+	                <h4>Families looking to declutter and earn a little extra cash can quickly list their garage sale event and know the <strong>advertising</strong> is being handled by the web application.  Groups who want to join forces and host a bazaar can easily centralize their efforts. Just click the <strong>SELL</strong> link above.</h4>
 	            </div>
 
 	            <div class="col-md-4">
-	                <h4>Cutesy magical fluff bunnies cake glitter fluff. Puppy cake kittens puppy puppy, puppy joyful sparkle cake sparkle magical cutesy puppy rainbow. Sparkle cake fluff, cake magical cake puppy puppy rainbow kittens.</h4>
+	                <h4>We offer helpful sale event tips to plan a stress-free garage sale.  just click the <strong>TIPS</strong> link above.  We have also given a little thought to additional services and businesses you probably haven't thought of just yet.  See our links below to give them a visit.</h4>
 	            </div>
 
 	            <hr>
@@ -114,8 +114,7 @@
 	                        Browse Sales
 	                    </h4>
 	                     <div class="content-box-text">
-	                        Cras sem erat, aliquet in egestas cursus, ullamcorper vitae
-	                        ligula. Nunc commodo lacinia eros ac condimentum
+	                        You will find many unique and fun to find items right in your own backyard!
 	                        <div>
 	                            <a href="#" class=" btn btn-sm">
 	                                <span>read more</span>
@@ -138,8 +137,7 @@
 	                        Create Sales
 	                    </h4>
 	                    <div class="content-box-text">
-	                        Cras sem erat, aliquet in egestas cursus, ullamcorper vitae
-	                        ligula. Nunc commodo lacinia eros ac condimentum
+	                        Easily and quickly list your sale event to a large audience.
 
 	                        <div>
 	                            <a href="#" class=" btn btn-sm">
@@ -163,8 +161,7 @@
 	                        Success Tips
 	                    </h4>
 	                    <div class="content-box-text">
-	                        Cras sem erat, aliquet in egestas cursus, ullamcorper vitae
-	                        ligula. Nunc commodo lacinia eros ac condimentum
+	                        Learn how to have a successful and pain-free garage sale event.
 
 	                        <div>
 	                            <a href="#" class=" btn btn-sm">
