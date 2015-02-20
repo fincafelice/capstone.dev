@@ -254,7 +254,7 @@
 		            event.preventDefault();
 		          
 		            var insertText = $(this).text();
-		            $('#tags').append(insertText + ", ");
+		            $('#tags').append(insertText + " " + " " + " ");
 		            console.log(this.text);
 
 		            $(".tag-btn").click(function () {

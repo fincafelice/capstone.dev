@@ -65,8 +65,8 @@ class HomeController extends BaseController {
 	}
 
 	public function test() {
-
-		return View::make('test');
+		$sales = Sale::all();
+		return View::make('test')->with('sales', $sales);
 	}
 
 

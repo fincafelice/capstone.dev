@@ -22,6 +22,14 @@
     ul {
         list-style-type: none;
     }
+
+    #tag-box {
+/*        border: solid black 1px;
+*/    }
+
+    .tag {
+
+    }
     </style>
 
 @stop
@@ -243,6 +251,7 @@
 
         {{ Form::close() }}
 
+
   </div> <!-- End Container Left -->
 
 
@@ -278,17 +287,37 @@
 
         // use jquery to select all buttons - prevent the default action on that button.
 
-        // Find all buttons
-        $tags = $('.tag-btn').click( function(event) {
-            event.preventDefault();
-          
-            var insertText = $(this).text();
-            $('#tags').append(insertText + ", ");
-            console.log(this.text);
-
-            $(".tag-btn").click(function () {
+        function addTag(tag) {
+            // add tag to text area
+            $('.tag-btn').click( function(event) {
+                event.preventDefault();
+                var tag = $(this).text();
+                addTag(tag);
             });
+
+        }
+
+        // Find all buttons
+        $tags = $('.tag-btn').on("click", function(event) {
+                event.preventDefault();
+                $(this).off();
+                var insertText = $(this).text();
+                $('#tags').append(insertText + " " + " " + " ");
+
+
+                console.log(this.text);
+                
+                $('.tag-btn').click(function(event){
+                     event.preventDefault();
+
+                });
+                
+
+
+                // $(".tag-btn").click(function () {
+                // });
         });
+
     });
 </script>
 

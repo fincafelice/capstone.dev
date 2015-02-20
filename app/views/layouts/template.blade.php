@@ -38,7 +38,7 @@
 
         <link href="/kanzi/css/skins/light-blue.css" rel='stylesheet' type='text/css' id="skin-file">
 
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+
 
         @yield('topscript')
 
@@ -64,6 +64,18 @@
 
             h2 {
                 margin-top: 10px;
+            }
+            .modal-backdrop {
+                z-index: 0;
+            }
+
+            .nav-label {
+                float: left;
+                line-height: 20px;
+                display: block;
+                width: 100%;
+                clear: both;
+                margin: 25px 0 0 0;
             }
         </style>
 
@@ -132,7 +144,7 @@
 
                             <!-- Logo -->
                             <div class="col-xs-2 logo">
-                                <a href="/kanzi/home-version1.html">
+                                <a href="/">
                                    <h3 id="logo" class="text-center">My Garage Sale<span class="glyphicon glyphicon-home" aria-hidden="true"></span></h3>
                                 </a>
                             </div>
@@ -188,11 +200,47 @@
 
                                         @if (Auth::guest())
                                         <li>
-                                            <a href="{{{ action('HomeController@showLogin') }}}">
+                                           <!--  <a href="{{{ action('HomeController@showLogin') }}}">
                                                 <span class="label-nav">
                                                     Login
                                                 </span>
-                                            </a>
+                                            </a> -->
+                                        <!-- Button trigger modal -->
+                                        <a data-toggle="modal" data-target="#myModal" class="nav-label">
+                                          Login
+                                        </a>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h3 class="modal-title" id="myModalLabel">Welcome!</h3>
+                                                        <h4 class="modal-title" id="myModalLabel">Please log in to create an account</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    {{ Form::open(array('action' => 'HomeController@doLogin')) }}
+
+                                                    <div class="form-group">
+                                                        {{ Form::label('email', 'eMail Address') }}
+                                                        {{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        {{ Form::label('password', 'Password') }}
+                                                        {{ Form::password('password', array('class' => 'form-control')) }}
+                                                    </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                                    <div class="form-group pull-right">
+                                                        {{ Form::submit('Log In!', array('class' => 'btn btn-primary')) }}
+                                                        {{ Form::close() }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                             <!-- Dropdown -->
                                             <ul>
                                                 <li>
@@ -244,20 +292,24 @@
                                 </ul>
                                 <!-- //Mobile Nav. Container// -->
                             </div>
-                            <!-- Nav -->
-
                         </div>
-
-
-
                     </div>
                 </header>
                 <!-- //Header// -->
+            </div>
 
-                
+            
+                    @if (Session::has('successMessage'))
+                        <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
+                    @endif
 
-                <!-- Content Goes Here! --> 
-                @yield('content')
+
+                    @if (Session::has('errorMessage'))
+                       <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
+                    @endif
+                    
+                    <!-- Page Content Goes Here! --> 
+                    @yield('content')
 
 
             <footer>
