@@ -45,7 +45,7 @@
                         for your next big-ticket<br /> 
                         find. Connect with sellers and see their
                         hand-picked treasures before<br />
-                        you arrive
+                        you arrive.
 
 
                         <!-- Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,<br /> 
