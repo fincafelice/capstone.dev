@@ -28,23 +28,21 @@ class SalesController extends \BaseController
 		// If there is a search, perform a query looking for
 		// sales with those associated tags.
 
-		if (Input::has('search')) 
-		{
+		if (Input::has('search')) {
 			$search = Input::get('search');
 
-			// $query->where('tags', 'like', '%' . $search . '%');
-
-			$sales = Sale::whereHas('tags', function($q) use ($search) {
-
-				$q->where('name', 'like', '%' . $search . '%');
-
-			})->orderBy('created_at', 'desc')->paginate(10);
-		} 
-
-		else 
-		{
-			$sales = Sale::orderBy('created_at', 'desc')->paginate(4);
+			$query->where('sale_name', 'like', '%' . $search . '%');
 		}
+
+		if (Input::has('tag')) {
+			$query->whereHas('tags', function($q) {
+				$tag = Input::get('tag');
+				
+				$q->where('name', $tag);
+			});
+		}
+
+		$sales = $query->orderBy('sale_date_time')->paginate(4);
 
 		// return view with sales having a specific tag attached, and all tags for sidebar.
     	return View::make('sales.index')->with('sales', $sales)->with('showTags', $showTags);

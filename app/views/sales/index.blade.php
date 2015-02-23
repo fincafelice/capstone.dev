@@ -194,7 +194,7 @@
 							</div>
 
 							@foreach ($sale->tags as $tag)
-								<small> {{{ $tag->name }}} </small>
+								<a href="{{{ action('SalesController@index', array('tag' => $tag->name)) }}}" class="btn btn-default btn-sm"><small>{{{ $tag->name }}}</small></a>
 							@endforeach
 						</div>
 					@endforeach	
@@ -204,12 +204,6 @@
 			<div class="col-md-6">
 				<div class="hidden-xs hidden-sm" id="map-canvas"></div>
 
-
-
-
-
-
-		
 				<div id="tag-sidebar" class="sidebar">
 
 	                <!-- Sidebar Block -->
@@ -239,7 +233,7 @@
 	                     
 
 							@foreach ($showTags as $showTag)
-								<a href="{{{ action('TagsController@index', array('showTag' => $showTag->name)) }}}"> {{ $showTag->name }} </a>
+								<a href="{{{ action('SalesController@index', array('tag' => $showTag->name)) }}}"> {{ $showTag->name }} </a>
 							@endforeach	
 
 	                     
