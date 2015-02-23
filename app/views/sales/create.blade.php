@@ -297,10 +297,11 @@
 
             if (tags.indexOf(insertText) == -1) {
                 
-                $('.tag-box').append('<button type="button" class="btn btn-default">' + insertText + '</button>');
+                $('.tag-box').append('<button type="button" class="btn btn-default">' + insertText + '</button>' + ', ');
                 tags.push(insertText);
 
-                // set value of #tags to be variable tags glued together with ','
+                
+
             }
 
         });
@@ -315,7 +316,6 @@
 
             $(this).remove();
 
-            // set value of #tags to be variable tags glued together with ','
             
         });
     });
