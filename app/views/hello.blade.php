@@ -1,6 +1,20 @@
 @extends('layouts.template')
 
 @section('css')
+<style>
+ .developers, .img-circle {
+ 	height: 180px;
+ 	width: 180px;
+ 	margin-top: 35px;
+ 	margin-bottom: 20px;
+ }
+
+ .carousel2 {
+ 	min-height: 100%;
+ 	min-width: 100%;
+ }
+</style>
+@stop
 
 @section('content')
 
@@ -9,7 +23,7 @@
         <div class="rev-slider-banner-full  rev-slider-full">
             <ul>
                 <li data-transition="fade" data-slotamount="7" data-masterspeed="300" >
-                    <img src="/img/yardsale.png"  alt="rev-full1" data-fullwidthcentering="on">
+                    <img src="/img/yardsale-headvisible.png"  alt="rev-full1" data-fullwidthcentering="on">
 
                     <div class="carousel-text tp-caption slider-text-title sft str"
                         data-x="20"
@@ -25,12 +39,12 @@
                     </div>
 
                     <div class="tp-caption slider-text-description sft str"  data-x="20" data-y="280" data-start="1500" data-easing="easeOutBack" data-end="5000" data-endspeed="500">
-                        <a href="#" class="button btn-flat">More Info</a>
+                        <a href="{{{ action('SalesController@create') }}}" class="button btn-flat">More Info</a>
                     </div>                  
                 </li>
 
                 <li data-transition="slideleft" data-slotamount="14">
-                    <img src="/img/garale-sale2.jpg" alt="Rev Full">
+                    <img id="carousel2" src="/img/garale-sale2-resize.jpg" alt="Rev Full">
 
                     <div class="carousel-text tp-caption slider-text-title sft str"
                         data-x="20"
@@ -45,16 +59,18 @@
                         for your next big-ticket<br /> 
                         find. Connect with sellers and see their
                         hand-picked treasures before<br />
+
                         you arrive.
 
 
                         <!-- Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,<br /> 
                         lorem quis bibendum auctor, nisi elit consequat ipsum, nec <br />
                         sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate -->
+
                     </div>
 
                     <div class="tp-caption slider-text-description sft str"  data-x="20" data-y="280" data-start="1500" data-easing="easeOutBack" data-end="5000" data-endspeed="500">
-                        <a href="#" class="button btn-flat">More Info</a>
+                        <a href="{{{ action('SalesController@index') }}}" class="button btn-flat">More Info</a>
                     </div>                
                 </li>
             </ul>
@@ -85,15 +101,18 @@
 	            </div>
 	            <hr>
 	            <div class="col-md-4">
-	                <h4>Avid treasure hunters, artists, thrift store owners, hobbyists and bargain shoppers alike can browse all garage sales just by clicking the <strong>BROWSE</strong> link above.  No need to login.  Just page through the lists and click the sale that interests you.</h4>
+	                <h4>Avid treasure hunters, artists, thrift store owners, hobbyists and bargain shoppers alike can browse garage sales.  No need to login. Page through local listings and find what piques your interest.</h4>
 	            </div>
 
 	            <div class="col-md-4">
-	                <h4>Families looking to declutter and earn a little extra cash can quickly list their garage sale event and know the <strong>advertising</strong> is being handled by the web application.  Groups who want to join forces and host a bazaar can easily centralize their efforts. Just click the <strong>SELL</strong> link above.</h4>
+	                <h4>Looking to declutter and earn a little extra cash? List your garage sale event and know the <strong>advertising</strong> is being handled by us. Hosting a bazaar? It's easy to join forces and centralize your efforts with a quick sale listing!</h4>
 	            </div>
 
 	            <div class="col-md-4">
+
 	                <h4>We offer helpful sale event tips to plan a stress-free garage sale.  Just click the <strong>TIPS</strong> link above.  We have also given a little thought to additional services and businesses you probably haven't thought of just yet.  See our links below to give them a visit.</h4>
+	                <h4>Stressing over details? There's a better way. Getting a garage sale permit, maximizing your sales strategy, and handling clean-up can be a breeze. Use our helpful tips and resources to plan a stress-free garage sale.</h4>
+
 	            </div>
 
 	            <hr>
@@ -101,77 +120,85 @@
 
 	        <div class="row">
 
-	            <!-- (one) -->
-	            <div class="col-md-4 col-sm-4"> 
-	                <div class="content-box content-style4 medium animated"
-	                     data-animtype="fadeIn"
-	                     data-animrepeat="0"
-	                     data-animspeed="1s"
-	                     data-animdelay="0.2s"
-	                     >
-	                    <h4 class="h4-body-title">
-	                        <i class="icon-settings-streamline"></i>
-	                        Browse Sales
-	                    </h4>
-	                     <div class="content-box-text">
-	                        You will find many unique and fun to find items right in your own backyard!
-	                        <div>
-	                            <a href="#" class=" btn btn-sm">
-	                                <span>read more</span>
-	                            </a>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	            
-	            <!-- (two) -->
-	            <div class="col-md-4 col-sm-4"> 
-	                <div class="content-box content-style4 medium animated"
-	                     data-animtype="fadeIn"
-	                     data-animrepeat="0"
-	                     data-animspeed="1s"
-	                     data-animdelay="0.2s"
-	                     >
-	                    <h4 class="h4-body-title">
-	                        <i class="icon-computer-imac"></i>
-	                        Create Sales
-	                    </h4>
-	                    <div class="content-box-text">
-	                        Easily and quickly list your sale event to a large audience.
 
-	                        <div>
-	                            <a href="#" class=" btn btn-sm">
-	                                <span>read more</span>
-	                            </a>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
 
-	            <!-- (three) -->
-	            <div class="col-md-4 col-sm-4"> 
-	                <div class="content-box content-style4 medium animated"
-	                     data-animtype="fadeIn"
-	                     data-animrepeat="0"
-	                     data-animspeed="1s"
-	                     data-animdelay="0.2s"
-	                     >
-	                    <h4 class="h4-body-title">
-	                        <i class="icon-paint-bucket-streamline"></i>
-	                        Success Tips
-	                    </h4>
-	                    <div class="content-box-text">
-	                        Learn how to have a successful and pain-free garage sale event.
 
-	                        <div>
-	                            <a href="#" class=" btn btn-sm">
-	                                <span>read more</span>
-	                            </a>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
+				<div class="col-md-4 col-sm-4"> 
+	        		<div class="content-box content-style2 anim-opacity animated"
+                        data-animtype="fadeIn"
+                        data-animrepeat="0"
+                        data-animspeed="1s"
+                        data-animdelay="0.2s"
+                        >
+                        <h4 class="h4-body-title">
+                            <a href="{{{ action('SalesController@index') }}}"><i class="fa fa-search"></i></a>
+                            Browse
+                        </h4>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 col-sm-4"> 
+	        		<div class="content-box content-style2 anim-opacity animated"
+                        data-animtype="fadeIn"
+                        data-animrepeat="0"
+                        data-animspeed="1s"
+                        data-animdelay="0.2s"
+                        >
+                        <h4 class="h4-body-title">
+                            <a href="{{{ action('SalesController@create') }}}"><i class="fa fa-tags"></i></a>
+                            Create Sale
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4"> 
+	        		<div class="content-box content-style2 anim-opacity animated"
+                        data-animtype="fadeIn"
+                        data-animrepeat="0"
+                        data-animspeed="1s"
+                        data-animdelay="0.2s"
+                        >
+                        <h4 class="h4-body-title">
+                            <a href="/tips"><i class="fa fa-lightbulb-o"></i></a>
+                            Success Tips
+                        </h4>
+                    </div>
+                </div>
 	        </div>
 	    </div>
 	</div> <!-- /Spinning Icons -->
+
+
+	<div class="section-content section-color-bg white-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">   
+    
+                    <h2 class="h2-section-title">Meet The Developers</h2>
+                    {{-- <h3 class="h3-section-info">Lorem ipsum dolor sit amet, in pri offendit ocurreret. Vix sumo ferri an. pfs adodio fugit delenit ut qui. Omittam suscipiantur ex  vel,ex audiam  intellegat gfIn labitur discere eos, nam an feugiat voluptua.</h3> --}}
+                </div>
+             </div>
+
+			<div class="row">
+                <div class="col-md-12 col-sm-12 text-center">
+                    <div class="col-md-4">
+						<img class="developers img-circle" src="/img/nicole.jpg">
+						<h4 class="h3-section-info">Nicole DeBord</h4>
+                    </div> 
+
+                    <div class="col-md-4">
+						<img class="developers img-circle" src="/img/felicem.jpg">
+						<h4 class="h3-section-info">Felice Malaszowski</h4>
+                    </div>                  
+
+                    <div class="col-md-4">
+                        <img class="developers img-circle" src="/img/kevin.jpg">
+                        <h4 class="h3-section-info">Kevin Bongiovanni</h4>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
