@@ -18,7 +18,10 @@ class SalesController extends \BaseController
 	 * @return Response
 	 */
 	public function index()
-	{    	
+	{    
+		// Get all tags for tag search sidebar	
+		$showTags = Tag::all();
+
 		// Eager load sales with tags
     	$query = Sale::with('tags');
 
@@ -40,11 +43,11 @@ class SalesController extends \BaseController
 
 		else 
 		{
-			$sales = Sale::orderBy('created_at', 'desc')->paginate(5);
+			$sales = Sale::orderBy('created_at', 'desc')->paginate(4);
 		}
 
-		// return view with sales having a specific tag attached.
-    	return View::make('sales.index')->with('sales', $sales);
+		// return view with sales having a specific tag attached, and all tags for sidebar.
+    	return View::make('sales.index')->with('sales', $sales)->with('showTags', $showTags);
 	} 
 
 	/**
