@@ -24,9 +24,10 @@
         list-style-type: none;
     }
 
-    #tag-box {
-/*        border: solid black 1px;
-*/    }
+    .tag-box {
+        /*border: solid black 1px;*/
+        padding-bottom: 10px;
+    }
 
     .btn, .btn-default, .tag-btn {
         padding: 30px 50px;
@@ -247,15 +248,15 @@
             {{ $errors->first('description', '<p class="help-block">:message</p>') }}
         </div>
 
-        <div class="form-group {{{ $errors->has('tags') ? 'has-error' : '' }}}">
-            {{ Form::label('tags', 'Tags') }}
-            {{ Form::textarea('tags', Input::old('tags'), array('class' => 'form-control')) }}
-            {{ $errors->first('tags', '<p class="help-block">:message</p>') }}
+        <div class= "tag-box">
+            {{ Form::hidden('tags') }}
         </div>
+
+        <div class= "clearfix"></div>
           
         <div>
             {{ Form::submit('Create Sale', array('class' => 'btn btn-default pull-right')) }}
-        </div>
+        </div> 
 
         {{ Form::close() }}
         <!-- //New Sale Form// -->
@@ -271,7 +272,7 @@
             <!-- <ul id="buttons"> -->
             @foreach($tags as $tag)
 
-                <a href="" id="tags" class="btn btn-default tag-btn" data-id="{{{$tag->id}}}">{{{ $tag->name }}}</a> 
+                <button type="button" id="tags" class="btn btn-default tag-btn" data-id="{{{$tag->id}}}">{{{ $tag->name }}}</button> 
                 
             @endforeach
 
@@ -286,37 +287,41 @@
 @section('bottomscript')
 
 <script type="text/javascript">
+    var tags = [];
     $(document).ready(function () {
         initialize();
 
         // use jquery to select all buttons - prevent the default action on that button.
 
-        function addTag(tag) {
-            // add tag to text area
-            $('.tag-btn').click( function(event) {
-                event.preventDefault();
-                var tag = $(this).text();
-                addTag(tag);
-            });
-
-        }
-
         // Find all buttons
-        $tags = $('.tag-btn').on("click", function(event) {
-                event.preventDefault();
-                $(this).off();
-                var insertText = $(this).text();
-                $('#tags').append(insertText + " " + " " + " ");
+        $('.tag-btn').on("click", function(event) {
+            event.preventDefault();
 
+            var insertText = $(this).text();
 
-                console.log(this.text);
+            if (tags.indexOf(insertText) == -1) {
                 
-                $('.tag-btn').click(function(event){
-                     event.preventDefault();
+                $('.tag-box').append('<button type="button" class="btn btn-default">' + insertText + '</button>');
+                tags.push(insertText);
 
-                });
+                // set value of #tags to be variable tags glued together with ','
+            }
         });
 
+
+        $(".tag-box").on("click", "button", function(e) {
+            e.preventDefault();
+
+            var insertText = $(this).text();
+
+            tags.splice(tags.indexOf(insertText), 1);
+
+            $(this).remove();
+
+            // set value of #tags to be variable tags glued together with ','
+            
+
+        });
     });
 </script>
 <script src="/js/moment.js"></script>
