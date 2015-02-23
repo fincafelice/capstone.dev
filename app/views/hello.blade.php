@@ -62,11 +62,6 @@
 
                         you arrive.
 
-
-                        <!-- Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,<br /> 
-                        lorem quis bibendum auctor, nisi elit consequat ipsum, nec <br />
-                        sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate -->
-
                     </div>
 
                     <div class="tp-caption slider-text-description sft str"  data-x="20" data-y="280" data-start="1500" data-easing="easeOutBack" data-end="5000" data-endspeed="500">
@@ -109,8 +104,6 @@
 	            </div>
 
 	            <div class="col-md-4">
-
-	                <h4>We offer helpful sale event tips to plan a stress-free garage sale.  Just click the <strong>TIPS</strong> link above.  We have also given a little thought to additional services and businesses you probably haven't thought of just yet.  See our links below to give them a visit.</h4>
 	                <h4>Stressing over details? There's a better way. Getting a garage sale permit, maximizing your sales strategy, and handling clean-up can be a breeze. Use our helpful tips and resources to plan a stress-free garage sale.</h4>
 
 	            </div>

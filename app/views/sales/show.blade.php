@@ -137,19 +137,19 @@
 									<div id="photo-column" class="col-md-3 embed-responsive-4by3 ">
 					                    <!-- Portfolio Item -->
 
-					                    <div class="thumb-label-item animated branding"
+					                    <div class="feature animated"
 					                         data-animtype="fadeInUp"
 					                         data-animrepeat="0"
 					                         data-speed="1s"
-					                         data-delay="1.2s">
-					                        <div class="img-overlay thumb-label-item-img">
+					                         data-delay="0s">
+					                        <div class="feature-image img-overlay setImageD">
 
 
 					                            <!-- <img
 					                                src="images/placeholders/portfolio4.jpg"
 					                                alt=""/> -->
 
-					         					<img class="img-responsive" src="{{ $sale->images[$i]->img_path }}">
+					         					<img class="setimageD" src="{{ $sale->images[$i]->img_path }}">
 					          		
 
 
@@ -157,30 +157,11 @@
 					                                <a class="portfolio-zoom fa fa-plus"
 					                                   href="{{ $sale->images[$i]->img_path }}"
 					                                   data-rel="prettyPhoto[portfolio]" title="Title goes here"></a>
-
-					                                <div class="item_img_overlay_content">
-					                                    <h3 class="thumb-label-item-title">
-					                                        <a href="">Amazing find!</a>
-					                                    </h3>
-					                                </div>
+					                         
 					                            </div>
 					                        </div>
 					                    </div>
 											
-										<div class="feature animated" data-animtype="fadeInLeft"
-                                 			data-animrepeat="0"
-                                 			data-speed="1s"
-                                 			data-delay="0s">
-                                			<div class="feature-image img-overlay setImageD">
-
-				         						<img class="setImageD" src="{{ $sale->images[$i]->img_path }}">
-				          		
-												<div class="item-img-overlay">
-                                        			<a class="portfolio-zoom fa fa-plus" href="{{ $sale->images[$i]->img_path }}"
-                                           					data-rel="prettyPhoto[portfolio]" title="Title goes here"></a>
-                                    			</div>
-                               				</div>
-                               			</div>
 					                    <!-- //Portfolio Item// -->
 										@if (Auth::id() == $sale->user_id)
 									    	<button class="btn btn-danger" data-image-id="{{ $sale->images[$i]->id }}">Remove</button>
