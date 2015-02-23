@@ -5,19 +5,38 @@ Tips
 @stop
 
 @section('css')
-<style type="text/css">
-#invisible {
-	display: none;
-    text-align: center;
-}
-.list {
-    font-weight: bold;
-    /*background-color: #0F0;*/
-}
-dt {
-    text-align: center;
-}
-</style>
+    <style type="text/css">
+        .invisible {
+        	display: none;
+            text-align: left;
+        }
+        .list {
+            font-weight: bold;
+        }
+        dt {
+            text-align: left;
+            font-size: 120%;
+        }
+        dd {
+            font-size: 100%;
+        }
+
+        .content-box {
+            margin-top: 50px;
+        }
+
+        .row {
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin-bottom: -5px;
+        }
+        #sale-tips {
+            margin-top: 20px;
+            text-align: left; 
+        }
+    </style>
 @stop
 
 @section('topscript')
@@ -25,12 +44,12 @@ dt {
 <script>
 
     $('document').ready(function() {
-        $('#invisible').click(function(event) {
+        $('.invisible').click(function(event) {
             event.preventDefault();
-            $('dd').toggle('.invisible');
+            $('dd').togglClass('invisible');
         });
         $('dt').click(function() {
-            $(this).next().toggle('.invisible');
+            $(this).next().toggleClass('invisible');
         });
     });
 
@@ -41,44 +60,117 @@ dt {
 @section('content')
 
 <div class="container">
-    <h1 align = center >10 Tips for a Successful Garage Sale</h1>
-    <div class="centered important highlighted">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Garage Sale Tips</h1>
+            <hr>
+        </div>
     </div>
-    <div>
-        
-        <d1>
-            <dt>1. Advertise your Garage Sale.</dt>
-            <dd id = "invisible">There are so many different ways to advertise your garage sale.  Our web application is one but other resources can be helpful also.  Two other great resourse would be Tweeting it and / or posting pictues onto your instagram.</dd><br>
 
-            <dt>2. Place the bigger items in the front.</dt>
-            <dd id = "invisible">You have about 3 seconds as a car drives by to make a good first impression. Either they will stop or they will keep on driving. By placing all your large awesome items out front, you are telling the driver/shopper that you have awesome stuff and lots of it.</dd><br>
+    <div class="col-md-7">
+
+        <div class="row">
+
+            <div class="col-md-5">
+                <h3>Permits</h3>
+                <p>A garage sale permit may be required by your city. Plan ahead, know local permit requirements, and apply in advance before planning your sale. Visit your city's website or call for details.</p>
+            </div>
+
+            <div class="col-md-2">
+                <div class="content-box content-style2 anim-opacity animated"
+                    data-animtype="fadeIn"
+                    data-animrepeat="0"
+                    data-animspeed="1s"
+                    data-animdelay="0.2s"
+                    >
+                    <h4>
+                        <a href="http://www.sanantonio.gov/ces/garagesales.aspx"><i class="fa fa-gavel"></i></a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-5">
+                <h3>Donating</h3>
+                <p>Cleaning up after your garage sale can be a daunting task. Partner with local community organizations, donate unwanted items, or arrange to have items picked up after your sale</p>
+            </div>
+
+            <div class="col-md-2">
+                <div class="content-box content-style2 anim-opacity animated"
+                    data-animtype="fadeIn"
+                    data-animrepeat="0"
+                    data-animspeed="1s"
+                    data-animdelay="0.2s"
+                    >
+                    <h4>
+                        <a href="http://www.salvationarmyusa.org/"><i class="fa fa-truck"></i></a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-5">
+                <h3>Transactions</h3>
+                <p>Have cash and coinage stored safely on your person to make change. Accepting checks from strangers carries risk of fraud. If you have costly items for sale, consider mobile payment providers that offer for pay as you go plans </p>
+            </div>
+
+            <div class="col-md-2">
+                <div class="content-box content-style2 anim-opacity animated"
+                    data-animtype="fadeIn"
+                    data-animrepeat="0"
+                    data-animspeed="1s"
+                    data-animdelay="0.2s"
+                    >
+                    <h4>
+                        <a href="http://payments.intuit.com/mobile-credit-card-processing/"><i class="fa fa-money"></i></a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+    <div id="sale-tips" class="col-md-5">
+        <h3>Having a Successful Garage Sale</h3>
+        <div class="important highlighted">
+        </div>
+        <div>
             
-            <dt>3. Have a free pile.</dt>
-            <dd id = "invisible">Place a large well-marked “free pile” right out front. The lure of something free will get almost any driver to stop. I put a bunch of stuff I was going to donate that I didn’t think would sell in the free pile. It was just enough temptation to get the shopper out of their car. Also, people feel bad stopping and just taking something for free. They will typically find something to buy so they don’t feel bad for just taking the free stuff.</dd><br>
-            
-            <dt>4. Combine with your friends and neighbors.</dt>
-            <dd id = "invisible">To have a really successful garage sale you need to have lots of stuff. The more stuff you have sitting out, the better your chances that people will pull over and shop. My friend Beth from Free Stylin’ came over and brought a car load of stuff to sell. It was just enough extra that it made our garage sale look full..</dd><br>
+            <d1>
+                <dt>Brand yourself</dt>
+                <dd class="invisible">Differentiate your sale with a descriptive name to attract interested buyers. Lots of computers and comic books to unload? Have a geeky garage sale! Cleaning out the craft room? Try an arts and crafts themed sale</dd><br>
 
-            <dt>5. Price to sell.</dt>
-            <dd id = "invisible">Having a garage sale is the last-ditch effort to make some cash on stuff you are probably going to donate. If it doesn’t sell, you will get nothing for it, so price it low! A quarter is better than getting nothing and just donating it to goodwill. If you are wanting to make big bucks off your stuff and sell it for what it’s worth, list it on ebay or craigslist. Garage sales are for just getting rid of the crap already!</dd><br>
+                <dt>Advertise your sale</dt>
+                <dd class="invisible">There are so many different ways to advertise your garage sale. Don't stop here! Include your sales link in a newspaper listing, tweet it, or post pictues to Instagram and share them</dd><br>
 
-            <dt>6. Have a price tag on everything.</dt>
-            <dd id = "invisible">If you want your stuff to sell, put a price tag on it! Most people won’t ask how much something is. They will just set it back down and move on. If you want to sell it, stick a price tag on it. It takes extra time and energy to price everything, but it is worth it.</dd><br>
+                <dt>Place big-ticket items in front</dt>
+                <dd class="invisible">You have about three seconds as a car drives by to make a good first impression. Placing all of your large, awesome items out front lets passersby know that you have great stuff and lots of it</dd><br>
+                
+                <dt>Have a free pile</dt>
+                <dd class="invisible">Place a large, well-marked “free pile” somewhere visible to tempt potential customers. You may end up donating items that don't sell at the end of the day - giving some away upfront can help drum up business</dd><br>
+                
+                <dt>Combine with friends and neighbors</dt>
+                <dd class="invisible">To have a really successful garage sale, you need to have lots of stuff. The more stuff you have sitting out, the better your chances that people will pull over and shop. Join forces: organize, synergize, monetize!</dd><br>
 
-            <dt>7. Stay organized!</dt>
-            <dd id = "invisible">
-			Organization is key when hosting a garage sale. As people shop, corral items closer together. Move shelves closer to the front of the garage as you run out of items. Keep your area clean and tidy.</dd><br>
+                <dt>Price to sell</dt>
+                <dd class="invisible">Pricing items at a quarter of their worth is a good rule of thumb. Haggle, negotiate discounts for bundled purchases, and your garage sale is sure to be a success</dd><br>
 
-            <dt>8. Use bags to contain sets.</dt>
-            <dd id = "invisible"> Plastic bags are a garage sale hosts best friend. I used gallon-size zip-loc bags to keep items with multiple pieces together. For extra large items I used ikea bags and reusable grocery sacks that were clearly labeled with a black sharpie. All the large bagged items sold within an hour!.</dd><br>
+                <dt>Stay organized</dt>
+                <dd class="invisible">Organization is key when hosting a garage sale. As people shop, corral items closer together. Move displays closer to the front of the garage as you run out of items. Keep your area clean and tidy</dd><br>
 
-            <dt>9. Display like items together.</dt>
-            <dd id = "invisible">The harder you try to keep like items together, the more you will sell. Have an area for bags, kids stuff, kitchen stuff, home decor, books, furniture, clothes and shoes.</dd><br>
+                <dt>Display items by category</dt>
+                <dd class="invisible">The harder you try to keep like items together, the more you will sell. Have an area for bags, children's items, kitchen, home decor, books, furniture, clothes and shoes. Organize your sale like you would a store and label prices clearly</dd><br>
+                
 
-            <dt>10. Clearly label everything.</dt>
-            <dd id = "invisible">If the price tag on the item wasn’t obvious enough, I’d use tan painters tape and a sharpie to label items even more clearly. I’d label bags with the contents of the bag and I’d label baskets if everything in the basket was the same price.</dd><br>
-        </d1>
+                <dt>Get help</dt>
+                <dd class="invisible">Large garage sales can be chaotic. Invite your friends to help customers, quote prices, and handle money. </dd><br>
 
+            </d1>
+        </div>
     </div>
 </div>
 

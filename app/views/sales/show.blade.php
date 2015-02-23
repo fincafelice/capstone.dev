@@ -22,6 +22,25 @@
 			border-radius: 4px;
   			box-shadow: 0 0 8px #A3A3C2;
 		}
+
+		.setImageD {
+			max-width: 280px;
+			max-height: 140px;
+		}
+
+		#edit-sale-btn {
+			padding: 0 49.5px !important;
+			margin-top: 15px;
+		}
+
+		#delete-sale-btn {
+			padding: 0 36px !important;
+			margin-top: 15px;
+		}
+
+		#browse-btn {
+			margin-top: 15px;
+		}
 	</style>
 @stop
 
@@ -29,7 +48,9 @@
 @section('content')
 <div class="container">
 	<div class="row">
-
+		<h1>Sale Details</h1>
+		<hr>
+	</div>
 		<div class="col-md-9">
 			<div class="sale-wrapper">
 
@@ -46,20 +67,20 @@
 				<h3>Location</h3> 
 				<h4>{{{ $sale->street_num }}} {{{ $sale->street }}} {{{ $sale->city }}}, {{{ $sale->state }}} {{{ $sale->zip }}}</h4>
 				<h3>Date and Time</h3>
-				<h4>{{{ date("F, d Y") }}} at {{{ date("g:ha", strtotime($sale->sale_date_time)) }}}</h4>
+				<h4>{{{ $sale->sale_date_time->format('l, F jS Y @ g:i A') }}}</h4>
 
 				<!-- add seller username -->
 				<hr>
-				<p>{{ $sale->description }}</p>
+				<p>{{ nl2br($sale->description) }}</p>
 
 			</div>
 		</div>
 
-		<div class="col-md-2">
+		<div class="col-md-3">
 			<div class="clearfix">
 				<!-- <div class="pull-right"> -->
 				<div class="text-center">
-					<a class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
+					<a id="browse-btn" class="btn btn-info" href ="{{{ action('SalesController@index') }}}">Back to Browse</a>	
 				</div>
 
 				@if (Auth::id() == $sale->user_id)
@@ -68,14 +89,14 @@
 
 					<!-- <div class="pull-left">	 -->	
 					<div class="text-center">
-						<a class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) }}}">Edit Sale</a>
+						<a id="edit-sale-btn" class="btn btn-success" href ="{{{ action('SalesController@edit', $sale->id) }}}">Edit Sale</a>
 					</div>
 
 				
 					{{ Form::open(array('action'=>array('SalesController@destroy', $sale->id),'method'=>'delete')) }}
 
 					<div class="text-center">
-						{{ Form::submit('Delete Sale Event', array('class' => 'btn btn-danger')) }}
+						{{ Form::submit('Delete Sale', array('class' => 'btn btn-danger', 'id' => 'delete-sale-btn')) }}
 					</div>		
 
 				
@@ -97,12 +118,7 @@
 				                data-animrepeat="0"
 				                data-speed="1s"
 				                data-delay="0.5s">
-				                <!-- <h2 class="h2-section-title">Our Work</h2> -->
-
-<!-- 				                <div class="i-section-title">
-				                    <i class="icon-files">
-				                    </i>
-				                </div> -->
+				       
 
 				                <div class="space-sep20"></div>
 				            </div>
@@ -118,40 +134,26 @@
 											<div class="row">
 										@endif
 								
-									<div id="photo-column" class="col-md-3">
+									<div id="photo-column" class="col-md-3 embed-responsive-4by3 ">
 					                    <!-- Portfolio Item -->
-					                    <div class="thumb-label-item animated branding"
-					                         data-animtype="fadeInUp"
-					                         data-animrepeat="0"
-					                         data-speed="1s"
-					                         data-delay="1.2s">
-					                        <div class="img-overlay thumb-label-item-img">
+											
+										<div class="feature animated" data-animtype="fadeInLeft"
+                                 			data-animrepeat="0"
+                                 			data-speed="1s"
+                                 			data-delay="0s">
+                                			<div class="feature-image img-overlay setImageD">
 
-
-					                            <!-- <img
-					                                src="images/placeholders/portfolio4.jpg"
-					                                alt=""/> -->
-
-					         					<img class="img-responsive" src="{{ $sale->images[$i]->img_path }}">
-					          		
-
-
-					                            <div class="item-img-overlay">
-					                                <a class="portfolio-zoom fa fa-plus"
-					                                   href="{{ $sale->images[$i]->img_path }}"
-					                                   data-rel="prettyPhoto[portfolio]" title="Title goes here"></a>
-
-					                                <div class="item_img_overlay_content">
-					                                    <h3 class="thumb-label-item-title">
-					                                        <a href=""> Vestibum friilla </a>
-					                                    </h3>
-					                                </div>
-					                            </div>
-					                        </div>
-					                    </div>
+				         						<img class="setImageD" src="{{ $sale->images[$i]->img_path }}">
+				          		
+												<div class="item-img-overlay">
+                                        			<a class="portfolio-zoom fa fa-plus" href="{{ $sale->images[$i]->img_path }}"
+                                           					data-rel="prettyPhoto[portfolio]" title="Title goes here"></a>
+                                    			</div>
+                               				</div>
+                               			</div>
 					                    <!-- //Portfolio Item// -->
 										@if (Auth::id() == $sale->user_id)
-									    	<button class="img-delete-btn" data-image-id="{{ $sale->images[$i]->id }}">Delete Image</button>
+									    	<button class="btn btn-danger" data-image-id="{{ $sale->images[$i]->id }}">Remove</button>
 										@endif
 									</div>
 									@endfor
@@ -167,6 +169,10 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="row text-center">
+		<div class="col-md-10 col-md-offset-1">
 		<div id="disqus_thread"></div>
 		    <script type="text/javascript">
 		        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -183,18 +189,10 @@
 		</div>
 	</div>
 </div>
+</div>
+</div>
 
 @stop {{-- This is to view one particular post by request. --}}
-
-
-
-
-
-
-
-
-@section('content2')
-@stop
 
 
 @section('bottomscript')

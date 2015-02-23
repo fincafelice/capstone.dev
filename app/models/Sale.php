@@ -20,6 +20,7 @@ class Sale extends \Eloquent {
 		'state'          => 'required|max:2',
 		'zip'            => 'required|max:5',
 		'country'        => 'required|max:100',
+		'address'		 => 'required|max:255',
 		'description'    => 'required|max:1000'
 
 	);
@@ -29,8 +30,37 @@ class Sale extends \Eloquent {
         return $this->belongsToMany('Tag');
     }
 
-    public function images() {
+    public function images() 
+    {
     	return $this->hasMany('Image');
     }
 
-}
+
+	public function summarizeDescription($summary = false) 
+	{
+			$description = $this->description;
+
+			if ($summary == true) {
+
+				$description = str_limit($description, 100);
+
+				if (strlen($description) > 100) {
+
+					$description = $description . "...";
+				}
+			}
+
+		return $description;
+	}
+
+	public function getDates()
+	{
+	    return array('created_at', 'updated_at', 'sale_date_time');
+	}
+
+	public function setSaleDateTimeAttribute($value)
+	{
+		$this->attributes['sale_date_time'] = Carbon::createFromFormat('F jS Y, g:i a', $value);
+	}
+}	
+

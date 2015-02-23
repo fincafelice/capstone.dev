@@ -18,33 +18,34 @@ class SalesController extends \BaseController
 	 * @return Response
 	 */
 	public function index()
-	{    	
+	{    
+		// Get all tags for tag search sidebar	
+		$showTags = Tag::all();
+
 		// Eager load sales with tags
     	$query = Sale::with('tags');
 
 		// If there is a search, perform a query looking for
 		// sales with those associated tags.
 
-		if (Input::has('search')) 
-		{
+		if (Input::has('search')) {
 			$search = Input::get('search');
 
-			// $query->where('tags', 'like', '%' . $search . '%');
-
-			$sales = Sale::whereHas('tags', function($q) use ($search) {
-
-				$q->where('name', 'like', '%' . $search . '%');
-
-			})->orderBy('created_at', 'desc')->paginate(10);
-		} 
-
-		else 
-		{
-			$sales = Sale::orderBy('created_at', 'desc')->paginate(5);
+			$query->where('sale_name', 'like', '%' . $search . '%');
 		}
 
-		// return view with sales having a specific tag attached.
-    	return View::make('sales.index')->with('sales', $sales);
+		if (Input::has('tag')) {
+			$query->whereHas('tags', function($q) {
+				$tag = Input::get('tag');
+				
+				$q->where('name', $tag);
+			});
+		}
+
+		$sales = $query->orderBy('sale_date_time')->paginate(4);
+
+		// return view with sales having a specific tag attached, and all tags for sidebar.
+    	return View::make('sales.index')->with('sales', $sales)->with('showTags', $showTags);
 	} 
 
 	/**
@@ -170,21 +171,18 @@ class SalesController extends \BaseController
 			// Check for tags and add them to sale_tag pivot table.
 			if (Input::has('tags')) {
 				$tags = Input::get('tags');
-				$tagsArray = explode(', ', $tags);
 
-				// Unset empty strings from array.
-				foreach ($tagsArray as $key => $value) {
-					if ($value == ', ') {
-						unset($tagsArray[$key]);
-					}
-				}
+				$tagsArray = explode(',', $tags);
 
-				dd($tagsArray);
+
+				// dd($tagsArray);
 				foreach ($tagsArray as $tagName) {
-					dd($tagName);
+					// dd($tagName);
 					// find tag by name
-					$tag = Tag::where('name', '=', $tagName)->first();
-					dd($tag->name);
+
+					$tag = Tag::where('name', '=', $tagName)->firstOrFail();
+					// dd($tag->name);
+
 					// create entry in pivot table with tag_id and sale_id
 					DB::table('sale_tag')->insert(array('sale_id' => $sale->id, 'tag_id' => $tag->id));
 				}
