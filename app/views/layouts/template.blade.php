@@ -54,8 +54,10 @@
         <style>
             #logo {
 
-                font-family: 'The Girl Next Door', cursive;
-                text-align: centered;
+                max-height: 200px;
+                margin-top: -60px;
+                margin-bottom: -50px;
+                margin-left: -100px;
             }
 
             .carousel-text {
@@ -77,6 +79,13 @@
                 clear: both;
                 margin: 25px 0 0 0;
             }
+
+            
+            .btn, input[type="submit"], input[type="button"], button.btn, .btn-primary {
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+            }
         </style>
 
         @yield('css')
@@ -93,7 +102,6 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-7">
-
                             </div>
                             <div class="col-sm-5">
 
@@ -143,9 +151,9 @@
                         <div class="row header">
 
                             <!-- Logo -->
-                            <div class="col-xs-2 logo">
+                            <div class="col-md-2 logo">
                                 <a href="/">
-                                   <h3 id="logo" class="text-center">My Garage Sale<span class="glyphicon glyphicon-home" aria-hidden="true"></span></h3>
+                                    <img id="logo" src="/img/final-logo.png">
                                 </a>
                             </div>
                             <!-- //Logo// -->
@@ -194,81 +202,70 @@
                                             </a>
                                         </li>
 
-                                         <li>
-                                            </a>
-                                        </li>
-
                                         @if (Auth::guest())
                                         <li>
-                                           <!--  <a href="{{{ action('HomeController@showLogin') }}}">
+                                            <!-- Button Trigger Modal -->
+                                            <a data-toggle="modal" data-target="#myModal">
                                                 <span class="label-nav">
                                                     Login
                                                 </span>
-                                            </a> -->
-                                        <!-- Button trigger modal -->
-                                        <a data-toggle="modal" data-target="#myModal" class="nav-label">
-                                          Login
-                                        </a>
+                                            </a>
+                                            <!-- //Button Trigger Modal // -->
+                                        </li>
+                                        <li>
+                                            <!-- Login Modal -->
+                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                            <h3 class="modal-title" id="myModalLabel">Welcome!</h3>
+                                                            <h4 class="modal-title" id="myModalLabel">Please log in to create an account</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        {{ Form::open(array('action' => 'HomeController@doLogin')) }}
 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        <h3 class="modal-title" id="myModalLabel">Welcome!</h3>
-                                                        <h4 class="modal-title" id="myModalLabel">Please log in to create an account</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                    {{ Form::open(array('action' => 'HomeController@doLogin')) }}
+                                                            <div class="form-group">
+                                                                {{ Form::label('email', 'eMail Address') }}
+                                                                {{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
+                                                            </div>
 
-                                                    <div class="form-group">
-                                                        {{ Form::label('email', 'eMail Address') }}
-                                                        {{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        {{ Form::label('password', 'Password') }}
-                                                        {{ Form::password('password', array('class' => 'form-control')) }}
-                                                    </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                    <div class="form-group pull-right">
-                                                        {{ Form::submit('Log In!', array('class' => 'btn btn-primary')) }}
-                                                        {{ Form::close() }}
+                                                            <div class="form-group">
+                                                                {{ Form::label('password', 'Password') }}
+                                                                {{ Form::password('password', array('class' => 'form-control')) }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                                            <div class="form-group pull-right">
+                                                                {{ Form::submit('Log In!', array('class' => 'btn btn-primary')) }}
+                                                                {{ Form::close() }}
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                            <!-- Dropdown -->
-                                            <ul>
-                                                <li>
-                                                    <a href="{{{ action('UsersController@create') }}}">Create Account</a>
-                                                </li>                           
-                                            </ul>
-                                            <!-- /End Dropdown -->
+                                        <!-- //Login Modal// -->
                                         </li>
-
+                                        <li>
+                                            <a href="{{{ action('UsersController@create') }}}">
+                                                <span class="label-nav">
+                                                    Create Account
+                                                </span>
+                                            </a>
+                                        </li>
                                         @else 
                                         <li>
                                             <a href="{{{ action('UsersController@show', Auth::id()) }}}">
                                                 <span class="label-nav">
                                                     Dashboard
                                                 </span>
-                                                <!-- <span class="label-nav-sub" data-hover="Elements">
-                                                    Elements
-                                                </span> -->
-                                        </li>
-
+                                            </a>
                                         <li>
                                             <a href="{{{ action('HomeController@doLogout') }}}">
                                                 <span class="label-nav">
                                                     Logout
                                                 </span>
-                                                <!-- <span class="label-nav-sub" data-hover="Elements">
-                                                    Elements
-                                                </span> -->
                                             </a>
                                         </li>
 
@@ -298,7 +295,9 @@
                 <!-- //Header// -->
             </div>
 
-            
+            <!-- Success/Error Messages -->
+            <div class="container col-md-12">
+                <div class="col-md-6 col-md-offset-3">
                     @if (Session::has('successMessage'))
                         <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
                     @endif
@@ -307,9 +306,14 @@
                     @if (Session::has('errorMessage'))
                        <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
                     @endif
-                    
-                    <!-- Page Content Goes Here! --> 
-                    @yield('content')
+                </div>
+            </div> 
+            <!-- //Success/Error Messages// -->          
+
+            
+            <!-- Page Content Goes Here! --> 
+            @yield('content')
+
 
 
             <footer>
@@ -321,15 +325,15 @@
 
 
                                 <!-- Footer Col. -->
-                                <div class="col-md-3 col-sm-3 footer-col">
+                                <div class="col-md-4 col-sm-4 footer-col">
                                     <div class="footer-content">
                                         <div class="footer-content-logo">
                                            <!--  <img src="/kanzi/images/main_logo.png" alt=""/> -->
                                            <h3>My Garage Sale</h3>
                                         </div>
                                         <div class="footer-content-text">
-                                            <p>Everyone lives a busy life.  And it can get a little cluttered. But we don't always have time to declutter.</p>
-                                            <p>This web application will make the process of decluttering much less painful.  And planning it much quicker!</p>
+                                            <p>Everyone lives a busy life, and it can get a little cluttered. We'll help you clean up your act.</p>
+                                            <p>My Garage Sale makes the process of decluttering much less painful and planning it much quicker!</p>
                                         </div>
                                     </div>
                                 </div>
@@ -337,7 +341,7 @@
 
 
                                 <!-- Footer Col. -->
-                                <div class="col-md-3 col-sm-3 footer-col">
+                                <div class="col-md-4 col-sm-4 footer-col">
                                     <div class="footer-title">
                                         Recent Tweets
                                     </div>
@@ -358,26 +362,26 @@
 
 
                                 <!-- Footer Col. -->
-                                <div class="col-md-3 col-sm-3 footer-col">
+                                <div class="col-md-4 col-sm-4 footer-col">
                                     <div class="footer-title">
                                         Links
                                     </div>
                                     <div class="footer-content">
                                         <ul class="footer-category-list">
                                             <li>
-                                                <a href="">Giving to charity/ Salvation Army</a>
+                                                <a href="">Giving to charity / Salvation Army</a>
                                             </li>
                                             <li>
-                                                <a href="">Planning a move/ USPS</a>
+                                                <a href="">Planning a move / USPS</a>
                                             </li>
                                             <li>
-                                                <a href="">City Permits&Neighborhood Watch</a>
+                                                <a href="">City Permits &amp; Neighborhood Watch</a>
                                             </li>
                                             <li>
                                                 <a href="">Need insurance? Insurejoy</a>
                                             </li>
                                             <li>
-                                                <a href="">Have Pets? Rover Comeover </a>
+                                                <a href="">Have Pets? Rover Sleepover </a>
                                             </li>
                                             <li>
                                                 <a href="">Service minded?
@@ -390,19 +394,6 @@
                                 <!-- //Footer Col.// -->
 
 
-                                <!-- Footer Col. -->
-                                <div class="col-md-3 col-sm-3 footer-col">
-                                    <div class="footer-title">
-                                        Photostream
-                                    </div>
-                                    <div class="footer-content">
-                                        <div class="flickr_badge_wrapper">
-                                            <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&display=latest&size=s&layout=x&source=all_tag&tag=Sky,scrappers" id="flicker-images"></script>                            
-                                        </div>
-                                        <!-- //Footer Col.// -->
-
-                                    </div>
-                                </div>
                             </div>
                         </div>
 

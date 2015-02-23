@@ -2,6 +2,7 @@
 
 
 @section('css')
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
     <style>
   
     #map-canvas {
@@ -16,7 +17,7 @@
     }
 
     #tag-sidebar {
-        margin-top: 50px;
+        margin-top: 30px;
     }
 
     ul {
@@ -27,11 +28,16 @@
 /*        border: solid black 1px;
 */    }
 
-    .tag {
-
+    .btn, .btn-default, .tag-btn {
+        padding: 30px 50px;
+        font-size: 90%;
+    }
+    .bootstrap-datetimepicker-widget td span {
+        width: 13px;
+        line-height: 13px;
+        margin: 0;
     }
     </style>
-
 @stop
 
 
@@ -96,12 +102,6 @@
             navigator.geolocation.getCurrentPosition(function(position) {
             var pos = new google.maps.LatLng(position.coords.latitude,
                                            position.coords.longitude);
-
-          // var infowindow = new google.maps.InfoWindow({
-                // map: map,
-                // position: pos,
-                // content: 'Location found using HTML5.'
-            // });  removed 2/20/2015
 
             map.setCenter(pos);
             }, function() {
@@ -183,11 +183,11 @@
 @section('content')
 
 <div class="container">
-
-    <div class="col-md-5"> <!-- begin left container -->
-        <div class="page-header">
-            <h1>Create New Sale Event</h1>
-        </div>
+    {{-- <div class="page-header"> --}}
+        <h1>Create New Sale</h1>
+        <hr>
+    {{-- </div> --}}
+    <div class="col-md-5"> <!-- Begin Left Container -->
         
         <!-- New Sale Form -->
 
@@ -205,8 +205,17 @@
 
         <div class="form-group {{{ $errors->has('sale_date_time') ? 'has-error' : '' }}}">
             <label for="sale_date_time">Sale Date and Time</label>
-            <input type="datetime-local" name="sale_date_time" class="form-control">
+            <div class="input-group date" id="date-picker">
+                <input type="text" name="sale_date_time" class="form-control">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
             {{ $errors->first('sale_date_time', '<p class="help-block">:message</p>') }}
+        </div>
+        
+        <div class="form-group {{{ $errors->has('sale_date_time') ? 'has-error' : '' }}}">
+           <label for="sale_date_time">Sale Date and Time</label>
+           <input type="datetime-local" name="sale_date_time" class="form-control">
+           {{ $errors->first('sale_date_time', '<p class="help-block">:message</p>') }}
         </div>
 
         <!-- Begin Hidden Input Forms -->
@@ -221,16 +230,16 @@
         {{ Form::hidden('latitude', null, array('id' => 'latitude')) }}
         {{ Form::hidden('longitude', null, array('id' => 'longitude')) }}
 
-        <!-- /Hidden -->
+        <!-- //Hidden// -->
 
         <!-- Autocomplete -->
 
-        <div class="form-group">
+        <div class="form-group {{{ $errors->has('address') ? 'has-error' : '' }}}">
             {{ Form::label('address', 'Address') }}
             {{ Form::text('address', null, array('id' => 'autocomplete', 'class' => 'form-control', 'onfocus' => 'geolocate()')) }}
         </div>
 
-        <!-- /Autocomplete -->
+        <!-- //Autocomplete// -->
         
         <div class="form-group {{{ $errors->has('description') ? 'has-error' : '' }}}">
             {{ Form::label('description', 'Sale Description') }}
@@ -245,22 +254,17 @@
         </div>
           
         <div>
-            {{ Form::reset('Reset', array('class' => 'btn btn-default pull-left')) }}
             {{ Form::submit('Create Sale', array('class' => 'btn btn-default pull-right')) }}
         </div>
 
         {{ Form::close() }}
+        <!-- //New Sale Form// -->
 
+  </div> <!-- //Container Left// -->
 
-  </div> <!-- End Container Left -->
-
-
-  <!-- begin right container -->
+  <!-- Begin Right Container -->
   <div id="map-container" class="col-md-6"> 
-        <div class="page-header">
-            <h1>Your Location</h1>
-        </div>
-        
+
         <div id="map-canvas"></div>
 
         <div id="tag-sidebar" class="text-center">
@@ -273,9 +277,9 @@
 
         </div>
 
-    </div> <!-- end right container -->
-    </div> <!-- end main container -->
-</div> <!-- footer fix div -->
+    </div> <!-- //Right Container// -->
+    </div> <!-- //Main Container// -->
+</div> <!-- Footer Fix Div -->
 @stop
 
 
@@ -311,14 +315,20 @@
                      event.preventDefault();
 
                 });
-                
-
-
-                // $(".tag-btn").click(function () {
-                // });
         });
 
     });
 </script>
+<script src="/js/moment.js"></script>
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+    $("#date-picker").datetimepicker({
+        keepOpen: true,
+        sideBySide: true
+    });
 
+    $("#date-picker").on('dp.open', function() {
+        console.log(this);
+    });
+</script>
 @stop

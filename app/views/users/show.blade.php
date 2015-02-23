@@ -4,73 +4,80 @@
 	My Garage Sale - User Dashboard
 @stop
 
+@section('css')
+	<style>
+	#sales-detail {
+		border: #e4e4e4 solid 2px;
+		padding: 20px;
+		border-radius: 4px;
+		margin-top: 20px;
+	}
+
+	.clearfix {
+		padding-top: 35px;
+		margin-left: -15px;
+	}
+	</style>
+@stop
+	
+
 @section('content')
 <div class="container">
+	<h1>Manage Account</h1>
+	<hr>
 	<div class="row">
 		<div class="col-md-4">
 			<h2>{{{ $user->username }}}</h2>
 
 			<h3>{{{ $user->email }}}</h3>
 
-			<!-- Get titles of all posts user has authored! --> 
-
 			<h5>Member since {{{ $user->created_at->format('F jS Y') }}}</h5>
-
-			<h5>Last update {{{ $user->updated_at->format('F jS Y @ h:i:s A') }}}</h5>
 		</div> 
 	</div>
-<!-- 	<hr> -->
-	<div class="row">
- 		<div class="col-md-4">
-			<div class="clearfix">
-				{{ Form::open(array('action' => array('UsersController@destroy', $user->id), 'method' => 'delete')) }}
-					{{ Form::submit('Delete User', array('class' => 'btn btn-danger pull-right')) }}
-
-				<a class="btn btn-primary pull-left" href="{{{ action('UsersController@edit', $user->id) }}}">Update User</a>
-				{{ Form::close() }}
-			</div>
-		</div>
-	</div>
-
 
 	<div class="row">
  		<div class="col-md-12">
- 			<h3>My Sales</h3>
- 			<table class="table">
+			@foreach ($sales as $sale) 
 
-				@foreach ($sales as $sale) 
-					<tr>
-						<td><a href ="{{{ action('SalesController@show', $sale->id) }}}">{{{ $sale->sale_name }}}</a></td>
-						<td>{{{ date("F, d Y") }}} at {{{ date("g:ha", strtotime($sale->sale_date_time)) }}}</td>
-						<td>{{{ $sale->street_num }}} {{{ $sale->street }}} {{{ $sale->city }}}, {{{ $sale->state }}} {{{ $sale->zip }}}</td>
-						
+			<div id="sales-detail" class="col-md-8">
+				<div class="feature-content">
+                    <h3 class="h3-body-title blog-title">
+                    	{{{ $sale->sale_name }}}
+                    </h3>
+                    <hr>
+                    <p>
+                        {{{ $sale->address }}}
+                    </p>
 
-						<!-- <td><a class="btn btn-primary" href ="{{{ action('SalesController@edit', $sale->id) }}}">Update</a></td> -->
+	            </div>
 
-						<td><a class="btn btn-danger" href ="{{{ action('SalesController@destroy', $sale->id) }}}">Manage</a>
-					</tr>
-				@endforeach
+	            <div class="feature-details">
 
-			</table>
-		</div>
-	</div>
+            		<div class="pull-right"><td>
+            			<a class="btn btn-danger" href ="{{{ action('SalesController@show', $sale->id) }}}">Manage</a>
+            		</div> 
 
+	            	<div class="pull-left">
+		                <i class="icon-calendar"></i>
+		                <span>{{{ date("F, d Y", strtotime($sale->sale_date_time)) }}} | </span>
+		                <span class="details-seperator"></span>
 
-	<div class="row">
-		<div class="col-md-10">
+		                <i class="icon-clock-streamline-time"></i>
+		                <span> {{{ date("g:ha", strtotime($sale->sale_date_time)) }}}</span>
+					</div>
+	            </div>
+	        </div>
+			@endforeach
 
-			<div class="user">
-			@if (Auth::guest())
-				<h5>Currently viewing as guest</h5>
-			@endif
+				<div class="col-md-8">
+					<div class="clearfix">
+						{{ Form::open(array('action' => array('UsersController@destroy', $user->id), 'method' => 'delete')) }}
+							{{ Form::submit('Delete Account', array('class' => 'btn btn-danger pull-right')) }}
 
-			@if (Auth::check())
-				<h5>Currently logged in as {{{ Auth::user()->email }}}</h5>
-				<!-- id {{{ Auth::id() }}} -->
-			@endif
-
-			</div>
-	
+						<a class="btn btn-primary pull-left" href="{{{ action('UsersController@edit', $user->id) }}}">Update Account</a>
+						{{ Form::close() }}
+					</div>
+				</div>
 		</div>
 	</div>
 </div>
