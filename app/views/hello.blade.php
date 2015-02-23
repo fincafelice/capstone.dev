@@ -175,17 +175,18 @@
                     <div class="col-md-4">
 						<img class="developers img-circle" src="/img/nicole.jpg">
 						<h4 class="h3-section-info">Nicole DeBord</h4>
-                    </div>  
+                    </div> 
 
                     <div class="col-md-4">
-						<img class="developers img-circle" src="/img/kevin.jpg">
-						<h4 class="h3-section-info">Kevin Bongiovanni</h4>
-                    </div>
-
-                    <div class="col-md-4">
-						<img class="developers img-circle" src="/img/felice.jpg">
+						<img class="developers img-circle" src="/img/felicem.jpg">
 						<h4 class="h3-section-info">Felice Malaszowski</h4>
                     </div>                  
+
+                    <div class="col-md-4">
+                        <img class="developers img-circle" src="/img/kevin.jpg">
+                        <h4 class="h3-section-info">Kevin Bongiovanni</h4>
+                    </div>
+
                 </div>
             </div>
         </div>
