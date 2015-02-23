@@ -173,20 +173,14 @@ class SalesController extends \BaseController
 			// Check for tags and add them to sale_tag pivot table.
 			if (Input::has('tags')) {
 				$tags = Input::get('tags');
-				$tagsArray = explode(' ', $tags);
+				$tagsArray = explode(',', $tags);
 
-				// Unset empty strings from array.
-				foreach ($tagsArray as $key => $value) {
-					if ($value == '') {
-						unset($tagsArray[$key]);
-					}
-				}
 
 				// dd($tagsArray);
 				foreach ($tagsArray as $tagName) {
 					// dd($tagName);
 					// find tag by name
-					$tag = Tag::where('name', '=', $tagName)->first();
+					$tag = Tag::where('name', '=', $tagName)->firstOrFail();
 					// dd($tag->name);
 					// create entry in pivot table with tag_id and sale_id
 					DB::table('sale_tag')->insert(array('sale_id' => $sale->id, 'tag_id' => $tag->id));

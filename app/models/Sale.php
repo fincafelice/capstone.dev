@@ -52,5 +52,15 @@ class Sale extends \Eloquent {
 
 		return $description;
 	}
+
+	public function getDates()
+	{
+	    return array('created_at', 'updated_at', 'sale_date_time');
+	}
+
+	public function setSaleDateTimeAttribute($value)
+	{
+		$this->attributes['sale_date_time'] = Carbon::createFromFormat('F jS Y, g:i a', $value);
+	}
 }	
 

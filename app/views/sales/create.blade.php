@@ -212,12 +212,6 @@
             </div>
             {{ $errors->first('sale_date_time', '<p class="help-block">:message</p>') }}
         </div>
-        
-        <div class="form-group {{{ $errors->has('sale_date_time') ? 'has-error' : '' }}}">
-           <label for="sale_date_time">Sale Date and Time</label>
-           <input type="datetime-local" name="sale_date_time" class="form-control">
-           {{ $errors->first('sale_date_time', '<p class="help-block">:message</p>') }}
-        </div>
 
         <!-- Begin Hidden Input Forms -->
 
@@ -249,7 +243,7 @@
         </div>
 
         <div class= "tag-box">
-            {{ Form::hidden('tags') }}
+            {{ Form::hidden('tags', null, array('id' => 'tags')) }}
         </div>
 
         <div class= "clearfix"></div>
@@ -304,7 +298,7 @@
                 $('.tag-box').append('<button type="button" class="btn btn-default">' + insertText + '</button>');
                 tags.push(insertText);
 
-                // set value of #tags to be variable tags glued together with ','
+                $("#tags").val(tags.join(','));
             }
         });
 
@@ -318,9 +312,7 @@
 
             $(this).remove();
 
-            // set value of #tags to be variable tags glued together with ','
-            
-
+            $("#tags").val(tags.join(','));
         });
     });
 </script>
@@ -328,8 +320,8 @@
 <script src="/js/bootstrap-datetimepicker.min.js"></script>
 <script>
     $("#date-picker").datetimepicker({
-        keepOpen: true,
-        sideBySide: true
+        sideBySide: true,
+        format: 'MMMM Do YYYY, h:mm a'
     });
 
     $("#date-picker").on('dp.open', function() {
