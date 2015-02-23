@@ -38,7 +38,7 @@
 
 	    #map-canvas {
 	        height: 450px;
-	        width: 80%;
+	        width: 100%;
 	        margin: 0px;
 	        padding: 0px
 	    }
@@ -46,11 +46,12 @@
         #tag-sidebar {
       		margin-right: 130px;
       		margin-top: 35px;
+      		margin-right: 50px;
       		font-size: 125%;
       		border: #e4e4e4;
       		border-style: solid;
-    		border-width: 2px;
-			padding: 0px 20px 20px 20px;
+    		border-width: 1px;
+			padding: 0px 20px 0px 20px;
 			border-radius: 4px;
       	}
 
@@ -192,7 +193,7 @@
 									<a id="view-sale-btn" class="btn btn-success" href ="{{{ action('SalesController@show', $sale->id) }}}">More</a>
 								</div>
 							</div>
-
+							<hr>
 							@foreach ($sale->tags as $tag)
 								<a href="{{{ action('SalesController@index', array('tag' => $tag->name)) }}}" class="btn btn-default btn-sm"><small>{{{ $tag->name }}}</small></a>
 							@endforeach
@@ -201,56 +202,28 @@
 				</ul>
 			</div> 
 			<!-- //Sale Wrapper// -->
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<div class="hidden-xs hidden-sm" id="map-canvas"></div>
 
-				<div id="tag-sidebar" class="sidebar">
+					<div id="tag-sidebar" class="sidebar text-center">
 
-	                <!-- Sidebar Block -->
-	                <div class="sidebar-block">
-	                    <div class="sidebar-content tags blog-search">
-	                        <form action="#" method="post">
-	                            <div class="input-group">
-	                                <input type="text" name="search" class="form-control blog-search-input text-input" placeholder="Search.."/>
-	                                <span class="input-group-addon">
-	                                    <button class="blog-search-button icon-search">
-	                                    </button>
-	                                </span>
-	                            </div>
-	                        </form>
-	                    </div>
-	                </div>
-	                <!-- Sidebar Block -->
+		                <!-- Sidebar Block -->
+		                <div class="sidebar-block">
+		                    <h3 class="h3-sidebar-title sidebar-title">
+		                        Search by Tag
+		                    </h3>
 
+		                    <div class="sidebar-content tags">
+		                     
 
-	                <!-- Sidebar Block -->
-	                <div class="sidebar-block">
-	                    <h3 class="h3-sidebar-title sidebar-title">
-	                        Search by Tag
-	                    </h3>
+								@foreach ($showTags as $showTag)
+									<a href="{{{ action('SalesController@index', array('tag' => $showTag->name)) }}}" class="btn btn-default btn-sm"><small>{{{ $showTag->name }}}</small></a>
+								@endforeach	
 
-	                    <div class="sidebar-content tags">
-	                     
-
-							@foreach ($showTags as $showTag)
-								<a href="{{{ action('SalesController@index', array('tag' => $showTag->name)) }}}"> {{ $showTag->name }} </a>
-							@endforeach	
-
-	                     
-	                    </div>
-	                </div>
-	                <!-- Sidebar Block -->
-
-
-
-
-
-
-
-
-				{{-- <div id="tag-sidebar" class="text-center">
-					<div id="tag-header" class="row section-content section-color-bg white-text">
-						<h3>search by tag</h3> --}}
+		                     
+		                    </div>
+		                </div>
+		                <!-- //Sidebar Block// -->
 					</div>
 				</div>	
 			</div>
