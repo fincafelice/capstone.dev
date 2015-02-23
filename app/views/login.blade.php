@@ -8,7 +8,7 @@
 @section('content')
 <div class="container">
 	<h1>Welcome!</h1>
-	<h3>Please log in to create or edit sale event</h3>
+	<h3>Please log in to create or edit sales</h3>
 	<hr>
 	<div>
 		{{ Form::open(array('action' => 'HomeController@doLogin')) }}
