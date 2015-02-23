@@ -8,20 +8,40 @@
 
 @section('css')
     <style>
-	    #map-canvas {
+  
+    #map-canvas {
         height: 450px;
         width: 100%;
         margin: 0px;
         padding: 0px
-      }
+    }
 
-      #map-container {
+     #map-container {
         margin-left: 30px;
-      }
+    }
 
-      #tag-sidebar {
-        margin-top: 25.5px;
-      }
+    #tag-sidebar {
+        margin-top: 30px;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    .tag-box {
+        /*border: solid black 1px;*/
+        padding-bottom: 10px;
+    }
+
+    .btn, .btn-default, .tag-btn {
+        padding: 30px 50px;
+        font-size: 90%;
+    }
+    .bootstrap-datetimepicker-widget td span {
+        width: 13px;
+        line-height: 13px;
+        margin: 0;
+    }
     </style>
 @stop
 
@@ -180,11 +200,14 @@
 		        {{ $errors->first('sale_name', '<p class="help-block">:message</p>') }}
 		    </div>
 
-		    <div class="form-group {{{ $errors->has('sale_date_time') ? 'has-error' : '' }}}">
-		        {{ Form::label ("sale_date_time", "Sale Date and Time") }}
-		        {{ Form::text("sale_date_time", Input::old('sale_date_time'),array('class' => "form-control")) }}
-		        {{ $errors->first('sale_date_time', '<p class="help-block">:message</p>') }}
-		    </div>
+            <div class="form-group {{{ $errors->has('sale_date_time') ? 'has-error' : '' }}}">
+                <label for="sale_date_time">Sale Date and Time</label>
+                <div class="input-group date" id="date-picker">
+                    {{ Form::text('sale_date_time', $sale->sale_date_time->format('F jS Y, g:i a'), array('class' => 'form-control'))  }}
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+                {{ $errors->first('sale_date_time', '<p class="help-block">:message</p>') }}
+            </div>
 
 		    <!-- Begin Hidden Input Forms -->
 
@@ -243,11 +266,8 @@
 
 
 @section('bottomscript')
-
-	<script type="text/javascript">
-    
+<script type="text/javascript">
     var tags = [];
-    
     $(document).ready(function () {
         initialize();
 
@@ -260,10 +280,12 @@
             var insertText = $(this).text();
 
             if (tags.indexOf(insertText) == -1) {
+                
                 $('.tag-box').append('<button type="button" class="btn btn-default">' + insertText + '</button>');
                 tags.push(insertText);
-            }
 
+                $("#tags").val(tags.join(','));
+            }
         });
 
 
@@ -275,9 +297,22 @@
             tags.splice(tags.indexOf(insertText), 1);
 
             $(this).remove();
+
+            $("#tags").val(tags.join(','));
         });
     });
-	</script>
+</script>
+<script src="/js/moment.js"></script>
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+    $("#date-picker").datetimepicker({
+        sideBySide: true,
+        format: 'MMMM Do YYYY, h:mm a'
+    });
 
+    $("#date-picker").on('dp.open', function() {
+        console.log(this);
+    });
+</script>
 @stop
 
