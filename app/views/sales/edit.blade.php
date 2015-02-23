@@ -209,11 +209,9 @@
 		        {{ $errors->first('description', '<p class="help-block">:message</p>') }}
 		    </div>
 
-		    <div class="form-group {{{ $errors->has('tags') ? 'has-error' : '' }}}">
-		        {{ Form::label('tags', 'Tags') }}
-		        {{ Form::textarea('tags', Input::old('tags'), array('class' => 'form-control')) }}
-		        {{ $errors->first('tags', '<p class="help-block">:message</p>') }}
-		    </div>
+		    <div class= "tag-box"></div>
+
+        	<div class= "clearfix"></div>
 
 			{{ Form::submit('Save Changes', array('class' => 'btn btn-primary')) }}
 
@@ -247,20 +245,38 @@
 @section('bottomscript')
 
 	<script type="text/javascript">
-	    $(document).ready(function () {
-	        initialize();
+    
+    var tags = [];
+    
+    $(document).ready(function () {
+        initialize();
 
-		        $tags = $('.tag-btn').click( function(event) {
-		            event.preventDefault();
-		          
-		            var insertText = $(this).text();
-		            $('#tags').append(insertText + " " + " " + " ");
-		            console.log(this.text);
+        // use jquery to select all buttons - prevent the default action on that button.
 
-		            $(".tag-btn").click(function () {
-		            });
-	        	});
-	    });
+        // Find all buttons
+        $('.tag-btn').on("click", function(event) {
+            event.preventDefault();
+
+            var insertText = $(this).text();
+
+            if (tags.indexOf(insertText) == -1) {
+                $('.tag-box').append('<button type="button" class="btn btn-default">' + insertText + '</button>');
+                tags.push(insertText);
+            }
+
+        });
+
+
+        $(".tag-box").on("click", "button", function(e) {
+            e.preventDefault();
+
+            var insertText = $(this).text();
+
+            tags.splice(tags.indexOf(insertText), 1);
+
+            $(this).remove();
+        });
+    });
 	</script>
 
 @stop

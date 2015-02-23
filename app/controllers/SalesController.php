@@ -170,7 +170,7 @@ class SalesController extends \BaseController
 			// Check for tags and add them to sale_tag pivot table.
 			if (Input::has('tags')) {
 				$tags = Input::get('tags');
-				$tagsArray = explode(', ', $tags);
+				$tagsArray = explode(' ', $tags);
 
 				// Unset empty strings from array.
 				foreach ($tagsArray as $key => $value) {
