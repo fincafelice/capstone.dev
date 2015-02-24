@@ -41,6 +41,10 @@
 		#browse-btn {
 			margin-top: 15px;
 		}
+
+		#disqus_thread {
+			margin-top: 25px;
+		}
 	</style>
 @stop
 

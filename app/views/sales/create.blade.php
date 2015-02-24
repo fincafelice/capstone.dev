@@ -25,7 +25,6 @@
     }
 
     .tag-box {
-        /*border: solid black 1px;*/
         padding-bottom: 10px;
     }
 
