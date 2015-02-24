@@ -242,7 +242,7 @@
         </div>
 
         <div class= "tag-box">
-            {{ Form::hidden('tags', null, array('id' => 'tags')) }}
+            {{ Form::hidden('tag_list', Input::old('tag_list'), array('id' => 'tag_list')) }}
         </div>
 
         <div class= "clearfix"></div>
@@ -297,7 +297,7 @@
                 $('.tag-box').append('<button type="button" class="btn btn-default">' + insertText + '</button>');
                 tags.push(insertText);
 
-                $("#tags").val(tags.join(','));
+                $("#tag_list").val(tags.join(','));
             }
         });
 
@@ -311,7 +311,7 @@
 
             $(this).remove();
 
-            $("#tags").val(tags.join(','));
+            $("#tag_list").val(tags.join(','));
         });
     });
 </script>

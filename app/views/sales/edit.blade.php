@@ -232,7 +232,12 @@
 		        {{ $errors->first('description', '<p class="help-block">:message</p>') }}
 		    </div>
 
-		    <div class= "tag-box"></div>
+		    <div class= "tag-box">
+                {{ Form::hidden('tag_list', Input::old('tag_list'), array('id' => 'tag_list')) }}
+                @foreach($sale->tags as $tag)
+                    <button type="button" class="btn btn-default">{{{ $tag->name }}}</button>
+                @endforeach
+            </div>
 
         	<div class= "clearfix"></div>
 
@@ -269,6 +274,8 @@
 <script type="text/javascript">
     var tags = [];
     $(document).ready(function () {
+        tags = $("#tag_list").val().split(',');
+
         initialize();
 
         // use jquery to select all buttons - prevent the default action on that button.
@@ -284,7 +291,7 @@
                 $('.tag-box').append('<button type="button" class="btn btn-default">' + insertText + '</button>');
                 tags.push(insertText);
 
-                $("#tags").val(tags.join(','));
+                $("#tag_list").val(tags.join(','));
             }
         });
 
@@ -298,7 +305,7 @@
 
             $(this).remove();
 
-            $("#tags").val(tags.join(','));
+            $("#tag_list").val(tags.join(','));
         });
     });
 </script>
