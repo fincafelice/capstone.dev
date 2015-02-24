@@ -7,10 +7,11 @@
 
 
 @section('css')
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
     <style>
   
     #map-canvas {
-        height: 450px;
+        height: 505px;
         width: 100%;
         margin: 0px;
         padding: 0px
@@ -29,14 +30,9 @@
     }
 
     .tag-box {
-        /*border: solid black 1px;*/
         padding-bottom: 10px;
     }
 
-    .btn, .btn-default, .tag-btn {
-        padding: 30px 50px;
-        font-size: 90%;
-    }
     .bootstrap-datetimepicker-widget td span {
         width: 13px;
         line-height: 13px;
@@ -183,13 +179,10 @@
 
 
 @section('content')
-
 	<div class="container">
-
-		<div class="col-md-5"> <!-- begin left container -->
-	    	<div class="page-header">
-	       		<h1>Update Sale Event</h1>
-	    	</div>
+   	    <h1>Update Sale</h1>
+        <hr>
+        <div class="col-md-5"> <!-- begin left container -->
 
 			{{ Form::model($sale, array('action' =>array('SalesController@update', $sale->id), 'method'=> 'put', 'files' => true)) }}	
 			Upload Images{{ Form::file('images[]', array('multiple'=>true)) }}
@@ -232,22 +225,27 @@
 		        {{ $errors->first('description', '<p class="help-block">:message</p>') }}
 		    </div>
 
-		    <div class= "tag-box"></div>
+		    <div class= "tag-box">
+                {{ Form::hidden('tag_list', Input::old('tag_list'), array('id' => 'tag_list')) }}
+                @foreach($sale->tags as $tag)
+                    <button type="button" class="btn btn-default">{{{ $tag->name }}}</button>
+                @endforeach
+            </div>
 
         	<div class= "clearfix"></div>
 
-			{{ Form::submit('Save Changes', array('class' => 'btn btn-primary')) }}
+            <div>
+			    {{ Form::submit('Save Changes', array('class' => 'btn btn-primary')) }}
+            </div>
 
-			{{ Form::close() }}
+            
+            {{ Form::close() }}
 
 		</div> <!-- End Container Left -->
 
 
 		<!-- begin right container -->
 		<div id="map-container" class="col-md-6"> 
-	        <div class="page-header">
-	            <h1>Your Location</h1>
-	        </div>
 	        
 	        <div id="map-canvas"></div>
 
@@ -269,6 +267,8 @@
 <script type="text/javascript">
     var tags = [];
     $(document).ready(function () {
+        tags = $("#tag_list").val().split(',');
+
         initialize();
 
         // use jquery to select all buttons - prevent the default action on that button.
@@ -284,7 +284,7 @@
                 $('.tag-box').append('<button type="button" class="btn btn-default">' + insertText + '</button>');
                 tags.push(insertText);
 
-                $("#tags").val(tags.join(','));
+                $("#tag_list").val(tags.join(','));
             }
         });
 
@@ -298,7 +298,7 @@
 
             $(this).remove();
 
-            $("#tags").val(tags.join(','));
+            $("#tag_list").val(tags.join(','));
         });
     });
 </script>

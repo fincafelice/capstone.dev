@@ -35,6 +35,33 @@ class Sale extends \Eloquent {
     	return $this->hasMany('Image');
     }
 
+    public function getTagListAttribute()
+    {
+    	$tagNames = array();
+
+    	foreach ($this->tags as $tag) {
+    		$tagNames[] = $tag->name;
+    	}
+
+    	return implode(',', $tagNames);
+    }
+
+    public function setTagListAttribute($value)
+    {
+    	$tags = explode(',', $value);
+
+    	$tagIds = array();
+
+    	foreach ($tags as $tagName) {
+    		if (empty($tagName)) continue;
+    		
+    		$tag = Tag::where('name', $tagName)->firstOrFail();
+
+    		$tagIds[] = $tag->id;
+    	}
+
+    	$this->tags()->sync($tagIds);
+    }
 
 	public function summarizeDescription($summary = false) 
 	{

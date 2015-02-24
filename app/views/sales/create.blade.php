@@ -1,12 +1,17 @@
 @extends('layouts.template')
 
 
+@section('title')
+    My Garage Sale - Create Sale
+@stop
+
+
 @section('css')
     <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
     <style>
   
     #map-canvas {
-        height: 450px;
+        height: 515px;
         width: 100%;
         margin: 0px;
         padding: 0px
@@ -25,14 +30,9 @@
     }
 
     .tag-box {
-        /*border: solid black 1px;*/
         padding-bottom: 10px;
     }
 
-    .btn, .btn-default, .tag-btn {
-        padding: 30px 50px;
-        font-size: 90%;
-    }
     .bootstrap-datetimepicker-widget td span {
         width: 13px;
         line-height: 13px;
@@ -184,10 +184,8 @@
 @section('content')
 
 <div class="container">
-    {{-- <div class="page-header"> --}}
         <h1>Create New Sale</h1>
         <hr>
-    {{-- </div> --}}
     <div class="col-md-5"> <!-- Begin Left Container -->
         
         <!-- New Sale Form -->
@@ -243,13 +241,13 @@
         </div>
 
         <div class= "tag-box">
-            {{ Form::hidden('tags', null, array('id' => 'tags')) }}
+            {{ Form::hidden('tag_list', Input::old('tag_list'), array('id' => 'tag_list')) }}
         </div>
 
         <div class= "clearfix"></div>
           
         <div>
-            {{ Form::submit('Create Sale', array('class' => 'btn btn-default pull-right')) }}
+            {{ Form::submit('Create Sale', array('class' => 'btn btn-primary pull-left')) }}
         </div> 
 
         {{ Form::close() }}
@@ -298,7 +296,7 @@
                 $('.tag-box').append('<button type="button" class="btn btn-default">' + insertText + '</button>');
                 tags.push(insertText);
 
-                $("#tags").val(tags.join(','));
+                $("#tag_list").val(tags.join(','));
             }
         });
 
@@ -312,7 +310,7 @@
 
             $(this).remove();
 
-            $("#tags").val(tags.join(','));
+            $("#tag_list").val(tags.join(','));
         });
     });
 </script>

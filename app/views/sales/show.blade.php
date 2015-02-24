@@ -41,6 +41,10 @@
 		#browse-btn {
 			margin-top: 15px;
 		}
+
+		#disqus_thread {
+			margin-top: 25px;
+		}
 	</style>
 @stop
 
@@ -72,6 +76,10 @@
 				<!-- add seller username -->
 				<hr>
 				<p>{{ nl2br($sale->description) }}</p>
+				<hr>
+				@foreach ($sale->tags as $tag)
+					<a href="{{{ action('SalesController@index', array('tag' => $tag->name)) }}}" class="btn btn-default btn-sm"><small>{{{ $tag->name }}}</small></a>
+				@endforeach
 
 			</div>
 		</div>
