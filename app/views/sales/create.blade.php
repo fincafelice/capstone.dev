@@ -1,12 +1,17 @@
 @extends('layouts.template')
 
 
+@section('title')
+    My Garage Sale - Create Sale
+@stop
+
+
 @section('css')
     <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
     <style>
   
     #map-canvas {
-        height: 450px;
+        height: 515px;
         width: 100%;
         margin: 0px;
         padding: 0px
@@ -28,10 +33,6 @@
         padding-bottom: 10px;
     }
 
-    .btn, .btn-default, .tag-btn {
-        padding: 30px 50px;
-        font-size: 90%;
-    }
     .bootstrap-datetimepicker-widget td span {
         width: 13px;
         line-height: 13px;
@@ -183,10 +184,8 @@
 @section('content')
 
 <div class="container">
-    {{-- <div class="page-header"> --}}
         <h1>Create New Sale</h1>
         <hr>
-    {{-- </div> --}}
     <div class="col-md-5"> <!-- Begin Left Container -->
         
         <!-- New Sale Form -->
@@ -248,7 +247,7 @@
         <div class= "clearfix"></div>
           
         <div>
-            {{ Form::submit('Create Sale', array('class' => 'btn btn-default pull-right')) }}
+            {{ Form::submit('Create Sale', array('class' => 'btn btn-primary pull-left')) }}
         </div> 
 
         {{ Form::close() }}

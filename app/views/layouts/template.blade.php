@@ -369,22 +369,22 @@
                                     <div class="footer-content">
                                         <ul class="footer-category-list">
                                             <li>
-                                                <a href="">Giving to charity / Salvation Army</a>
+                                                <a href="http://www.salvationarmyusa.org/">Giving to Charity - Salvation Army</a>
                                             </li>
                                             <li>
-                                                <a href="">Planning a move / USPS</a>
+                                                <a href="https://www.usps.com/">Planning a Move? USPS</a>
                                             </li>
                                             <li>
-                                                <a href="">City Permits &amp; Neighborhood Watch</a>
+                                                <a href="http://www.sanantonio.gov/ces/garagesales.aspx">City Permits</a>
                                             </li>
                                             <li>
-                                                <a href="">Need insurance? Insurejoy</a>
+                                                <a href="http://insurejoy.com/">Need Insurance? Insurejoy</a>
                                             </li>
                                             <li>
-                                                <a href="">Have Pets? Rover Sleepover </a>
+                                                <a href="http://roversleepover.io/">Have Pets? Rover Sleepover </a>
                                             </li>
                                             <li>
-                                                <a href="">Service minded?
+                                                <a href="http://servesearch.us/">Service Minded?
                                                 Serve Search  </a>
                                             </li>
                                             
