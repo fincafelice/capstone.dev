@@ -167,23 +167,8 @@ class SalesController extends \BaseController
 			$sale->user_id   	  = Auth::id();
 			$sale->save();
 
+			$sale->tag_list = Input::get('tag_list');
 
-			// Check for tags and add them to sale_tag pivot table.
-			if (Input::has('tags')) {
-				$tags = Input::get('tags');
-				$tagsArray = explode(',', $tags);
-
-
-				// dd($tagsArray);
-				foreach ($tagsArray as $tagName) {
-					// dd($tagName);
-					// find tag by name
-					$tag = Tag::where('name', '=', $tagName)->firstOrFail();
-					// dd($tag->name);
-					// create entry in pivot table with tag_id and sale_id
-					DB::table('sale_tag')->insert(array('sale_id' => $sale->id, 'tag_id' => $tag->id));
-				}
-			}
 
 			Session::flash('successMessage', 'Your garage sale was saved!');
 		} 
