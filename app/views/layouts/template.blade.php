@@ -417,9 +417,6 @@
 
         <script type="text/javascript" src="/kanzi/js/_jquery.placeholder.js"></script>
 
-
-        @yield('bottomscript')    
-
         <script src="/kanzi/js/activeaxon_menu.js" type="text/javascript"></script> 
         <script src="/kanzi/js/animationEnigne.js" type="text/javascript"></script> 
         <script src="/kanzi/js/bootstrap.min.js" type="text/javascript"></script> 
@@ -442,5 +439,7 @@
         <script src="/kanzi/js/jQuery.XDomainRequest.js" type="text/javascript"></script> 
         <script src="/kanzi/js/kanzi.js" type="text/javascript"></script> 
         <script src="/kanzi/js/retina.js" type="text/javascript"></script> 
+
+        @yield('bottomscript')
     </body>
 </html>
