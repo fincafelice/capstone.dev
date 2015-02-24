@@ -12,7 +12,7 @@
 			margin-top: -15px;
 		}
 
-		#photo-column {
+		.photo-column {
 			margin-left: -15px;
 		}
 
@@ -24,8 +24,8 @@
 		}
 
 		.setImageD {
-			max-width: 280px;
-			max-height: 140px;
+			max-width: 270px;
+			max-height: 200px;
 		}
 
 		#edit-sale-btn {
@@ -110,7 +110,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<div class="content-wrapper hide-until-loading">
+			<div class="content-wrapper">
 				<div class="body-wrapper">
 				    <div class="container">
 				        <div class="row">
@@ -127,50 +127,34 @@
 				        <div class="row">
 				            <div class="col-md-12 col-sm-12">
 				                <div class="portfolio-items">
-				                	<div class="row">
 									@for($i = 0; $i < $sale->images->count(); $i++)
-										@if($i % 4 == 0)
-											</div>
-											<div class="row">
-										@endif
 								
-									<div id="photo-column" class="col-md-3 embed-responsive-4by3 ">
+									<div class="thumb-label-item">
+										
 					                    <!-- Portfolio Item -->
+					                    <div class="img-overlay thumb-label-item-img">
+			         						<img src="{{ $sale->images[$i]->img_path }}">
 
-					                    <div class="feature animated"
-					                         data-animtype="fadeInUp"
-					                         data-animrepeat="0"
-					                         data-speed="1s"
-					                         data-delay="0s">
-					                        <div class="feature-image img-overlay setImageD">
+											<div class="item-img-overlay">
+                                                <a class="portfolio-zoom fa fa-plus" href="{{ $sale->images[$i]->img_path }}"
+			                                       data-rel="prettyPhoto[portfolio]"></a>
 
+												@if (Auth::id() == $sale->user_id)
+	                                                <div class="item_img_overlay_content">
+	                                                    <h3 class="thumb-label-item-title">
+													    	<button class="btn btn-danger img-delete-btn" data-image-id="{{ $sale->images[$i]->id }}">Remove</button>
+	                                                    </h3>
+	                                                </div>
+												@endif
+											</div>
+                               			</div>
 
-					                            <!-- <img
-					                                src="images/placeholders/portfolio4.jpg"
-					                                alt=""/> -->
-
-					         					<img class="setimageD" src="{{ $sale->images[$i]->img_path }}">
-					          		
-
-
-					                            <div class="item-img-overlay">
-					                                <a class="portfolio-zoom fa fa-plus"
-					                                   href="{{ $sale->images[$i]->img_path }}"
-					                                   data-rel="prettyPhoto[portfolio]" title="Title goes here"></a>
-					                         
-					                            </div>
-					                        </div>
-					                    </div>
-											
 					                    <!-- //Portfolio Item// -->
-										@if (Auth::id() == $sale->user_id)
-									    	<button class="btn btn-danger" data-image-id="{{ $sale->images[$i]->id }}">Remove</button>
-										@endif
 									</div>
 									@endfor
 
-									</div>
-				                </div>
+								</div>
+			                </div>
 
 							{{ Form::open(['method' => 'DELETE', 'id' => 'delete-form']) }}
 							{{ Form::close() }}
@@ -207,10 +191,6 @@
 
 
 @section('bottomscript')
-
-	<script src="/js/jquery.min.js"></script> 
-	<script src="/js/bootstrap.js"></script> 
-	<script src="/js/script.js"></script>
 
 	<script>
 		$('.img-delete-btn').click(function () {
